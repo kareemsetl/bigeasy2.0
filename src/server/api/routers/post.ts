@@ -21,6 +21,7 @@ export const postRouter = createTRPCRouter({
       getAllPostContents: publicProcedure.query(({ ctx }) => {
         return ctx.db.post.findMany({
           select: {
+            id: true,
             postContent: true, // Select only the postContent column
           },
         })}),
