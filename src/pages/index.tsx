@@ -9,7 +9,7 @@ import { api } from "~/utils/api";
 export default function Home() {
 
   const user = useUser();
-  const { data } = api.post.getLatest.useQuery();
+  const { data } = api.post.getAll.useQuery();
 
   return (
     <>
