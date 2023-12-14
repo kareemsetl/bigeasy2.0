@@ -5,7 +5,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useUser } from "node_modules/@clerk/nextjs";
 import Navbar from "~/components/Navbar";
-import { api, RouterOutputs } from "~/utils/api";
+import { api } from "~/utils/api";
 
 
 export default function Home() {
