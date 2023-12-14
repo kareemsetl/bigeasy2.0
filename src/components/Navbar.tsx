@@ -42,7 +42,7 @@ const Navbar = () => {
     };
 
     const navigateTo = (path: string) => {
-        router.push(path);
+        void router.push(path);
     };
 
     return (
