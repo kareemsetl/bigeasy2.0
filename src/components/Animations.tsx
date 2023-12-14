@@ -1,7 +1,7 @@
 import { gsap } from 'gsap';
 
 // Stagger reveal for dropdown
-export const staggerReveal = (ref: { target: any; }) => {
+export const staggerReveal = (ref: null) => {
   gsap.to(ref, {
     duration: 0.8,
     height: "auto",
@@ -14,7 +14,7 @@ export const staggerReveal = (ref: { target: any; }) => {
 };
 
 // Stagger reveal close for dropdown
-export const staggerRevealClose = (ref: { target: any; }) => {
+export const staggerRevealClose = (ref:null) => {
   gsap.to(ref, {
     duration: 0.8,
     height: 0,
