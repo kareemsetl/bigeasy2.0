@@ -1,4 +1,5 @@
 import { gsap } from 'gsap';
+import React from 'react'; // Import React
 
 // Stagger reveal for dropdown
 export const staggerReveal = (ref: Element | HTMLElement | NodeListOf<Element> | Array<Element> | string | null) => {
@@ -24,8 +25,8 @@ export const staggerRevealClose = (ref: Element | HTMLElement | NodeListOf<Eleme
 };
 
 // Hover animation for list items
-export const onHover = (e: { target: HTMLElement }) => {
-  gsap.to(e.target, {
+export const onHover = (e: React.MouseEvent<HTMLLIElement>) => {
+  gsap.to(e.currentTarget, { // Use currentTarget instead of target
     duration: 0.3,
     color: "#ffffff",
     scale: 1.1,
@@ -34,12 +35,11 @@ export const onHover = (e: { target: HTMLElement }) => {
 };
 
 // Hover out animation for list items
-export const onHoverOut = (e: { target: HTMLElement }) => {
-    gsap.to(e.target, {
-      duration: 0.3,
-      color: "#718096", 
-      scale: 1,
-      ease: "power1.inOut"
-    });
-  };
-  
+export const onHoverOut = (e: React.MouseEvent<HTMLLIElement>) => {
+  gsap.to(e.currentTarget, { // Use currentTarget instead of target
+    duration: 0.3,
+    color: "#718096",
+    scale: 1,
+    ease: "power1.inOut"
+  });
+};
