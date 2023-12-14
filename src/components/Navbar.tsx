@@ -41,7 +41,7 @@ const Navbar = () => {
         staggerRevealClose(categoriesRef.current);
     };
 
-    const navigateTo = (path) => {
+    const navigateTo = (path: string) => {
         router.push(path);
     };
 
