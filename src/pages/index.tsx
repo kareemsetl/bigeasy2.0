@@ -4,7 +4,9 @@ import { SignOutButton } from "@clerk/nextjs";
 import Head from "next/head";
 import Link from "next/link";
 import { useUser } from "node_modules/@clerk/nextjs";
-import { api } from "~/utils/api";
+import Navbar from "~/components/Navbar";
+import { api, RouterOutputs } from "~/utils/api";
+
 
 export default function Home() {
 
@@ -17,9 +19,15 @@ export default function Home() {
 
     if (!user) return null;
 
-    return <div className="flex justify-right">
+    return (<div className="flex w-full gap-3">
       <img src="{user.profileImageUrl}" alt="User Profile Image" className="h-16 w-16 rounded-full"></img>
-    </div>
+      <input placeholder="Post your story!" className="bg-transparent w-full grow" />
+    </div>);
+  
+  type PostWithUser = RouterOutputs["posts"]["getAllPostContents"][number]
+  const PostView = () => {
+
+  }
 
   }
 
@@ -34,11 +42,12 @@ export default function Home() {
         <meta name="description" content="All of the big easy mag content you know and love" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Navbar />
       <main className="flex justify-center h-full">
-        <div className="bg-green-900 w-full h-full border-slate-400 md:max-w-6xl border-x justify-right">
+        <div className="bg-green-900 w-full h-full border-slate-400 md:max-w-6xl border-x">
           <div className="flex justify-right border-b border-slate-400 p-4">
-            <div className="flex justify-right">{!user.isSignedIn &&
-              <div className="flex justify-center">
+            <div className="flex p-4 w-full">
+              {!user.isSignedIn &&<div className="flex justify-center">
                 <SignInButton /></div>}
               {user.isSignedIn &&
                 <div className="">

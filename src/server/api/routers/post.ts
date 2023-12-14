@@ -8,6 +8,14 @@ export const postRouter = createTRPCRouter({
       }),
       getAllPostContents: publicProcedure.query(({ ctx }) => {
         return ctx.db.post.findMany({
+          where: {
+            postContent: {
+              not: {
+                equals: "", // Exclude posts with empty string
+              }
+            },
+            postType: "post", // Include only posts where postType is 'post'
+          },
           select: {
             id: true,
             postContent: true, // Select only the postContent column
