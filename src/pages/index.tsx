@@ -23,11 +23,7 @@ export default function Home() {
       <img src="{user.profileImageUrl}" alt="User Profile Image" className="h-16 w-16 rounded-full"></img>
       <input placeholder="Post your story!" className="bg-transparent w-full grow" />
     </div>);
-  
-  type PostWithUser = RouterOutputs["posts"]["getAllPostContents"][number]
-  const PostView = () => {
 
-  }
 
   }
 
