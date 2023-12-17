@@ -182,3 +182,26 @@ model term {
   @@index([name], name: "name")
 }
 
+model post_meta {
+  meta_id    BigInt   @id @default(autoincrement()) @map("meta_id")
+  post_id    BigInt   @default(0) @map("post_id")
+  meta_key   String?  @db.VarChar(255) @map("meta_key")
+  meta_value String?  @db.LongText @map("meta_value")
+
+  @@map("post_meta")
+  @@index([post_id], name: "post_id")
+  @@index([meta_key], name: "meta_key")
+}
+model fca_eoi_subscriber {
+  id              Int      @id @default(autoincrement())
+  email           String?  @db.LongText
+  name            String?  @db.LongText
+  time            DateTime?
+  timezone        String?  @db.LongText
+  campaign_id     Int?
+  status          String?  @db.LongText
+  consent_granted String?  @db.LongText
+  consent_msg     String?  @db.LongText
+
+  @@map("fca_eoi_subscriber")
+}
