@@ -12,7 +12,7 @@ export default function Home() {
 
   const user = useUser();
 
-  const { data, isLoading } = api.post.getAllPostContents.useQuery();
+  const { data, isLoading } = api.post.getFeaturedPostContents.useQuery();
 
   const CreatePostWizard = () =>{
     const {user} = useUser();
@@ -40,7 +40,7 @@ export default function Home() {
       </Head>
       <Navbar />
       <main className="flex justify-center h-full">
-        <div className="bg-green-900 w-full h-full border-slate-400 md:max-w-6xl border-x">
+        <div className="bg-slate-200 w-full h-full border-slate-400 md:max-w-6xl border-x">
           <div className="flex justify-right border-b border-slate-400 p-4">
             <div className="flex p-4 w-full">
               {!user.isSignedIn &&<div className="flex justify-center">

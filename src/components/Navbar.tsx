@@ -46,10 +46,11 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-purple-950 text-slate-400 flex items-center justify-between p-4">
-            <div className="logo mr-12">LOGO</div>
-            <ul className="flex flex-grow justify-between">
-                <li></li>
+        <nav className="bg-purple-950 text-slate-200 flex items-center justify-between p-1">
+            <div style={{ height: '130px' }} className="ml-16 border-none">
+                <img style={{ maxHeight: '100%' }}src="https://www.bigeasymagazine.com/wp-content/uploads/2018/05/big-easy-main-logo-1.png" alt="Big Easy Magazine Logo" onClick={() => navigateTo('/')} />
+            </div>
+            <ul className="flex flex-grow justify-between text-base md:text-lg lg:text-lg ">
                 <li></li>
                 <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut} onClick={() => navigateTo('/')}>Home</li>
                 <li className="navbar-item relative"
@@ -90,6 +91,7 @@ const Navbar = () => {
                 <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut} onClick={() => navigateTo('/about-us')}>About Us</li>
                 <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut} onClick={() => navigateTo('/contact')}>Contact</li>
                 <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut} onClick={() => navigateTo('/things-to-do')}>Things to Do</li>
+                <li></li>
             </ul>
         </nav>
     );

@@ -1,13 +1,55 @@
 import { authMiddleware } from "@clerk/nextjs";
- 
+
 // This example protects all routes including api/trpc routes
 // Please edit this to allow other routes to be public as needed.
 // See https://clerk.com/docs/references/nextjs/auth-middleware for more information about configuring your Middleware
 export default authMiddleware({
-    // "/" will be accessible to all users
-    publicRoutes: ["/api/trpc/post.getAllPostContents", "/"]
-  });  
+  // "/" will be accessible to all users
+  publicRoutes: [
+    "/api/trpc/post.getFeaturedPostContents", "/",
+    "/shop",
+    "/support-us",
+    "/advertise",
+    "/about-us",
+    "/contact",
+    "/things-to-do",
+    "/category/Politics",
+    "/category/Economy",
+    "/category/Health-Care",
+    "/category/Social-Issues",
+    "/category/Culture-Lifestyle",
+    "/category/Art",
+    "/category/Film",
+    "/category/Food",
+    "/category/Music",
+    "/category/The-Progressive's-Weekend",
+    "/category/The-Progressive's-Lifestyle-in-New-Orleans",
+    "/category/Environment",
+    "/category/Air-&-Water-Quality",
+    "/category/Coastal-Restoration",
+    "/category/Op-Ed-Lagniappe",
+    "/category/Sports",
+    "/category/monthly/December-2019",
+    "/category/monthly/October-2019",
+    "/category/monthly/September-2019",
+    "/category/monthly/August-2019",
+    "/category/monthly/July-2019",
+    "/category/monthly/June-2019",
+    "/category/monthly/May-2019",
+    "/category/monthly/April-2019",
+    "/category/monthly/March-2019",
+    "/category/monthly/February-2019",
+    "/category/monthly/January-2019",
+    "/category/monthly/December-2018",
+    "/category/monthly/November-2018",
+    "/category/monthly/October-2018",
+    "/category/monthly/September-2018",
+    "/category/monthly/August-2018",
+    "/category/monthly/July-2018",
+    "/category/monthly/June-2018"
+  ],
+  ignoredRoutes: ["/((?!api|trpc))(_next.*|.+\.[\w]+$)", "/api/trpc/post.getFeaturedPostContents"]
+});
 export const config = {
   matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
 };
- 

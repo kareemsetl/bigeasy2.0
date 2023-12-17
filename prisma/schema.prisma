@@ -192,3 +192,16 @@ model post_meta {
   @@index([post_id], name: "post_id")
   @@index([meta_key], name: "meta_key")
 }
+model fca_eoi_subscriber {
+  id              Int      @id @default(autoincrement())
+  email           String?  @db.LongText
+  name            String?  @db.LongText
+  time            DateTime?
+  timezone        String?  @db.LongText
+  campaign_id     Int?
+  status          String?  @db.LongText
+  consent_granted String?  @db.LongText
+  consent_msg     String?  @db.LongText
+
+  @@map("fca_eoi_subscriber")
+}
