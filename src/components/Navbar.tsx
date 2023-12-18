@@ -1,6 +1,10 @@
 import React, { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { staggerReveal, staggerRevealClose, onHover, onHoverOut } from './Animations';
+import { SignIn } from "@clerk/nextjs";
+import { SignInButton } from "@clerk/nextjs";
+import { SignOutButton } from "@clerk/nextjs";
+import { useUser } from "node_modules/@clerk/nextjs";
 
 const Navbar = () => {
     const [isEditionOpen, setIsEditionOpen] = useState(false);
@@ -8,6 +12,7 @@ const Navbar = () => {
     const editionRef = useRef(null);
     const categoriesRef = useRef(null);
     const router = useRouter();
+    const user = useUser();
 
     // Editions array
     const editions = [
@@ -46,10 +51,12 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-purple-950 text-slate-200 flex items-center justify-between p-1">
-            <div style={{ height: '130px' }} className="ml-16 border-none">
-                <img style={{ maxHeight: '100%' }}src="https://www.bigeasymagazine.com/wp-content/uploads/2018/05/big-easy-main-logo-1.png" alt="Big Easy Magazine Logo" onClick={() => navigateTo('/')} />
+        <nav className="bg-purple-950 text-slate-200 flex items-center justify-between p-1"
+            style={{ backgroundImage: 'url(https://bigeasymagazine.b-cdn.net/wp-content/uploads/2018/05/big-easy-magazine-in-new-orleans-50-1.jpg)', backgroundSize: 'cover', backgroundPosition: '50% 35%' }}>
+            <div style={{ height: '275px' }} className="ml-16 border-none">
+                <img style={{ maxHeight: '100%' }} src="https://www.bigeasymagazine.com/wp-content/uploads/2018/05/big-easy-main-logo-1.png" alt="Big Easy Magazine Logo" onClick={() => navigateTo('/')} />
             </div>
+            <div className="flex flex-col flex-grow">
             <ul className="flex flex-grow justify-between text-base md:text-lg lg:text-lg ">
                 <li></li>
                 <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut} onClick={() => navigateTo('/')}>Home</li>
@@ -90,9 +97,21 @@ const Navbar = () => {
                 <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut} onClick={() => navigateTo('/advertise')}>Advertise</li>
                 <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut} onClick={() => navigateTo('/about-us')}>About Us</li>
                 <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut} onClick={() => navigateTo('/contact')}>Contact</li>
-                <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut} onClick={() => navigateTo('/things-to-do')}>Things to Do</li>
+                {!user.isSignedIn &&<div className="flex justify-center">
+                <SignInButton /></div>}
+                {user.isSignedIn &&
+                <div className="flex justify-center">
+                <SignOutButton />
+                </div>
+              }
+                <li></li>
                 <li></li>
             </ul>
+            <div className="text-center mt-10 text-2xl">
+                <p>UNAPOLOGETICALLY PROGRESSIVE.</p>
+                <p><strong>UNIQUELY NEW ORLEANS</strong></p>
+            </div>
+            </div>
         </nav>
     );
 };

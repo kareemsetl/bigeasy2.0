@@ -43,14 +43,8 @@ export default function Home() {
         <div className="bg-slate-200 w-full h-full border-slate-400 md:max-w-6xl border-x">
           <div className="flex justify-right border-b border-slate-400 p-4">
             <div className="flex p-4 w-full">
-              {!user.isSignedIn &&<div className="flex justify-center">
-                <SignInButton /></div>}
-              {user.isSignedIn &&
-                <div className="">
-                <CreatePostWizard />
-                <SignOutButton />
-                </div>
-              }</div>
+              Featured Articles
+              </div>
             <SignIn path="/sign-in" routing="path" signUpUrl="/sign-up" />
           </div>
           <div className="flex flex-col">
