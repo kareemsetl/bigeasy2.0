@@ -8,3 +8,60 @@ body {
     @apply bg-purple-950;
     font-family: 'Exo', sans-serif;
 }
+.custom-border-bottom::after {
+    content: '';
+    display: block;
+    width: calc(100% - 9rem); /* Adjust this value to control the length of the border */
+    height: 1px; /* This is the thickness of your border */
+    background: currentColor; /* Use the text color as the border color */
+    margin: 0 auto; /* This centers the pseudo-element */
+}
+/* Initial state of the navbar text */
+.text-block {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+}
+
+/* Faded out state */
+.text-block.fade-out {
+    opacity: 0;
+}
+
+/* Initial state of the menu items */
+.nav-items {
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Transformed state for menu items */
+.nav-items.centered {
+    transform: translateY(180%);
+}
+
+/* Navbar initial state */
+.navbar {
+    transition: height 0.4s ease-in-out, background 0.5s ease-in-out;
+    height: 275px; 
+    backgroundImage: 'url(https://bigeasymagazine.b-cdn.net/wp-content/uploads/2018/05/big-easy-magazine-in-new-orleans-50-1.jpg)');
+    background-size: cover;
+    background-position: 50% 35%;
+    position: fixed;
+    top: 0;      
+    width: 100%;
+}
+
+/* Navbar scrolled state */
+.navbar.scrolled {
+    height: 130px;
+    background: #6e3aa2;
+}
+/* Initial state of the logo */
+.logo {
+    transition: transform 0.5s ease-in-out;
+    transform: scale(1); /* Initial scale */
+}
+/* Scaled-down state of the logo */
+.logo.scrolled {
+    transform: scale(0.5); /* Adjust the scale factor as needed */
+}
+
+

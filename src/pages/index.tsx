@@ -14,8 +14,8 @@ export default function Home() {
 
   const { data, isLoading } = api.post.getFeaturedPostContents.useQuery();
 
-  const CreatePostWizard = () =>{
-    const {user} = useUser();
+  const CreatePostWizard = () => {
+    const { user } = useUser();
 
     if (!user) return null;
 
@@ -27,9 +27,9 @@ export default function Home() {
 
   }
 
-  if(isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div>Loading...</div>;
 
-  if(!data ) return <div>No posts!</div>;
+  if (!data) return <div>No posts!</div>;
 
   return (
     <>
@@ -39,18 +39,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main className="flex justify-center h-full">
-        <div className="bg-slate-200 w-full h-full border-slate-400 md:max-w-6xl border-x">
+      <main className="flex justify-center h-full mt-20">
+        <div className="bg-slate-200 w-full h-full border-slate-400 border-x" style={{
+          maxWidth: '1460px',
+          marginTop: '275px' 
+        }}>
           <div className="flex justify-right border-b border-slate-400 p-4">
             <div className="flex p-4 w-full">
-              {!user.isSignedIn &&<div className="flex justify-center">
-                <SignInButton /></div>}
-              {user.isSignedIn &&
-                <div className="">
-                <CreatePostWizard />
-                <SignOutButton />
-                </div>
-              }</div>
+              <h2>Featured Articles</h2>
+            </div>
             <SignIn path="/sign-in" routing="path" signUpUrl="/sign-up" />
           </div>
           <div className="flex flex-col">

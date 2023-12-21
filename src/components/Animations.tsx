@@ -1,5 +1,5 @@
 import { gsap } from 'gsap';
-import React from 'react'; // Import React
+import React from 'react'; 
 
 // Stagger reveal for dropdown
 export const staggerReveal = (ref: Element | HTMLElement | NodeListOf<Element> | Array<Element> | string | null) => {
