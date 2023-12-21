@@ -37,7 +37,7 @@ export const onHover = (e: React.MouseEvent<HTMLLIElement>) => {
 // Hover out animation for list items
 export const onHoverOut = (e: React.MouseEvent<HTMLLIElement>) => {
   gsap.to(e.currentTarget, { // Use currentTarget instead of target
-    duration: 0.3,
+    duration: .3,
     color: "#ffffff",
     scale: 1,
     ease: "power1.inOut"
