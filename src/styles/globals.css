@@ -34,7 +34,9 @@ body {
 
 /* Transformed state for menu items */
 .nav-items.centered {
-    transform: translateY(180%);
+    transform: translateY(50px);
+    top:0;
+    z-index:1000;
 }
 
 /* Navbar initial state */
@@ -45,15 +47,16 @@ body {
     background-size: cover;
     background-position: 50% 35%;
     position: fixed;
-    top: 0;      
+    top: 0;
     width: 100%;
 }
 
 /* Navbar scrolled state */
 .navbar.scrolled {
     height: 130px;
-    background: #6e3aa2;
+    top:0;
 }
+
 /* Initial state of the logo */
 .logo {
     transition: transform 0.5s ease-in-out;
