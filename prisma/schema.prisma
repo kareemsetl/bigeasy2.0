@@ -121,18 +121,6 @@ model comment_meta {
   @@index([meta_key], name: "meta_key")
 }
 
-model email_subscriber {
-  id              Int       @id @default(autoincrement())
-  email           String?   @db.LongText
-  name            String?   @db.LongText
-  time            DateTime? 
-  timezone        String?   @db.LongText
-  campaign_id     Int?      
-  status          String?   @db.LongText
-  consent_granted String?   @db.LongText
-  consent_msg     String?   @db.LongText
-}
-
 model redirect {
   id       Int    @id @default(autoincrement()) @db.MediumInt
   url_from String @db.VarChar(256)
