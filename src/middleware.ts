@@ -46,7 +46,11 @@ export default authMiddleware({
     "/category/monthly/September-2018",
     "/category/monthly/August-2018",
     "/category/monthly/July-2018",
-    "/category/monthly/June-2018"
+    "/category/monthly/June-2018",
+    "/category/guest-posts/",
+    "/category/sponsored-content/",
+    "/category/op-ed-lagniappe/satire/",
+    "/category/big-easy-editorial/"
   ],
   ignoredRoutes: ["/((?!api|trpc))(_next.*|.+\.[\w]+$)", "/api/trpc/post.getFeaturedPostContents"]
 });

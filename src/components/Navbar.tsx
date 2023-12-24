@@ -5,6 +5,7 @@ import { SignIn } from "@clerk/nextjs";
 import { SignInButton } from "@clerk/nextjs";
 import { SignOutButton } from "@clerk/nextjs";
 import { useUser } from "node_modules/@clerk/nextjs";
+import Link from "next/link"
 
 const Navbar = () => {
     const [isEditionOpen, setIsEditionOpen] = useState(false);
@@ -31,7 +32,7 @@ const Navbar = () => {
         "The Progressive's Weekend", "The Progressive's Lifestyle in New Orleans",
         "Environment", "Air & Water Quality", "Coastal Restoration", "Op-Ed-Lagniappe", "Sports"
     ];
-    
+
     useEffect(() => {
         const handleScroll = () => {
             const navbar = document.querySelector('.navbar');
@@ -86,8 +87,8 @@ const Navbar = () => {
                 backgroundImage: 'url(https://bigeasymagazine.b-cdn.net/wp-content/uploads/2018/05/big-easy-magazine-in-new-orleans-50-1.jpg)',
                 backgroundSize: 'cover',
                 backgroundPosition: '50% 35%',
-                position: 'fixed', 
-                top: 0,            
+                position: 'fixed',
+                top: 0,
                 width: '100%'
             }}>
             <div style={{ height: '275px' }} className="ml-14 border-none">
@@ -96,7 +97,11 @@ const Navbar = () => {
             <div className="flex flex-col flex-grow">
                 <ul className="flex flex-grow justify-between text-base md:text-lg lg:text-lg nav-items">
                     <li></li>
-                    <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut} onClick={() => navigateTo('/')}>Home</li>
+                    <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut}>
+                        <Link href="/">
+                            <a>Home</a>
+                        </Link>
+                    </li>
                     <li className="navbar-item relative"
                         onMouseEnter={handleEditionHover}
                         onMouseLeave={handleEditionLeave}>
@@ -106,9 +111,10 @@ const Navbar = () => {
                                 <li key={edition}
                                     className="edition-item hover:bg-purple-900 text-sm p-2 whitespace-nowrap"
                                     onMouseEnter={onHover}
-                                    onMouseLeave={onHoverOut}
-                                    onClick={() => navigateTo(`/category/monthly/${edition.replace(/\s+/g, '-')}`)}>
-                                    {edition}
+                                    onMouseLeave={onHoverOut}>
+                                    <Link href={`/category/monthly/${edition.replace(/\s+/g, '-')}`}>
+                                        <a>{edition}</a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
@@ -122,18 +128,39 @@ const Navbar = () => {
                                 <li key={category}
                                     className="category-item hover:bg-purple-900 text-sm p-2 whitespace-nowrap"
                                     onMouseEnter={onHover}
-                                    onMouseLeave={onHoverOut}
-                                    onClick={() => navigateTo(`/category/${category.replace(/\s+/g, '-')}`)}>
-                                    {category}
+                                    onMouseLeave={onHoverOut}>
+                                    <Link href={`/category/${category.replace(/\s+/g, '-')}`}>
+                                        <a>{category}</a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
                     </li>
-                    <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut} onClick={() => navigateTo('/shop')}>Shop</li>
-                    <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut} onClick={() => navigateTo('/support-us')}>Support Us</li>
-                    <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut} onClick={() => navigateTo('/advertise')}>Advertise</li>
-                    <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut} onClick={() => navigateTo('/about-us')}>About Us</li>
-                    <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut} onClick={() => navigateTo('/contact')}>Contact</li>
+                    <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut}>
+                        <Link href="/shop">
+                            <a>Shop</a>
+                        </Link>
+                    </li>
+                    <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut}>
+                        <Link href="/support-us">
+                            <a>Support Us</a>
+                        </Link>
+                    </li>
+                    <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut}>
+                        <Link href="/advertise">
+                            <a>Advertise</a>
+                        </Link>
+                    </li>
+                    <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut}>
+                        <Link href="/about-us">
+                            <a>About Us</a>
+                        </Link>
+                    </li>
+                    <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut}>
+                        <Link href="/contact">
+                            <a>Contact</a>
+                        </Link>
+                    </li>
                     {!user.isSignedIn && <div className="flex justify-center">
                         <SignInButton /></div>}
                     {user.isSignedIn &&
