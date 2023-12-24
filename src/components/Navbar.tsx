@@ -99,7 +99,7 @@ const Navbar = () => {
                     <li></li>
                     <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut}>
                         <Link href="/">
-                            <a>Home</a>
+                            Home
                         </Link>
                     </li>
                     <li className="navbar-item relative"
@@ -113,7 +113,7 @@ const Navbar = () => {
                                     onMouseEnter={onHover}
                                     onMouseLeave={onHoverOut}>
                                     <Link href={`/category/monthly/${edition.replace(/\s+/g, '-')}`}>
-                                        <a>{edition}</a>
+                                        {edition}
                                     </Link>
                                 </li>
                             ))}
@@ -130,7 +130,7 @@ const Navbar = () => {
                                     onMouseEnter={onHover}
                                     onMouseLeave={onHoverOut}>
                                     <Link href={`/category/${category.replace(/\s+/g, '-')}`}>
-                                        <a>{category}</a>
+                                        {category}
                                     </Link>
                                 </li>
                             ))}
@@ -138,27 +138,27 @@ const Navbar = () => {
                     </li>
                     <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut}>
                         <Link href="/shop">
-                            <a>Shop</a>
+                            Shop
                         </Link>
                     </li>
                     <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut}>
-                        <Link href="/support-us">
-                            <a>Support Us</a>
+                        <Link href="/support">
+                            Support Us
                         </Link>
                     </li>
                     <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut}>
                         <Link href="/advertise">
-                            <a>Advertise</a>
+                            Advertise
                         </Link>
                     </li>
                     <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut}>
-                        <Link href="/about-us">
-                            <a>About Us</a>
+                        <Link href="/about">
+                            About Us
                         </Link>
                     </li>
                     <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut}>
                         <Link href="/contact">
-                            <a>Contact</a>
+                            Contact
                         </Link>
                     </li>
                     {!user.isSignedIn && <div className="flex justify-center">

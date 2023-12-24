@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Navbar from "~/components/Navbar";
 
-const Advertise = () => {
+const March2019 = () => {
   return (
     <>
       <Head>
@@ -23,4 +23,4 @@ const Advertise = () => {
   );
 };
 
-export default Advertise;
+export default March2019;
