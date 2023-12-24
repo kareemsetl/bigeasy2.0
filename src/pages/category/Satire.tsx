@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Navbar from "~/components/Navbar";
 
-const Film = () => {
+const Satire = () => {
   return (
     <>
       <Head>
@@ -23,4 +23,4 @@ const Film = () => {
   );
 };
 
-export default Film;
+export default Satire;

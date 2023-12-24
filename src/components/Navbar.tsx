@@ -29,8 +29,8 @@ const Navbar = () => {
     const categories = [
         "Politics", "Economy", "Health Care", "Social Issues",
         "Culture-Lifestyle", "Art", "Film", "Food", "Music",
-        "The Progressive's Weekend", "The Progressive's Lifestyle in New Orleans",
-        "Environment", "Air & Water Quality", "Coastal Restoration", "Op-Ed-Lagniappe", "Sports"
+        "The Progressives Weekend", "The Progressives Lifestyle In New Orleans",
+        "Environment", "Air And Water Quality", "Coastal Restoration", "Op Ed Lagniappe", "Sports"
     ];
 
     useEffect(() => {

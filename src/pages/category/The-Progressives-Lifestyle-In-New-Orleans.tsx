@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Navbar from "~/components/Navbar";
 
-const Film = () => {
+const TheProgressivesLifestyleInNewOrleans = () => {
   return (
     <>
       <Head>
@@ -16,11 +16,10 @@ const Film = () => {
           maxWidth: '1460px',
           marginTop: '275px' 
         }}>
-          
         </div>
       </main>
     </>
   );
 };
 
-export default Film;
+export default TheProgressivesLifestyleInNewOrleans;
