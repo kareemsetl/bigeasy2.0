@@ -16,7 +16,7 @@ const December2019 = () => {
           maxWidth: '1460px',
           marginTop: '275px' 
         }}>
-          
+          Hello.
         </div>
       </main>
     </>

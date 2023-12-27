@@ -108,14 +108,16 @@ const Navbar = () => {
                         Editions
                         <ul ref={editionRef} className={`nav-items absolute bg-purple-950 ${isEditionOpen ? 'block' : 'hidden'} left-1/2 transform -translate-x-1/2 whitespace-nowrap`}>
                             {editions.map((edition) => (
+                                <Link href={`/category/monthly/${edition.replace(/\s+/g, '-')}`}>
                                 <li key={edition}
                                     className="edition-item hover:bg-purple-900 text-sm p-2 whitespace-nowrap"
                                     onMouseEnter={onHover}
                                     onMouseLeave={onHoverOut}>
-                                    <Link href={`/category/monthly/${edition.replace(/\s+/g, '-')}`}>
+                                    
                                         {edition}
-                                    </Link>
+                                    
                                 </li>
+                                </Link>
                             ))}
                         </ul>
                     </li>
@@ -125,14 +127,16 @@ const Navbar = () => {
                         Categories
                         <ul ref={categoriesRef} className={`nav-items absolute bg-purple-950 ${isCategoriesOpen ? 'block' : 'hidden'} left-1/2 transform -translate-x-1/2 whitespace-nowrap`}>
                             {categories.map((category) => (
+                                <Link href={`/category/${category.replace(/\s+/g, '-')}`}>
                                 <li key={category}
                                     className="category-item hover:bg-purple-900 text-sm p-2 whitespace-nowrap"
                                     onMouseEnter={onHover}
                                     onMouseLeave={onHoverOut}>
-                                    <Link href={`/category/${category.replace(/\s+/g, '-')}`}>
+                                    
                                         {category}
-                                    </Link>
+                                    
                                 </li>
+                                </Link>
                             ))}
                         </ul>
                     </li>

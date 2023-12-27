@@ -50,7 +50,8 @@ export default authMiddleware({
     "/category/Guest-Posts/",
     "/category/Sponsored-Content/",
     "/category/Satire/",
-    "/category/Big-Easy-Editorial/"
+    "/category/Big-Easy-Editorial/",
+    "/category/Featured/"
   ],
   ignoredRoutes: ["/((?!api|trpc))(_next.*|.+\.[\w]+$)", "/api/trpc/post.getFeaturedPostContents"]
 });
