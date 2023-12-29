@@ -8,16 +8,13 @@ import { useQuery } from '@tanstack/react-query';
 
 const MonthlyEditions = () => {
     const router = useRouter();
-    const slug = router.asPath.split('/').pop();
+    const slug = router.asPath.split('/').pop() || "404";
+    const { data, isLoading, error } = api.post.getPostTitlesBySlug.useQuery({ slug });
 
-    if (typeof slug === 'string') {
-        const { data, isLoading, error } = api.post.getPostTitlesBySlug.useQuery({ slug });
-        if (isLoading) return <div>Loading...</div>;
-        if (!data) return <div>No posts!</div>;
-    } else {
-        return <div>Invalid URL</div>;
-    }
 
+    if (isLoading) return <div>Loading...</div>;
+
+    if (!data) return <div>No posts!</div>;
 
     return (
         <>
