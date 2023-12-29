@@ -8,7 +8,7 @@ import { useQuery } from '@tanstack/react-query';
 
 const MonthlyEditions = () => {
     const router = useRouter();
-    const slug = router.asPath.split('/').pop() || "404";
+    const slug = router.asPath.split('/').pop() ?? "404";
     const { data, isLoading, error } = api.post.getPostTitlesBySlug.useQuery({ slug });
 
 
