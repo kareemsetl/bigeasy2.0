@@ -5,7 +5,7 @@ import { SignIn } from "@clerk/nextjs";
 import { SignInButton } from "@clerk/nextjs";
 import { SignOutButton } from "@clerk/nextjs";
 import { useUser } from "node_modules/@clerk/nextjs";
-import Link from "next/link"
+import Link from "next/link";
 
 const Navbar = () => {
     const [isEditionOpen, setIsEditionOpen] = useState(false);
