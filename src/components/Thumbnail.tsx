@@ -9,23 +9,24 @@ import Link from "next/link";
 
 interface ThumbnailProps {
     thumbnail: {
-        post_id: string;
-        postTitle: string;
-        postDate: Date;
-        postExcerpt: string;
-        name: string;
-        thumbnail_pic: string;
+        post_id: string; 
+        postTitle: string; 
+        postDate: Date | null; 
+        postExcerpt: string; 
+        name: string | null; 
+        slugs: string | null; 
+        thumbnail_pic: string | null;
     };
 }
 const category = [
-    "Politics", "Economy", "Health Care", "Social Issues","Featured",
+    "Politics", "Economy", "Health Care", "Social Issues", "Featured",
     "Culture/Lifestyle", "Art", "Film", "Food", "Music",
     "The Progressive's Weekend", "The Progressive's Lifestyle In New Orleans",
     "Environment", "Air And Water Quality", "Coastal Restoration", "Op-Ed/Lagniappe", "Sports"
 ];
 const Thumbnail: React.FC<ThumbnailProps> = ({ thumbnail }) => {
     const terms = thumbnail.name.split(',').map(term => capitalizeFirstLetter(term.trim()));
-    function capitalizeFirstLetter(string:string) {
+    function capitalizeFirstLetter(string: string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
     return (
@@ -34,8 +35,8 @@ const Thumbnail: React.FC<ThumbnailProps> = ({ thumbnail }) => {
                 <h2><u>{thumbnail.postTitle}</u></h2>
                 <p>{thumbnail.postDate.toLocaleDateString()}</p>
                 {terms.filter(term => category.includes(term)).map((term, index) => (
-                        <Link href={`/category/${term.replace(/[\s\/]+/g, '-')}`} key={index}>
-                    <Badge className="bg-purple-900 text-slate-100 mr-1"variant="destructive" key={index} ><u>{term}</u></Badge>
+                    <Link href={`/category/${term.replace(/[\s\/]+/g, '-')}`} key={index}>
+                        <Badge className="bg-purple-900 text-slate-100 mr-1" variant="destructive" key={index} ><u>{term}</u></Badge>
                     </Link>
                 ))}
                 <p>{thumbnail.postExcerpt}</p>
