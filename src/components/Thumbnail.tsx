@@ -11,11 +11,11 @@ interface ThumbnailProps {
     thumbnail: {
         post_id: string; 
         postTitle: string; 
-        postDate: Date | null; 
+        postDate: Date; 
         postExcerpt: string; 
-        name: string | null; 
-        slugs: string | null; 
-        thumbnail_pic: string | null;
+        name: string; 
+        slugs: string; 
+        thumbnail_pic: string;
     };
 }
 const category = [
