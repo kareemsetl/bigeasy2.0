@@ -22,28 +22,6 @@ export const postRouter = createTRPCRouter({
             },
         });
     }),
-    getDecember2019PostTitles: publicProcedure.query(async ({ ctx }) => {
-        return ctx.db.post.findMany({
-            where: {
-                term_relationship: {
-                    some: {
-                        termTaxonomy: {
-                            term: {
-                                slug: 'december-2019', // Filter by slug 'december-2019'
-                            },
-                        },
-                    },
-                },
-            },
-            orderBy: {
-                postTitle: 'asc', // Order by postTitle
-            },
-            select: {
-                postTitle: true, // Select the postTitle column
-                id: true
-            },
-        });
-    }),
     // New procedure to get post titles by slug
     getPostTitlesBySlug: publicProcedure
         .input(z.object({
@@ -69,6 +47,23 @@ export const postRouter = createTRPCRouter({
                 select: {
                     postTitle: true, // Select the postTitle column
                     id: true
+                },
+            });
+        }),
+    getPostThumbnailBySlug: publicProcedure
+        .input(z.object({
+            slug: z.string(),
+        }))
+        .query(async ({ ctx, input }) => {
+            const { slug } = input;
+            return ctx.db.thumbnail.findMany({
+                where: {
+                    slugs: {
+                        contains: slug, // Use the dynamic slug with a LIKE '%slug%' pattern
+                    },
+                },
+                orderBy: {
+                    postDate: 'desc', // Order by postTitle
                 },
             });
         }),

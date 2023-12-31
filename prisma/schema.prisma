@@ -212,3 +212,18 @@ model fca_eoi_subscriber {
 
   @@map("fca_eoi_subscriber")
 }
+
+model Thumbnail {
+  post_id       BigInt   @id @default(0)
+  postTitle     String   @db.Text
+  postDate      DateTime? @db.DateTime(3) 
+  postExcerpt   String   @db.Text
+  name          String?  @db.Text
+  slugs         String?  @db.VarChar(750)
+  thumbnail_pic String?  @db.LongText
+
+  @@index([postDate], name: "post_date")
+  @@index([slugs], name: "slugs")
+  @@map("thumbnail")
+}
+

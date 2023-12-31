@@ -91,7 +91,7 @@ const Navbar = () => {
                 top: 0,
                 width: '100%'
             }}>
-            <div style={{ height: '275px' }} className="ml-14 border-none">
+            <div style={{ height: '275px' }} className="ml-10 border-none">
                 <img className="logo" style={{ maxHeight: '100%' }} src="https://www.bigeasymagazine.com/wp-content/uploads/2018/05/big-easy-main-logo-1.png" alt="Big Easy Magazine Logo" onClick={() => navigateTo('/')} />
             </div>
             <div className="flex flex-col flex-grow">

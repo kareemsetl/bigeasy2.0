@@ -44,6 +44,7 @@ export default authMiddleware({
     "/category/monthly/November-2018",
     "/category/monthly/October-2018",
     "/category/monthly/September-2018",
+    "/category/monthly/",
     "/category/monthly/August-2018",
     "/category/monthly/July-2018",
     "/category/monthly/June-2018",
@@ -51,9 +52,10 @@ export default authMiddleware({
     "/category/Sponsored-Content/",
     "/category/Satire/",
     "/category/Big-Easy-Editorial/",
-    "/category/Featured/"
+    "/category/Featured/",
+    "/api/trpc/post.getPostThumbnailBySlug"
   ],
-  ignoredRoutes: ["/((?!api|trpc))(_next.*|.+\.[\w]+$)", "/api/trpc/post.getFeaturedPostContents"]
+  ignoredRoutes: ["/((?!api|trpc))(_next.*|.+\.[\w]+$)", "/api/trpc/post.getFeaturedPostContents","/api/trpc/post.getPostThumbnailBySlug"]
 });
 export const config = {
   matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
