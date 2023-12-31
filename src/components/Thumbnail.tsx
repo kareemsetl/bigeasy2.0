@@ -9,7 +9,7 @@ import Link from "next/link";
 
 interface ThumbnailProps {
     thumbnail: {
-        post_id: string; 
+        post_id: bigint; 
         postTitle: string; 
         postDate: Date; 
         postExcerpt: string; 
