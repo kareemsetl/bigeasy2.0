@@ -4,15 +4,15 @@ import Navbar from "~/components/Navbar";
 import { api } from "~/utils/api";
 import { useRouter } from 'next/router';
 import { useQuery } from '@tanstack/react-query';
-import Thumbnail from '~/components/Thumbnail';
+import Thumbnail from "~/components/Thumbnail";
+import { postRouter } from '~/server/api/routers/post';
 
 
-const MonthlyEditions = () => {
+const PostView = () => {
     const router = useRouter();
     const slug = router.asPath.split('/').pop() ?? "404";
+    const { data, isLoading, error } = api.post.getPostThumbnailBySlug.useQuery({ slug });
 
-    const { thumbnail, isLoading, error } = api.post.getPostThumbnailBySlug.useQuery({ slug });
-    const { data } = api.post.getPostTitlesBySlug.useQuery({ slug });
 
     if (isLoading) return <div>Loading...</div>;
 
@@ -31,20 +31,10 @@ const MonthlyEditions = () => {
                     maxWidth: '1460px',
                     marginTop: '275px'
                 }}>
-                        <h1 className="mb-3 ml-3 mt-3 text-xl"> {slug.replace(/-/g, ' ')} Edition</h1>
-                        <table className="w-full border">
-                            <tbody className="border-x">
-                                {data.map((post, index) => (
-                                    <tr key={post.id} className="border-slate-400">
-                                        <td className="">{index + 1}. {post.postTitle}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
                 </div>
             </main>
         </>
     );
 };
 
-export default MonthlyEditions;
+export default PostView;

@@ -2,24 +2,17 @@ import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 export const postRouter = createTRPCRouter({
-    getFeaturedPostContents: publicProcedure.query(({ ctx }) => {
-        return ctx.db.post.findMany({
+    getFeaturedPostThumbnail: publicProcedure.query(({ ctx }) => {
+        return ctx.db.thumbnail.findMany({
             where: {
-                postContent: {
-                    not: {
-                        equals: "", // Exclude posts with empty string
-                    }
+                slugs: {
+                    contains: "Featured", // Use the dynamic slug with a LIKE '%slug%' pattern
                 },
-                postType: "post", // Include only posts where postType is 'post'
             },
             orderBy: {
-                postDate: 'desc', // Order by postDate in descending order
+                postDate: 'desc', // Order by postTitle
             },
-            take: 5, // Limit the results to 5
-            select: {
-                id: true,
-                postContent: true, // Select only the id and postContent columns
-            },
+            take: 5,
         });
     }),
     // New procedure to get post titles by slug

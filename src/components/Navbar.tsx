@@ -6,6 +6,7 @@ import { SignInButton } from "@clerk/nextjs";
 import { SignOutButton } from "@clerk/nextjs";
 import { useUser } from "node_modules/@clerk/nextjs";
 import Link from "next/link";
+import Categories from '~/pages/category/[slug]';
 
 const Navbar = () => {
     const [isEditionOpen, setIsEditionOpen] = useState(false);
@@ -26,13 +27,12 @@ const Navbar = () => {
         "October 2018", "September 2018", "August 2018", "July 2018", "June 2018"
     ];
     //Categories array
-    const categories = [
+    let categories = [
         "Politics", "Economy", "Health Care", "Social Issues",
         "Culture-Lifestyle", "Art", "Film", "Food", "Music",
         "The Progressives Weekend", "The Progressives Lifestyle In New Orleans",
         "Environment", "Air And Water Quality", "Coastal Restoration", "Op Ed Lagniappe", "Sports"
     ];
-
     useEffect(() => {
         const handleScroll = () => {
             const navbar = document.querySelector('.navbar');
