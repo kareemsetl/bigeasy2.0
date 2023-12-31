@@ -25,7 +25,7 @@ const category = [
 ];
 const Thumbnail: React.FC<ThumbnailProps> = ({ thumbnail }) => {
     const terms = thumbnail.name.split(',').map(term => capitalizeFirstLetter(term.trim()));
-    function capitalizeFirstLetter(string) {
+    function capitalizeFirstLetter(string:string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
     return (
