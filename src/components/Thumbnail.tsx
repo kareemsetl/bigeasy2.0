@@ -11,7 +11,7 @@ interface ThumbnailProps {
     thumbnail: {
         post_id: bigint; 
         postTitle: string; 
-        postDate: Date; 
+        postDate: Date | null; 
         postExcerpt: string; 
         name: string; 
         slugs: string; 
