@@ -11,12 +11,12 @@ const MonthlyEditions = () => {
     const router = useRouter();
     const slug = router.asPath.split('/').pop() ?? "404";
 
-    const { thumbnail, isLoading, error } = api.post.getPostThumbnailBySlug.useQuery({ slug });
-    const { data } = api.post.getPostTitlesBySlug.useQuery({ slug });
+    const { data:thumbnail, isLoading, error } = api.post.getPostThumbnailBySlug.useQuery({ slug });
+    const { data:titles } = api.post.getPostTitlesBySlug.useQuery({ slug });
 
     if (isLoading) return <div>Loading...</div>;
 
-    if (!data) return <div>No posts!</div>;
+    if (!titles) return <div>No posts!</div>;
 
     return (
         <>
@@ -34,13 +34,18 @@ const MonthlyEditions = () => {
                         <h1 className="mb-3 ml-3 mt-3 text-xl"> {slug.replace(/-/g, ' ')} Edition</h1>
                         <table className="w-full border">
                             <tbody className="border-x">
-                                {data.map((post, index) => (
+                                {titles.map((post, index) => (
                                     <tr key={post.id} className="border-slate-400">
                                         <td className="">{index + 1}. {post.postTitle}</td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
+                        {
+                                thumbnail.map((thumbnail, index) => (
+                                    <Thumbnail className="w-1/3" key={thumbnail.post_id} thumbnail={thumbnail} />
+                                ))
+                            }
                 </div>
             </main>
         </>
