@@ -41,7 +41,7 @@ const Thumbnail: React.FC<ThumbnailProps> = ({ thumbnail }) => {
                 ))}
                 <p>{thumbnail.postExcerpt}</p>
             </div>
-            <img src={thumbnail.thumbnail_pic} alt={thumbnail.postTitle} className="thumbnail-pic" />
+            <img src={thumbnail.thumbnail_pic as string} alt={thumbnail.postTitle} className="thumbnail-pic" />
         </div>
     );
 };
