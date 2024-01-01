@@ -10,7 +10,7 @@ import { postRouter } from '~/server/api/routers/post';
 
 const Categories = () => {
     const router = useRouter();
-    const slug = router.asPath.split('/').pop();
+    const slug = router.asPath.split('/').pop() ?? "404";
     const { data, isLoading, error } = api.post.getPostThumbnailBySlug.useQuery({ slug });
 
 
