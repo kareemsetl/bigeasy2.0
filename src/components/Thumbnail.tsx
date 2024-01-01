@@ -21,7 +21,7 @@ const category = [
     "The Progressive's Weekend", "The Progressive's Lifestyle In New Orleans",
     "Environment", "Air And Water Quality", "Coastal Restoration", "Op-Ed/Lagniappe", "Sports"
 ];
-const Thumbnail: React.FC<ThumbnailProps> = ({ thumbnail }) => {
+const Thumbnail: React.FC<ThumbnailProps> = ({ thumbnail, className }) => {
     const terms = thumbnail.name?.split(',')?.map(term => capitalizeFirstLetter(term.trim())) ?? [];
     function capitalizeFirstLetter(string: string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
