@@ -16,7 +16,8 @@ interface ThumbnailProps {
         postExcerpt: string; 
         slugs: string | null; 
         thumbnail_pic: string | null;
-    };
+    },
+    className?: string;
 }
 const category = [
     "Politics", "Economy", "Health Care", "Social Issues", "Featured",
@@ -36,7 +37,7 @@ const Thumbnail: React.FC<ThumbnailProps> = ({ thumbnail }) => {
                 <p>{thumbnail.postDate && <p>{thumbnail.postDate.toLocaleString()}</p>}</p>
                 {terms.filter(term => category.includes(term)).map((term, index) => (
                     <Link href={`/category/${term.replace(/[\s\/]+/g, '-')}`} key={index}>
-                        <Badge className="bg-purple-900 text-slate-100 mr-1" variant="destructive" key={index} ><u>{term}</u></Badge>
+                        <Badge className="bg-purple-900 text-slate-100 mr-1" key={index} ><u>{term}</u></Badge>
                     </Link>
                 ))}
                 <p>{thumbnail.postExcerpt}</p>
