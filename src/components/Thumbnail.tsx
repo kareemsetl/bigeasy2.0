@@ -1,15 +1,11 @@
 import React from 'react';
-import Head from 'next/head';
-import Navbar from "~/components/Navbar";
-import { api } from "~/utils/api";
-import { useRouter } from 'next/router';
-import { useQuery } from '@tanstack/react-query';
 import { Badge } from "src/components/ui/badge"
 import Link from "next/link";
+import Image from "next/image";
 
 interface ThumbnailProps {
     thumbnail: {
-        name: string | null; 
+        name: string; 
         post_id: bigint; 
         postTitle: string; 
         postDate: Date | null; 
@@ -42,7 +38,7 @@ const Thumbnail: React.FC<ThumbnailProps> = ({ thumbnail }) => {
                 ))}
                 <p>{thumbnail.postExcerpt}</p>
             </div>
-            <img src={thumbnail.thumbnail_pic as string} alt={thumbnail.postTitle} className="thumbnail-pic" />
+            <Image src={thumbnail!.thumbnail_pic} alt={thumbnail!.postTitle} className="thumbnail-pic" />
         </div>
     );
 };

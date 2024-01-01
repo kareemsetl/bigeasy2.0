@@ -6,8 +6,7 @@ import { SignInButton } from "@clerk/nextjs";
 import { SignOutButton } from "@clerk/nextjs";
 import { useUser } from "node_modules/@clerk/nextjs";
 import Link from "next/link";
-import Categories from '~/pages/category/[slug]';
-
+import Image from "next/image"
 const Navbar = () => {
     const [isEditionOpen, setIsEditionOpen] = useState(false);
     const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
@@ -27,7 +26,7 @@ const Navbar = () => {
         "October 2018", "September 2018", "August 2018", "July 2018", "June 2018"
     ];
     //Categories array
-    let categories = [
+    const categories = [
         "Politics", "Economy", "Health Care", "Social Issues",
         "Culture-Lifestyle", "Art", "Film", "Food", "Music",
         "The Progressives Weekend", "The Progressives Lifestyle In New Orleans",
@@ -92,7 +91,7 @@ const Navbar = () => {
                 width: '100%'
             }}>
             <div style={{ height: '275px' }} className="ml-10 border-none">
-                <img className="logo" style={{ maxHeight: '100%' }} src="https://www.bigeasymagazine.com/wp-content/uploads/2018/05/big-easy-main-logo-1.png" alt="Big Easy Magazine Logo" onClick={() => navigateTo('/')} />
+                <Image className="logo" style={{ maxHeight: '100%' }} src="https://www.bigeasymagazine.com/wp-content/uploads/2018/05/big-easy-main-logo-1.png" alt="Big Easy Magazine Logo" onClick={() => navigateTo('/')} />
             </div>
             <div className="flex flex-col flex-grow">
                 <ul className="flex flex-grow justify-between text-base md:text-lg lg:text-lg nav-items">
