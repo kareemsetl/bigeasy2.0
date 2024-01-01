@@ -13,7 +13,7 @@ interface ThumbnailProps {
         postTitle: string; 
         postDate: Date | null; 
         postExcerpt: string; 
-        name: string; 
+        name: string | null; 
         slugs: string | null; 
         thumbnail_pic: string;
     };
