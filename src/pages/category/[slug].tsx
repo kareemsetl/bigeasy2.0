@@ -10,9 +10,8 @@ import { postRouter } from '~/server/api/routers/post';
 
 const Categories = () => {
     const router = useRouter();
-    let slug = router.asPath.split('/').pop() ?? "404";
+    const slug = router.asPath.split('/').pop();
     const { data, isLoading, error } = api.post.getPostThumbnailBySlug.useQuery({ slug });
-    slug = router.asPath.split('/').pop() ?? "404";
 
 
     if (isLoading) return <div>Loading...</div>;
@@ -38,7 +37,7 @@ const Categories = () => {
                             <h1 className="mb-5 ml-3 text-xl"> Category: {slug.replace(/-/g, ' ')} </h1>
                             {
                                 data.map((thumbnail, index) => (
-                                    <Thumbnail className="w-1/3" key={thumbnail.post_id} thumbnail={{ ...thumbnail, name: thumbnail.name || 'Default Name' }} />
+                                    <Thumbnail className="w-1/3" key={thumbnail.post_id} thumbnail={thumbnail} />
                                 ))
                             }
                         </div>

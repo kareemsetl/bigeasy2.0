@@ -34,14 +34,14 @@ const MonthlyEditions = () => {
                     <h1 className="mb-3 ml-3 mt-3 text-xl"> {slug.replace(/-/g, ' ')} Edition</h1>
                     <table className="w-full border">
                         <tbody className="border-x">
-                            {titles && titles.map((post, index) => (
+                            {titles?.map((post, index) => (
                                 <tr key={post.id} className="border-slate-400">
                                     <td className="">{index + 1}. {post.postTitle}</td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
-                    {thumbnail && thumbnail.map((item, index) => (
+                    {thumbnail?.map((item, index) => (
                         <Thumbnail className="w-1/3" key={item.post_id} thumbnail={item} />
                     ))}
                 </div>
