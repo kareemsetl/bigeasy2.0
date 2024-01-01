@@ -11,10 +11,10 @@ interface ThumbnailProps {
     thumbnail: {
         post_id: bigint; 
         postTitle: string; 
-        postDate: Date | null; 
+        postDate: Date | '01/01/1999'; 
         postExcerpt: string; 
-        name: string | null; 
-        slugs: string | null; 
+        name: string | 'Default Name'; 
+        slugs: string | 'Default Slug'; 
         thumbnail_pic: string;
     };
 }
