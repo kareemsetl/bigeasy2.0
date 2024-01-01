@@ -50,7 +50,7 @@ export default function Home() {
                     <h1 className="mb-5 ml-3 text-xl"> Featured Articles: </h1>
                     {
                         data.map((thumbnail, index) => (
-                            <Thumbnail key={thumbnail.id} thumbnail={thumbnail} />
+                            <Thumbnail key={thumbnail.post_id} thumbnail={thumbnail} />
                         ))
                     }
                 </b>
