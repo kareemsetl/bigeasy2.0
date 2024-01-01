@@ -42,7 +42,7 @@ const MonthlyEditions = () => {
                         </tbody>
                     </table>
                     {thumbnail?.map((item, index) => (
-                        <Thumbnail className="w-1/3" key={item.post_id} thumbnail={item} />
+                        <Thumbnail key={item.post_id} thumbnail={item} />
                     ))}
                 </div>
             </main>
