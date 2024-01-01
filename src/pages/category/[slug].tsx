@@ -37,7 +37,7 @@ const Categories = () => {
                             <h1 className="mb-5 ml-3 text-xl"> Category: {slug.replace(/-/g, ' ')} </h1>
                             {
                                 data.map((thumbnail, index) => (
-                                    <Thumbnail className="w-1/3" key={thumbnail.post_id} thumbnail={thumbnail} />
+                                    <Thumbnail key={thumbnail.post_id} thumbnail={thumbnail} />
                                 ))
                             }
                         </div>
