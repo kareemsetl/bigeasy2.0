@@ -13,9 +13,9 @@ interface ThumbnailProps {
         postTitle: string; 
         postDate: Date | null; 
         postExcerpt: string; 
-        name: string | null; 
+        name: string; 
         slugs: string | null; 
-        thumbnail_pic: string | null;
+        thumbnail_pic: string;
     };
 }
 const category = [
