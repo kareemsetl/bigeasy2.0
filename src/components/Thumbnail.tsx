@@ -13,7 +13,7 @@ interface ThumbnailProps {
         slugs: string | null; 
         thumbnail_pic: string | null;
     },
-    className?: string;
+    _className?: string;
 }
 const category = [
     "Politics", "Economy", "Health Care", "Social Issues", "Featured",
@@ -21,7 +21,7 @@ const category = [
     "The Progressive's Weekend", "The Progressive's Lifestyle In New Orleans",
     "Environment", "Air And Water Quality", "Coastal Restoration", "Op-Ed/Lagniappe", "Sports"
 ];
-const Thumbnail: React.FC<ThumbnailProps> = ({ thumbnail, className }) => {
+const Thumbnail: React.FC<ThumbnailProps> = ({ thumbnail, _className }) => {
     const terms = thumbnail.name?.split(',')?.map(term => capitalizeFirstLetter(term.trim())) ?? [];
     function capitalizeFirstLetter(string: string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -38,7 +38,7 @@ const Thumbnail: React.FC<ThumbnailProps> = ({ thumbnail, className }) => {
                 ))}
                 <p>{thumbnail.postExcerpt}</p>
             </div>
-            <Image src={thumbnail!.thumbnail_pic as string} alt={thumbnail!.postTitle} className="thumbnail-pic" />
+            <Image src={thumbnail.thumbnail_pic} alt={thumbnail.postTitle} className="thumbnail-pic" />
         </div>
     );
 };

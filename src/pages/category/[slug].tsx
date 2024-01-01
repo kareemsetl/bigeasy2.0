@@ -3,15 +3,14 @@ import Head from 'next/head';
 import Navbar from "~/components/Navbar";
 import { api } from "~/utils/api";
 import { useRouter } from 'next/router';
-import { useQuery } from '@tanstack/react-query';
 import Thumbnail from "~/components/Thumbnail";
-import { postRouter } from '~/server/api/routers/post';
+
 
 
 const Categories = () => {
     const router = useRouter();
     const slug = router.asPath.split('/').pop() ?? "404";
-    const { data, isLoading, error } = api.post.getPostThumbnailBySlug.useQuery({ slug });
+    const { data, isLoading } = api.post.getPostThumbnailBySlug.useQuery({ slug });
 
 
     if (isLoading) return <div>Loading...</div>;
@@ -36,7 +35,7 @@ const Categories = () => {
                         <div className="w-2/3 float left">
                             <h1 className="mb-5 ml-3 text-xl"> Category: {slug.replace(/-/g, ' ')} </h1>
                             {
-                                data.map((thumbnail, index) => (
+                                data.map((thumbnail) => (
                                     <Thumbnail key={thumbnail.post_id} thumbnail={thumbnail} />
                                 ))
                             }
