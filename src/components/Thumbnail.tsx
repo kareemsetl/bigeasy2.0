@@ -9,13 +9,13 @@ import Link from "next/link";
 
 interface ThumbnailProps {
     thumbnail: {
+        name: string; 
         post_id: bigint; 
         postTitle: string; 
-        postDate: Date | '1900-01-01 00:00:00'; 
+        postDate: Date | null; 
         postExcerpt: string; 
-        name: string | 'Default Name'; 
-        slugs: string | 'Default Slug'; 
-        thumbnail_pic: string;
+        slugs: string | null; 
+        thumbnail_pic: string | null;
     };
 }
 const category = [
