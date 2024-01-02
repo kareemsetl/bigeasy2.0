@@ -27,9 +27,9 @@ const MonthlyEditions = () => {
             </Head>
             <Navbar />
             <main className="flex justify-center h-full mt-20">
-                <div className="bg-slate-200 w-full h-full border-slate-400 border-x" style={{
+                <div className="bg-slate-200 w-full h-full border-slate-400 border-x shadow-xl" style={{
                     maxWidth: '1460px',
-                    marginTop: '275px'
+                    marginTop: '255px'
                 }}>
                     <h1 className="mb-3 ml-3 mt-3 text-xl"> {slug.replace(/-/g, ' ')} Edition</h1>
                     <table className="w-full border">

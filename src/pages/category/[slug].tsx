@@ -28,7 +28,7 @@ const Categories = () => {
             <main className="flex justify-center h-full mt-20 p-2">
                 <div className="bg-slate-200 w-full h-full border-slate-400 border-x" style={{
                     maxWidth: '1460px',
-                    marginTop: '275px',
+                    marginTop: '255px',
                     padding: '20px'
                 }}>
                     <div className="flex">

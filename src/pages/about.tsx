@@ -15,7 +15,7 @@ const About = () => {
       <main className="flex justify-center h-full mt-20">
         <div className="bg-slate-200 w-full h-full border-slate-400 border-x" style={{
           maxWidth: '1460px',
-          marginTop: '275px'
+          marginTop: '255px'
         }}>
           <h3>A UNIQUE PERSPECTIVE</h3>
           <div>Big Easy Magazine is the online home for progressive New Orleans. Our publication features original content published both weekly and monthly. The issues we cover are not always unique, but our coverage is unique in the way we approach them. We examine the issues we cover—from race to politics and from LGBTQ issues to the environment, through the eyes of the people of New Orleans.</div>

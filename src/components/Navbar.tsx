@@ -81,7 +81,7 @@ const Navbar = () => {
         void router.push(path);
     };
     return (
-        <nav className="bg-purple-950 text-slate-200 flex items-center justify-between p-1 navbar"
+        <nav className="bg-purple-950 text-slate-200 flex items-center justify-between p-1 navbar shadow-xl"
             style={{
                 backgroundImage: 'url(https://bigeasymagazine.b-cdn.net/wp-content/uploads/2018/05/big-easy-magazine-in-new-orleans-50-1.jpg)',
                 backgroundSize: 'cover',
@@ -101,7 +101,7 @@ const Navbar = () => {
                             Home
                         </Link>
                     </li>
-                    <li className="navbar-item relative"
+                    <li className="navbar-item relative text-shadow-xl"
                         onMouseEnter={handleEditionHover}
                         onMouseLeave={handleEditionLeave}>
                         Editions

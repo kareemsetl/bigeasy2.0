@@ -37,9 +37,9 @@ export default function Home() {
       </Head>
       <Navbar />
       <main className="flex justify-center h-full mt-20">
-        <div className="bg-slate-200 w-full h-full border-slate-400 border-x" style={{
+        <div className="bg-slate-200 w-full h-full border-slate-400 border-x shadow-lg" style={{
           maxWidth: '1460px',
-          marginTop: '275px' 
+          marginTop: '255px' 
         }}>
           <b className="w-1/3 ml-10">
                 
