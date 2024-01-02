@@ -27,12 +27,12 @@ const About = () => {
           <div>Big Easy Magazine is guided daily by the following core values:</div>
           <div><em>Kindness</em><br /><em>Compassion</em><br /><em>Equality</em><br /><em>Love</em><br /><em>Justice</em><br /><em>Inclusiveness</em></div>
           <h3 className="center">OUR TEAM</h3>
-            <figure className="wp-block-media-text__media"><Image className="aligncenter wp-image-73596" src="https://www.bigeasymagazine.com/wp-content/uploads/2018/06/SCOTT-THE-CHIEF-EXECUTIVE-OF-BIGEASY-MAGAZINE-1-1024x683.jpg" alt="Scott Ploof | Online Home for Progressive New Orleans" width="924" height="616" /></figure>
+            <figure className="wp-block-media-text__media"><Image layout="fill" className="aligncenter wp-image-73596" src="https://www.bigeasymagazine.com/wp-content/uploads/2018/06/SCOTT-THE-CHIEF-EXECUTIVE-OF-BIGEASY-MAGAZINE-1-1024x683.jpg" alt="Scott Ploof | Online Home for Progressive New Orleans" width="924" height="616" /></figure>
             <div className="wp-block-media-text__content">
               <div><strong><a href="https://www.bigeasymagazine.com/tag/scott-ploof">Scott Ploof - Publisher</a></strong></div>
               <div><em>Scott Ploof is a former political candidate, writer, and advocate. He holds an MBA from Southeastern Louisiana University. In 2018, he launched Big Easy Magazine in an effort to give people a platform to use their voices to create meaningful change in their respective communities throughout the Greater New Orleans area.</em></div>
             </div>
-            <Image className="aligncenter wp-image-74768" src="https://www.bigeasymagazine.com/wp-content/uploads/2018/07/Nolan-8-2009.jpg" alt="Nolan Storey | Online Home for Progressive New Orleans" width="783" height="849" />
+            <Image layout="fill" className="aligncenter wp-image-74768" src="https://www.bigeasymagazine.com/wp-content/uploads/2018/07/Nolan-8-2009.jpg" alt="Nolan Storey | Online Home for Progressive New Orleans" width="783" height="849" />
               <p><a href="https://www.bigeasymagazine.com/tag/nolan-storey/"><strong>Nolan Storey- Founding Editorial Board Member / Staff Writer</strong></a></p>
 
 
@@ -44,7 +44,7 @@ const About = () => {
 
 
         <div className="wp-block-media-text alignwide is-stacked-on-mobile">
-          <figure className="wp-block-media-text__media"><Image className="aligncenter wp-image-97600" src="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/IMG_3563-1024x1024.jpg" alt="Michael Raso | Online Home for Progressive New Orleans" width="884" height="884" /></figure>
+          <figure className="wp-block-media-text__media"><Image layout="fill" className="aligncenter wp-image-97600" src="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/IMG_3563-1024x1024.jpg" alt="Michael Raso | Online Home for Progressive New Orleans" width="884" height="884" /></figure>
           <div className="wp-block-media-text__content">
             <p>&nbsp;</p>
             <p><strong><a href="https://www.bigeasymagazine.com/tag/michael-raso/">Michael Raso - Contributing Writer</a></strong></p>
@@ -58,7 +58,7 @@ const About = () => {
 
 
         <div className="wp-block-media-text alignwide is-stacked-on-mobile">
-          <figure className="wp-block-media-text__media"><Image className="aligncenter wp-image-97604" src="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/image1-1-1-1024x1024.png" alt="Candice Battiste | Online Home for Progressive New Orleans" width="878" height="877" /></figure>
+          <figure className="wp-block-media-text__media"><Image layout="fill" className="aligncenter wp-image-97604" src="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/image1-1-1-1024x1024.png" alt="Candice Battiste | Online Home for Progressive New Orleans" width="878" height="877" /></figure>
           <div className="wp-block-media-text__content">
             <p>&nbsp;</p>
             <p><a href="https://www.bigeasymagazine.com/tag/candice-battiste/"><strong>Candice Battiste - Contributing Writer </strong></a></p>
@@ -72,7 +72,7 @@ const About = () => {
 
 
         <div className="wp-block-media-text alignwide is-stacked-on-mobile">
-          <figure className="wp-block-media-text__media"><Image className="aligncenter wp-image-97605" src="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/Raegan-Carter-1024x1024.jpg" alt="Raegan A Carter | Online Home for Progressive New Orleans" width="912" height="912" /></figure>
+          <figure className="wp-block-media-text__media"><Image layout="fill" className="aligncenter wp-image-97605" src="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/Raegan-Carter-1024x1024.jpg" alt="Raegan A Carter | Online Home for Progressive New Orleans" width="912" height="912" /></figure>
           <div className="wp-block-media-text__content">
             <p>&nbsp;</p>
             <p><strong>Raegan A Carter - Contributing Writer</strong></p>
@@ -86,14 +86,14 @@ const About = () => {
 
 
         <div className="wp-block-media-text alignwide is-stacked-on-mobile">
-          <figure className="wp-block-media-text__media"><Image className="aligncenter wp-image-97606" src="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/IMG_20201024_142923_722-1024x1024.jpg" alt="Asad El Malik | Online Home for Progressive New Orleans" width="917" height="917" /></figure>
+          <figure className="wp-block-media-text__media"><Image layout="fill" className="aligncenter wp-image-97606" src="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/IMG_20201024_142923_722-1024x1024.jpg" alt="Asad El Malik | Online Home for Progressive New Orleans" width="917" height="917" /></figure>
           <div className="wp-block-media-text__content">
             <p>&nbsp;</p>
             <p><a href="https://www.bigeasymagazine.com/tag/asad-el-malik/"><strong>Asad El Malik- Contributing Writer</strong></a></p>
             <p><em>Asad El Malik is an ethnographer, author, and researcher. He is currently a PhD candidate in Intercultural Relations. His research centers on the use of religious/cultural practices in mental health treatment. Asad is a New Orleans native and a proud husband and father.</em></p>
             <hr /></div>
         </div>
-        <p><a href="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/casting-3.jpg"><Image className="aligncenter wp-image-97907" src="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/casting-3.jpg" alt="Helen Lewis | Online Home for Progressive New Orleans" width="839" height="559" /></a></p>
+        <p><a href="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/casting-3.jpg"><Image layout="fill" className="aligncenter wp-image-97907" src="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/casting-3.jpg" alt="Helen Lewis | Online Home for Progressive New Orleans" width="839" height="559" /></a></p>
 
 
         <div className="wp-block-media-text alignwide is-stacked-on-mobile">
@@ -110,19 +110,19 @@ const About = () => {
 
 
         <div className="wp-block-media-text alignwide is-stacked-on-mobile">
-          <figure className="wp-block-media-text__media"><Image className="wp-image-97615 aligncenter" src="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/Giselle-1024x1024.png" alt="Giselle P. Dussel | Online Home for Progressive New Orleans" width="843" height="843" /></figure>
+          <figure className="wp-block-media-text__media"><Image layout="fill" className="wp-image-97615 aligncenter" src="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/Giselle-1024x1024.png" alt="Giselle P. Dussel | Online Home for Progressive New Orleans" width="843" height="843" /></figure>
           <div className="wp-block-media-text__content">
             <p>&nbsp;</p>
             <p><a href="https://www.bigeasymagazine.com/tag/giselle-dussel/"><strong>Giselle Dussel- Contributing writer</strong></a></p>
             <p><i>Giselle P. Dussel is a Latina writer with a degree in International Business. She is a contributing writer for Big Easy Magazine, a climate activist and a stay-at-home mother.</i></p>
             <hr />
-            <p><Image className="aligncenter wp-image-106418" src="https://www.bigeasymagazine.com/wp-content/uploads/2021/10/Richard_Windmann.jpeg" alt="Richard G. Windmann | Online Home for Progressive New Orleans" width="839" height="839" /></p>
+            <p><Image layout="fill" className="aligncenter wp-image-106418" src="https://www.bigeasymagazine.com/wp-content/uploads/2021/10/Richard_Windmann.jpeg" alt="Richard G. Windmann | Online Home for Progressive New Orleans" width="839" height="839" /></p>
             <p><a href="mailto:rwindmann@gmail.com" target="_blank" rel="noopener noreferrer">Richard G. Windmann - Contributing writer</a></p>
             <p><i>Richard G. Windmann is a native son of New Orleans, and describes himself as "Proud Baratarian and a Helluva Nice Guy." He is a Computer Scientist, and works for IBM. He is also the co-founder and President of <a href="http://www.scsaorg.org" target="_blank" rel="noopener noreferrer">Survivors of Childhood Sex Abuse (SCSA)</a>, a 501(c)(3) advocacy organization that provides free support to victims and survivors of childhood sex abuse and their families. He is a devout Catholic who is hell-bent on saving his church. He is also a loving husband, father and grandfather.</i></p>
           </div>
         </div>
         <div className="wp-block-media-text alignwide is-stacked-on-mobile"><hr />
-          <p><a href="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/evangelinebarberploofpic.jpg"><Image className="aligncenter wp-image-97909" src="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/evangelinebarberploofpic.jpg" alt="Evangeline Barber Ploof | Online Home for Progressive New Orleans" width="857" height="854" /></a></p>
+          <p><a href="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/evangelinebarberploofpic.jpg"><Image layout="fill" className="aligncenter wp-image-97909" src="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/evangelinebarberploofpic.jpg" alt="Evangeline Barber Ploof | Online Home for Progressive New Orleans" width="857" height="854" /></a></p>
         </div>
         <div className="wp-block-media-text alignwide is-stacked-on-mobile">Evangeline Barber Ploof - Chief Operations Officer </div>
         <div> </div>
