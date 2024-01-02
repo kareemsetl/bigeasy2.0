@@ -66,5 +66,20 @@ body {
 .logo.scrolled {
     transform: scale(0.5); /* Adjust the scale factor as needed */
 }
+/* Thumbnail.css */
+.thumbnail-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
 
+.thumbnail-info {
+    flex-grow: 1;
+}
 
+.thumbnail-pic {
+    max-width: 200px;
+    max-height: 200px;
+    margin-left: 10px;
+}

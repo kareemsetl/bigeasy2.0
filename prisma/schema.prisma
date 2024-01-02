@@ -2,46 +2,48 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
-
 
 generator client {
   provider = "prisma-client-js"
 }
 
 model post {
-  id                    BigInt    @id @default(autoincrement())
-  postAuthor            BigInt    @default(0)
-  postDate              DateTime?
-  postDateGmt           DateTime?
-  postContent           String    @db.LongText
-  postTitle             String    @db.Text
-  postExcerpt           String    @db.Text
-  postStatus            String    @default("publish") @db.VarChar(20)
-  commentStatus         String    @default("open") @db.VarChar(20)
-  pingStatus            String    @default("open") @db.VarChar(20)
-  postPassword          String    @default("") @db.VarChar(255)
-  postName              String    @default("") @db.VarChar(200)
-  toPing                String    @db.Text
-  pinged                String    @db.Text
-  postModified          DateTime?
-  postModifiedGmt       DateTime?
-  postContentFiltered   String    @db.LongText
-  postParent            BigInt    @default(0)
-  guid                  String    @default("") @db.VarChar(255)
-  menuOrder             Int       @default(0)
-  postType              String    @default("post") @db.VarChar(20)
-  postMimeType          String    @default("") @db.VarChar(100)
-  commentCount          BigInt    @default(0)
+  id                  BigInt              @id @default(autoincrement())
+  postAuthor          BigInt              @default(0)
+  postDate            DateTime?
+  postDateGmt         DateTime?
+  postContent         String              @db.LongText
+  postTitle           String              @db.Text
+  postExcerpt         String              @db.Text
+  postStatus          String              @default("publish") @db.VarChar(20)
+  commentStatus       String              @default("open") @db.VarChar(20)
+  pingStatus          String              @default("open") @db.VarChar(20)
+  postPassword        String              @default("") @db.VarChar(255)
+  postName            String              @default("") @db.VarChar(200)
+  toPing              String              @db.Text
+  pinged              String              @db.Text
+  postModified        DateTime?
+  postModifiedGmt     DateTime?
+  postContentFiltered String              @db.LongText
+  postParent          BigInt              @default(0)
+  guid                String              @default("") @db.VarChar(255)
+  menuOrder           Int                 @default(0)
+  postType            String              @default("post") @db.VarChar(20)
+  postMimeType        String              @default("") @db.VarChar(100)
+  commentCount        BigInt              @default(0)
+  term_relationship   term_relationship[]
+  post_meta           post_meta[]
 
   @@index([postName], name: "post_name")
   @@index([postType, postStatus, postDate, id], name: "type_status_date")
   @@index([postParent], name: "post_parent")
   @@index([postAuthor], name: "post_author")
 }
+
 model comment {
   comment_ID           BigInt    @id @default(autoincrement())
   comment_post_ID      BigInt    @default(0)
@@ -66,17 +68,18 @@ model comment {
   @@index([comment_author_email(10)], name: "comment_author_email")
   @@index([comment_type], name: "woo_idx_comment_type")
 }
+
 model user {
-  ID                   BigInt    @id @default(autoincrement())
-  user_login           String    @default("") @db.VarChar(60)
-  user_pass            String    @default("") @db.VarChar(255)
-  user_nicename        String    @default("") @db.VarChar(50)
-  user_email           String    @default("") @db.VarChar(100)
-  user_url             String    @default("") @db.VarChar(100)
-  user_registered      DateTime?
-  user_activation_key  String    @default("") @db.VarChar(255)
-  user_status          Int       @default(0)
-  display_name         String    @default("") @db.VarChar(250)
+  ID                  BigInt    @id @default(autoincrement())
+  user_login          String    @default("") @db.VarChar(60)
+  user_pass           String    @default("") @db.VarChar(255)
+  user_nicename       String    @default("") @db.VarChar(50)
+  user_email          String    @default("") @db.VarChar(100)
+  user_url            String    @default("") @db.VarChar(100)
+  user_registered     DateTime?
+  user_activation_key String    @default("") @db.VarChar(255)
+  user_status         Int       @default(0)
+  display_name        String    @default("") @db.VarChar(250)
 
   @@index([user_login], name: "user_login_key")
   @@index([user_nicename], name: "user_nicename")
@@ -84,38 +87,38 @@ model user {
 }
 
 model ad {
-  id              Int       @id @default(autoincrement())
-  space_id        Int
-  priority        Int?      @db.Int
-  withdrawal_id   Int?      @db.Int
-  ad_name         String?   @db.VarChar(100)
-  buyer_email     String    @db.VarChar(255)
-  title           String?   @db.VarChar(70)
-  description     String?   @db.VarChar(140)
-  button          String?   @db.VarChar(35)
-  url             String?   @db.VarChar(1000)
-  img             String?   @db.VarChar(1000)
-  html            String?   @db.Text
-  ad_model        String    @db.VarChar(255)
-  ad_limit        Int
-  capping         Int?      @db.Int
-  optional_field  String?   @db.VarChar(255)
-  additional      String?   @db.VarChar(2000)
-  cost            Decimal   @db.Decimal(10, 2)
-  paid            Boolean   @db.TinyInt
-  p_time          Int?      @db.Int
-  p_data          String?   @db.Text
-  p_error         String?   @db.VarChar(100)
-  w_status        String?   @db.VarChar(100)
-  status          String    @db.VarChar(100)
-  imag_alt        String    @db.VarChar(100)
+  id             Int     @id @default(autoincrement())
+  space_id       Int
+  priority       Int?    @db.Int
+  withdrawal_id  Int?    @db.Int
+  ad_name        String? @db.VarChar(100)
+  buyer_email    String  @db.VarChar(255)
+  title          String? @db.VarChar(70)
+  description    String? @db.VarChar(140)
+  button         String? @db.VarChar(35)
+  url            String? @db.VarChar(1000)
+  img            String? @db.VarChar(1000)
+  html           String? @db.Text
+  ad_model       String  @db.VarChar(255)
+  ad_limit       Int
+  capping        Int?    @db.Int
+  optional_field String? @db.VarChar(255)
+  additional     String? @db.VarChar(2000)
+  cost           Decimal @db.Decimal(10, 2)
+  paid           Boolean @db.TinyInt
+  p_time         Int?    @db.Int
+  p_data         String? @db.Text
+  p_error        String? @db.VarChar(100)
+  w_status       String? @db.VarChar(100)
+  status         String  @db.VarChar(100)
+  imag_alt       String  @db.VarChar(100)
 }
 
 model comment_meta {
-  meta_id    BigInt    @id @default(autoincrement())
-  comment_id BigInt    @default(0)
-  meta_key   String?   @db.VarChar(255)
-  meta_value String?   @db.LongText
+  meta_id    BigInt  @id @default(autoincrement())
+  comment_id BigInt  @default(0)
+  meta_key   String? @db.VarChar(255)
+  meta_value String? @db.LongText
 
   @@index([comment_id], name: "comment_id")
   @@index([meta_key], name: "meta_key")
@@ -125,8 +128,8 @@ model redirect {
   id       Int    @id @default(autoincrement()) @db.MediumInt
   url_from String @db.VarChar(256)
   url_to   String @db.VarChar(256)
-  status   String @db.VarChar(12) @default("301")
-  type     String @db.VarChar(12) @default("url")
+  status   String @default("301") @db.VarChar(12)
+  type     String @default("url") @db.VarChar(12)
   count    Int    @default(0) @db.MediumInt
 }
 
@@ -135,61 +138,92 @@ model term_relationship {
   term_taxonomy_id BigInt @default(0)
   term_order       Int    @default(0)
 
+  post         post          @relation(fields: [object_id], references: [id])
+  termTaxonomy term_taxonomy @relation(fields: [term_taxonomy_id], references: [term_taxonomy_id])
+
   @@id([object_id, term_taxonomy_id])
   @@index([term_taxonomy_id], name: "term_taxonomy_id")
+  @@index([object_id])
 }
 
 model term_taxonomy {
-  term_taxonomy_id BigInt    @id @default(autoincrement())
-  term_id          BigInt    @default(0)
-  taxonomy         String    @db.VarChar(32)
-  description      String    @db.LongText
-  parent           BigInt    @default(0)
-  count            BigInt    @default(0)
+  term_taxonomy_id BigInt @id @default(autoincrement())
+  term_id          BigInt @default(0)
+  taxonomy         String @db.VarChar(32)
+  description      String @db.LongText
+  parent           BigInt @default(0)
+  count            BigInt @default(0)
+
+  term              term                @relation(fields: [term_id], references: [term_id])
+  termRelationships term_relationship[]
 
   @@unique([term_id, taxonomy], name: "term_id_taxonomy")
   @@index([taxonomy], name: "taxonomy")
 }
+
 model term_meta {
-  meta_id    BigInt    @id @default(autoincrement())
-  term_id    BigInt    @default(0)
-  meta_key   String?   @db.VarChar(255)
-  meta_value String?   @db.LongText
+  meta_id    BigInt  @id @default(autoincrement())
+  term_id    BigInt  @default(0)
+  meta_key   String? @db.VarChar(255)
+  meta_value String? @db.LongText
+
+  term term @relation(fields: [term_id], references: [term_id])
 
   @@index([term_id], name: "term_id")
   @@index([meta_key], name: "meta_key")
 }
 
 model term {
-  term_id    BigInt    @id @default(autoincrement())
-  name       String    @db.VarChar(200)
-  slug       String    @db.VarChar(200)
-  term_group BigInt    @default(0)
+  term_id    BigInt @id @default(autoincrement())
+  name       String @db.VarChar(200)
+  slug       String @db.VarChar(200)
+  term_group BigInt @default(0)
+
+  term_taxonomy term_taxonomy[]
+  term_meta     term_meta[]
 
   @@index([slug], name: "slug")
   @@index([name], name: "name")
 }
 
 model post_meta {
-  meta_id    BigInt   @id @default(autoincrement()) @map("meta_id")
-  post_id    BigInt   @default(0) @map("post_id")
-  meta_key   String?  @db.VarChar(255) @map("meta_key")
-  meta_value String?  @db.LongText @map("meta_value")
+  meta_id    BigInt  @id @default(autoincrement()) @map("meta_id")
+  post_id    BigInt  @default(0) @map("post_id")
+  meta_key   String? @map("meta_key") @db.VarChar(255)
+  meta_value String? @map("meta_value") @db.LongText
 
-  @@map("post_meta")
+  post post @relation(fields: [post_id], references: [id])
+
   @@index([post_id], name: "post_id")
   @@index([meta_key], name: "meta_key")
+  @@map("post_meta")
 }
+
 model fca_eoi_subscriber {
-  id              Int      @id @default(autoincrement())
-  email           String?  @db.LongText
-  name            String?  @db.LongText
+  id              Int       @id @default(autoincrement())
+  email           String?   @db.LongText
+  name            String?   @db.LongText
   time            DateTime?
-  timezone        String?  @db.LongText
+  timezone        String?   @db.LongText
   campaign_id     Int?
-  status          String?  @db.LongText
-  consent_granted String?  @db.LongText
-  consent_msg     String?  @db.LongText
+  status          String?   @db.LongText
+  consent_granted String?   @db.LongText
+  consent_msg     String?   @db.LongText
 
   @@map("fca_eoi_subscriber")
 }
+
+model Thumbnail {
+  post_id       BigInt   @id @default(0)
+  postTitle     String   @db.Text
+  postDate      DateTime? @db.DateTime(3) 
+  postExcerpt   String   @db.Text
+  name          String?  @db.Text
+  slugs         String?  @db.VarChar(750)
+  thumbnail_pic String?  @db.LongText
+
+  @@index([postDate], name: "post_date")
+  @@index([slugs], name: "slugs")
+  @@map("thumbnail")
+}
+

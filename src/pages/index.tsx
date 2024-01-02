@@ -6,13 +6,14 @@ import Link from "next/link";
 import { useUser } from "node_modules/@clerk/nextjs";
 import Navbar from "~/components/Navbar";
 import { api } from "~/utils/api";
+import Thumbnail from "~/components/Thumbnail"
 
 
 export default function Home() {
 
   const user = useUser();
 
-  const { data, isLoading } = api.post.getFeaturedPostContents.useQuery();
+  const { data, isLoading } = api.post.getFeaturedPostThumbnail.useQuery();
 
   const CreatePostWizard = () => {
     const { user } = useUser();
@@ -44,15 +45,15 @@ export default function Home() {
           maxWidth: '1460px',
           marginTop: '275px' 
         }}>
-          <div className="flex justify-right border-b border-slate-400 p-4">
-            <div className="flex p-4 w-full">
-              <h2>Featured Articles</h2>
-            </div>
-            <SignIn path="/sign-in" routing="path" signUpUrl="/sign-up" />
-          </div>
-          <div className="flex flex-col">
-            {data?.map((post) => (<div key={post.id} className="p-8 border-b border-slate-400">{post.postContent}</div>))}
-          </div>
+          <b className="w-1/3 ml-10">
+                
+                    <h1 className="mb-5 ml-3 text-xl"> Featured Articles: </h1>
+                    {
+                        data.map((thumbnail, index) => (
+                            <Thumbnail key={thumbnail.post_id} thumbnail={thumbnail} />
+                        ))
+                    }
+                </b>
         </div>
       </main>
     </>

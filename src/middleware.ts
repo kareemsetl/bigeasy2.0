@@ -4,7 +4,7 @@ import { authMiddleware } from "@clerk/nextjs";
 // Please edit this to allow other routes to be public as needed.
 // See https://clerk.com/docs/references/nextjs/auth-middleware for more information about configuring your Middleware
 export default authMiddleware({
-  // "/" will be accessible to all users
+  // Everything below will be accessible to all users, logged in or not
   publicRoutes: [
     "/api/trpc/post.getFeaturedPostContents", "/",
     "/shop",
@@ -25,7 +25,7 @@ export default authMiddleware({
     "/category/The-Progressive's-Weekend",
     "/category/The-Progressive's-Lifestyle-in-New-Orleans",
     "/category/Environment",
-    "/category/Air-&-Water-Quality",
+    "/category/Air-And-Water-Quality",
     "/category/Coastal-Restoration",
     "/category/Op-Ed-Lagniappe",
     "/category/Sports",
@@ -44,11 +44,18 @@ export default authMiddleware({
     "/category/monthly/November-2018",
     "/category/monthly/October-2018",
     "/category/monthly/September-2018",
+    "/category/monthly/",
     "/category/monthly/August-2018",
     "/category/monthly/July-2018",
-    "/category/monthly/June-2018"
+    "/category/monthly/June-2018",
+    "/category/Guest-Posts/",
+    "/category/Sponsored-Content/",
+    "/category/Satire/",
+    "/category/Big-Easy-Editorial/",
+    "/category/Featured/",
+    "/api/trpc/post.getPostThumbnailBySlug"
   ],
-  ignoredRoutes: ["/((?!api|trpc))(_next.*|.+\.[\w]+$)", "/api/trpc/post.getFeaturedPostContents"]
+  ignoredRoutes: ["/((?!api|trpc))(_next.*|.+\.[\w]+$)", "/api/trpc/post.getFeaturedPostContents","/api/trpc/post.getPostThumbnailBySlug"]
 });
 export const config = {
   matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
