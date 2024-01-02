@@ -28,7 +28,7 @@ const Navbar = () => {
     //Categories array
     const categories = [
         "Politics", "Economy", "Health Care", "Social Issues",
-        "Culture-Lifestyle", "Art", "Film", "Food", "Music",
+        "Culture Lifestyle", "Art", "Film", "Food", "Music",
         "The Progressives Weekend", "The Progressives Lifestyle In New Orleans",
         "Environment", "Air And Water Quality", "Coastal Restoration", "Op Ed Lagniappe", "Sports"
     ];
@@ -105,11 +105,11 @@ const Navbar = () => {
                         onMouseEnter={handleEditionHover}
                         onMouseLeave={handleEditionLeave}>
                         Editions
-                        <ul ref={editionRef} className={`nav-items absolute bg-purple-950 ${isEditionOpen ? 'block' : 'hidden'} left-1/2 transform -translate-x-1/2 whitespace-nowrap`}>
+                        <ul ref={editionRef} className={`nav-items rounded shadow-2xl absolute bg-purple-950 ${isEditionOpen ? 'block' : 'hidden'} left-1/2 transform -translate-x-1/2 whitespace-nowrap`}>
                             {editions.map((edition) => (
                                 <Link href={`/category/monthly/${edition.replace(/\s+/g, '-')}`}>
                                 <li key={edition}
-                                    className="edition-item hover:bg-purple-900 text-sm p-2 whitespace-nowrap"
+                                    className="edition-item rounded shadow-2xl hover:bg-purple-900 text-sm p-2 whitespace-nowrap"
                                     onMouseEnter={onHover}
                                     onMouseLeave={onHoverOut}>
                                     
@@ -120,15 +120,15 @@ const Navbar = () => {
                             ))}
                         </ul>
                     </li>
-                    <li className="navbar-item relative"
+                    <li className="navbar-item rounded relative shadow-2xl"
                         onMouseEnter={handleCategoriesHover}
                         onMouseLeave={handleCategoriesLeave}>
                         Categories
-                        <ul ref={categoriesRef} className={`nav-items absolute bg-purple-950 ${isCategoriesOpen ? 'block' : 'hidden'} left-1/2 transform -translate-x-1/2 whitespace-nowrap`}>
+                        <ul ref={categoriesRef} className={`nav-items rounded shadow-2xl absolute bg-purple-950 ${isCategoriesOpen ? 'block' : 'hidden'} left-1/2 transform -translate-x-1/2 whitespace-nowrap`}>
                             {categories.map((category) => (
                                 <Link href={`/category/${category.replace(/\s+/g, '-')}`}>
                                 <li key={category}
-                                    className="category-item hover:bg-purple-900 text-sm p-2 whitespace-nowrap"
+                                    className="category-item rounded shadow-2xl hover:bg-purple-900 text-sm p-2 whitespace-nowrap"
                                     onMouseEnter={onHover}
                                     onMouseLeave={onHoverOut}>
                                     
