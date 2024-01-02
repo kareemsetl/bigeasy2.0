@@ -1,8 +1,4 @@
-import { SignIn } from "@clerk/nextjs";
-import { SignInButton } from "@clerk/nextjs";
-import { SignOutButton } from "@clerk/nextjs";
 import Head from "next/head";
-import Link from "next/link";
 import { useUser } from "node_modules/@clerk/nextjs";
 import Navbar from "~/components/Navbar";
 import { api } from "~/utils/api";
@@ -49,7 +45,7 @@ export default function Home() {
                 
                     <h1 className="mb-5 ml-3 text-xl"> Featured Articles: </h1>
                     {
-                        data.map((thumbnail, index) => (
+                        data.map((thumbnail) => (
                             <Thumbnail key={thumbnail.post_id} thumbnail={thumbnail} />
                         ))
                     }
