@@ -34,14 +34,15 @@ const MonthlyEditions = () => {
                     <h1 className="mb-3 ml-3 mt-3 text-xl"> {slug.replace(/-/g, ' ')} Edition</h1>
                     <table className="w-full border">
                         <tbody className="border-x">
-                            {titles?.map((post, index) => (
+                            {titles?.map((post) => (
                                 <tr key={post.id} className="border-slate-400">
-                                    <td className="">{index + 1}. {post.postTitle}</td>
+                                    <td className="" dangerouslySetInnerHTML={{ __html: post.postContent }}></td>
                                 </tr>
                             ))}
+
                         </tbody>
                     </table>
-                    {thumbnail?.map((item, index) => (
+                    {thumbnail?.map((item) => (
                         <Thumbnail key={item.post_id} thumbnail={item} />
                     ))}
                 </div>

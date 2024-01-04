@@ -13,7 +13,7 @@ const About = () => {
       </Head>
       <Navbar />
       <main className="flex justify-center h-full mt-20">
-        <div className="bg-slate-200 w-full h-full border-slate-400 border-x p-10" style={{
+        <div className="bg-slate-200 w-full h-full border-slate-400 border-x p-5" style={{
           maxWidth: '1460px',
           marginTop: '255px'
         }}>

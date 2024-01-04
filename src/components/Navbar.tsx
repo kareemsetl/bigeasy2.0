@@ -124,9 +124,10 @@ const Navbar = () => {
                         onMouseEnter={handleCategoriesHover}
                         onMouseLeave={handleCategoriesLeave}>
                         Categories
-                        <ul ref={categoriesRef} className={`nav-items rounded shadow-2xl absolute bg-purple-950 ${isCategoriesOpen ? 'block' : 'hidden'} left-1/2 transform -translate-x-1/2 whitespace-nowrap`}>
+                        <ul ref={categoriesRef} className={`nav-items rounded shadow-2xl absolute bg-purple-950 ${isCategoriesOpen ? 'block' : 'hidden'} left-1/2 transform -translate-x-1/2 whitespace-nowrap`}
+                        >
                             {categories.map((category) => (
-                                <Link href={`/category/${category.replace(/\s+/g, '-')}`}>
+                                <Link href={`/category/${category.replace(/\s+/g, '-')}`} >
                                 <li key={category}
                                     className="category-item rounded shadow-2xl hover:bg-purple-900 text-sm p-2 whitespace-nowrap"
                                     onMouseEnter={onHover}
