@@ -20,18 +20,22 @@ const MonthlyEditions = () => {
 
     return (
         <>
-            <Head>
-                <title>Big Easy Magazine</title>
-                <meta name="description" content="All of the big easy mag content you know and love" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <Navbar />
-            <main className="flex justify-center h-full mt-20">
-                <div className="bg-slate-200 w-full h-full border-slate-400 border-x shadow-xl" style={{
-                    maxWidth: '1460px',
-                    marginTop: '255px'
-                }}>
-                    <h1 className="mb-3 ml-3 mt-3 text-xl"> {slug.replace(/-/g, ' ')} Edition</h1>
+    <Head>
+        <title>Big Easy Magazine</title>
+        <meta name="description" content="All of the big easy mag content you know and love" />
+        <link rel="icon" href="/favicon.ico" />
+    </Head>
+    <Navbar />
+    <main className="flex justify-center h-full mt-20 p-2">
+        <div className="bg-slate-200 w-full h-full border-slate-400 border-x" style={{
+            maxWidth: '1460px',
+            marginTop: '255px',
+            padding: '20px'
+        }}>
+            <div className="flex">
+                <div className="w-2/3 float left">
+
+                    <h1 className=" ml-3 text-xl"> {slug.replace(/-/g, ' ')} Edition</h1>
                     <table className="w-full border">
                         <tbody className="border-x">
                             {titles?.map((post) => (
@@ -46,8 +50,16 @@ const MonthlyEditions = () => {
                         <Thumbnail key={item.post_id} thumbnail={item} />
                     ))}
                 </div>
-            </main>
-        </>
+                {/* Second Column for Additional Content */}
+                <div className="w-1/3 float-left">
+                    <h1 className="mb-5 ml-3 text-xl"> Ad Space </h1>
+
+
+                </div>
+            </div>
+        </div>
+    </main>
+</>
     );
 };
 
