@@ -92,4 +92,28 @@ export const postRouter = createTRPCRouter({
 
             return posts;
         }),
+    getPostThumbnailBySlugPaginated: publicProcedure
+        .input(z.object({
+            slug: z.string(),
+            page: z.number().default(1), // Default to page 1
+            pageSize: z.number().default(10), // Default to 10 items per page
+        }))
+        .query(async ({ ctx, input }) => {
+            const { slug, page, pageSize } = input;
+            const skip = (page - 1) * pageSize; // Calculate the number of items to skip
+
+            return ctx.db.thumbnail.findMany({
+                where: {
+                    slugs: {
+                        contains: slug, // Use the dynamic slug with a LIKE '%slug%' pattern
+                    },
+                },
+                orderBy: {
+                    postDate: 'desc', // Order by postDate
+                },
+                take: pageSize, // Limit the number of items returned
+                skip: skip, // Skip the items for previous pages
+            });
+        }),
+
 });

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Head from 'next/head';
 import Navbar from "~/components/Navbar";
@@ -34,7 +35,6 @@ const PostView = () => {
 
         // Add more conversions here if necessary, e.g., for indentations or other formatting
 
-        return formattedContent;
         return formattedContent;
     }
     return (
