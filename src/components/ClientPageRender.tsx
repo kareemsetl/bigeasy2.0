@@ -17,7 +17,7 @@ import LoadingSpinner from '~/components/ui/LoadingSpinner';
 const ClientPageRender = () => {
     const router = useRouter();
     const path = router.asPath!;
-    const slug = path.split('/').pop().replace(/#/g, '') ?? "404";
+    const slug = path?.split('/').pop().replace(/#/g, '') ?? "404";
 
     const [currentPage, setCurrentPage] = useState(1); // Initialize currentPage state
 
