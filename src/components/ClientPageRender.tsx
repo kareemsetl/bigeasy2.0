@@ -16,13 +16,16 @@ import LoadingSpinner from '~/components/ui/LoadingSpinner';
 
 const ClientPageRender = () => {
     const router = useRouter();
-    let slug = "loading";
-
-    if (typeof router.asPath === 'string') {
-        const path = router.asPath; // Assign to a local variable
-        slug = path.split('/').pop().replace(/#/g, '') ?? "404";
-    }
+    const [slug, setSlug] = useState("loading");
     const [currentPage, setCurrentPage] = useState(1); // Initialize currentPage state
+
+    useEffect(() => {
+        if (router.isReady) {
+            const path = router.asPath;
+            const newSlug = path.split('/').pop().replace(/#/g, '') ?? "404";
+            setSlug(newSlug);
+        }
+    }, [router.isReady, router.asPath]);
 
     const { data, isLoading } = api.post.getPostThumbnailBySlugPaginated.useQuery({
         slug,
