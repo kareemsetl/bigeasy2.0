@@ -44,7 +44,6 @@ export default function Home() {
         }}>
           <div className="flex">
             <div className="w-2/3 float left">
-              <b className="w-1/3 ml-10">
 
                 <h1 className="mb-5 ml-3 text-xl"> Featured Articles: </h1>
                 {
@@ -52,6 +51,7 @@ export default function Home() {
                     <Thumbnail key={thumbnail.post_id} thumbnail={thumbnail} />
                   ))
                 }
+              <b className="w-1/3 ml-10">
               </b>
             </div>
             {/* Second Column for Additional Content */}

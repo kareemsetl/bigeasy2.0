@@ -51,79 +51,79 @@ const Contact = () => {
         }}>
           <div className="p-5">
             <div className="bg-purple-900 text-slate-100 p-6 rounded-xl">
-            <h1 className="flex justify-center text-3xl"><strong> Contact Big Easy Magazine!</strong></h1>
-            <br />
-
-            <h2 className="text-center text-lg">If you want to advertise with banner ads then contact
-              us for advertising in New Orleans! To have someone contact
-              you directly about advertising or to find out what our
-              publication can offer you, please fill out the form below
-              or submit an email.</h2>
-            <br />
-            <br />
-            
-            <Form onSubmit={form.handleSubmit(onSubmit)} {...form} className="space-y-8">
-              {/* Name Field */}
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Your Name" {...field} />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-
-              {/* Email Field */}
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input type="email" placeholder="Your Email" {...field} />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-
-              {/* Phone Number Field */}
-              <FormField
-                control={form.control}
-                name="phoneNumber"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Phone Number</FormLabel>
-                    <FormControl>
-                      <Input type="tel" placeholder="Your Phone Number" {...field} />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-
-              {/* Message Field */}
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  
-                  <FormItem>
-                    <FormLabel>Your Message:</FormLabel>
-                    <FormControl>
-                      <Input type="tel" placeholder="What do you want us to know?" {...field} />
-                    </FormControl>
-                  </FormItem>
-                  
-                )}
-              />
+              <h1 className="flex justify-center text-3xl"><strong> Contact Big Easy Magazine!</strong></h1>
               <br />
-              {/* Submit Button */}
-              <Button className="bg-slate-100 text-purple-900 text-md"type="submit">Submit</Button>
-            </Form>
+              <br />            
+              <br />
+              <br />
+
+              <h2 className="text-center text-lg">If you want to advertise with banner ads then contact
+                us for advertising in New Orleans! To have someone contact
+                you directly about advertising or to find out what our
+                publication can offer you, please fill out the form below
+                or submit an email.</h2>
+
+              <Form onSubmit={form.handleSubmit(onSubmit)} {...form} className="space-y-8">
+                {/* Name Field */}
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Your Name" {...field} />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+                {/* Email Field */}
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input type="email" placeholder="Your Email" {...field} />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+                {/* Phone Number Field */}
+                <FormField
+                  control={form.control}
+                  name="phoneNumber"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Phone Number</FormLabel>
+                      <FormControl>
+                        <Input type="tel" placeholder="Your Phone Number" {...field} />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+                {/* Message Field */}
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+
+                    <FormItem>
+                      <FormLabel>Your Message:</FormLabel>
+                      <FormControl>
+                        <Input type="tel" placeholder="What do you want us to know?" {...field} />
+                      </FormControl>
+                    </FormItem>
+
+                  )}
+                />
+                <br />
+                <br />
+                <br />
+                {/* Submit Button */}
+                <Button className="bg-slate-100 text-purple-900 text-md" type="submit">Submit</Button>
+              </Form>
             </div>
           </div>
         </div>

@@ -5,18 +5,39 @@ import { api } from "~/utils/api";
 import { useRouter } from 'next/router';
 import { useQuery } from '@tanstack/react-query';
 import Thumbnail from '~/components/Thumbnail';
+import LoadingSpinner from '~/components/ui/loadingSpinner';
 
+const Articles = () => {
+    const router = useRouter();
+    let slug = router.asPath.split('/').pop() ?? "404";
+
+    //exception for the august edition
+    if (slug == 'August-2018') {
+        slug = 'August'
+    }
+    const { data: thumbnail, isLoading, error } = api.post.getPostThumbnailBySlug.useQuery({ slug });
+    const { data: titles } = api.post.getPostTitlesBySlug.useQuery({ slug });
+    if (isLoading) return <div className="">
+        <h1 className="ml-3 mb-3 text-xl"> {slug.replace(/-/g, ' ').replace('August', 'August 2018')} Edition</h1>
+        <LoadingSpinner />
+    </div>;
+
+    if (!thumbnail) return <div className="text-2xl">No posts!</div>;
+    return (
+        <div>
+            <h1 className="ml-3 mb-3 text-xl"> {slug.replace(/-/g, ' ').replace('August', 'August 2018')} Edition</h1>
+            {
+                thumbnail?.map((item) => (
+                    <Thumbnail key={item.post_id} thumbnail={item} />
+                ))
+            }
+        </div>
+    );
+}
 
 const MonthlyEditions = () => {
     const router = useRouter();
-    const slug = router.asPath.split('/').pop() ?? "404";
-
-    const { data: thumbnail, isLoading, error } = api.post.getPostThumbnailBySlug.useQuery({ slug });
-    const { data: titles } = api.post.getPostTitlesBySlug.useQuery({ slug });
-
-    if (isLoading) return <div>Loading...</div>;
-
-    if (!titles) return <div>No posts!</div>;
+    let slug = router.asPath.split('/').pop() ?? "404";
 
     return (
         <>
@@ -34,20 +55,7 @@ const MonthlyEditions = () => {
                 }}>
                     <div className="flex">
                         <div className="w-2/3 float left">
-                            <h1 className="ml-3 text-xl"> {slug.replace(/-/g, ' ')} Edition</h1>
-                            <table className="w-full border">
-                                <tbody className="border-x">
-                                    {titles?.map((post) => (
-                                        <tr key={post.id} className="border-slate-400">
-                                            <td className="" dangerouslySetInnerHTML={{ __html: post.postContent }}></td>
-                                        </tr>
-                                    ))}
-
-                                </tbody>
-                            </table>
-                            {thumbnail?.map((item) => (
-                                <Thumbnail key={item.post_id} thumbnail={item} />
-                            ))}
+                            <Articles />
                         </div>
                         {/* Second Column for Additional Content */}
                         <div className="w-1/3 float-left">

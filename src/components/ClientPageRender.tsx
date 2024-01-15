@@ -12,8 +12,7 @@ import {
     PaginationNext,
     PaginationPrevious,
 } from "~/components/ui/pagination"
-import LoadingSpinner from './ui/loadingSpinner';
-
+import LoadingSpinner from '~/components/ui/loadingSpinner';
 
 const ClientPageRender = () => {
     const router = useRouter();
@@ -25,12 +24,16 @@ const ClientPageRender = () => {
         page: currentPage, // Use currentPage for the query
         pageSize: 10
     });
+    const { data: postCountData } = api.post.getTotalPostCountBySlug.useQuery({ slug });
+    const postCount = postCountData?.count || 0;
+    const totalPages = Math.max(Math.ceil(postCount / 10), 0);
 
     // Event handler for changing the page
     const handlePageChange = (newPage) => {
         setCurrentPage(newPage);
         // Additional logic to handle page change can be added here
     };
+
     if (isLoading) return <div className="">
         <Pagination>
                 <PaginationContent>
@@ -55,23 +58,55 @@ const ClientPageRender = () => {
                         </PaginationLink>
                     </PaginationItem>
                     {/* Next page */}
-                    <PaginationItem>
+                    <PaginationItem disabled={currentPage == totalPages}>
                         <PaginationLink href="#" onClick={() => handlePageChange(currentPage + 1)} size={undefined}>
                             {currentPage + 1}
                         </PaginationLink>
                     </PaginationItem>
-                    <PaginationItem>
-                        <PaginationEllipsis />
-                    </PaginationItem>
-                    <PaginationItem>
+                    <PaginationItem disabled={currentPage == totalPages}>
                         <PaginationNext
                             href="#"
-                            onClick={() => handlePageChange(currentPage + 1)} size={undefined}                        />
+                            onClick={() => handlePageChange(currentPage + 1)} size={undefined} />
                     </PaginationItem>
                 </PaginationContent>
             </Pagination>
-        <LoadingSpinner />
-        </div>;
+            <LoadingSpinner />
+            <Pagination>
+                <PaginationContent>
+                    <PaginationItem disabled={currentPage <= 1}>
+                        <PaginationPrevious
+                            href="#"
+                            onClick={() => handlePageChange(currentPage - 1)}
+                        />
+                    </PaginationItem>
+                    {/* Previous page */}
+                    {currentPage > 1 && (
+                        <PaginationItem>
+                            <PaginationLink href="#" onClick={() => handlePageChange(currentPage - 1)} size={undefined}>
+                                {currentPage - 1}
+                            </PaginationLink>
+                        </PaginationItem>
+                    )}
+                    {/* Current page */}
+                    <PaginationItem>
+                        <PaginationLink href="#" isActive size="1000px">
+                            {currentPage}
+                        </PaginationLink>
+                    </PaginationItem>
+                    {/* Next page */}
+                    <PaginationItem disabled={currentPage == totalPages}>
+                        <PaginationLink href="#" onClick={() => handlePageChange(currentPage + 1)} size={undefined}>
+                            {currentPage + 1}
+                        </PaginationLink>
+                    </PaginationItem>
+                    <PaginationItem disabled={currentPage == totalPages}>
+                        <PaginationNext
+                            href="#"
+                            onClick={() => handlePageChange(currentPage + 1)} size={undefined} />
+                    </PaginationItem>
+                </PaginationContent>
+            </Pagination>
+    </div>;
 
     if (!data) return <div>No posts!</div>;
     return (
@@ -99,21 +134,18 @@ const ClientPageRender = () => {
                         </PaginationLink>
                     </PaginationItem>
                     {/* Next page */}
-                    <PaginationItem>
+                    <PaginationItem disabled={currentPage == totalPages}>
                         <PaginationLink href="#" onClick={() => handlePageChange(currentPage + 1)} size={undefined}>
                             {currentPage + 1}
                         </PaginationLink>
                     </PaginationItem>
-                    <PaginationItem>
-                        <PaginationEllipsis />
-                    </PaginationItem>
-                    <PaginationItem>
+                    <PaginationItem disabled={currentPage == totalPages}>
                         <PaginationNext
                             href="#"
-                            onClick={() => handlePageChange(currentPage + 1)} size={undefined}                        />
+                            onClick={() => handlePageChange(currentPage + 1)} size={undefined} />
                     </PaginationItem>
                 </PaginationContent>
-            </Pagination>
+            </Pagination>            
             {
                 data.map((thumbnail) => (
                     <Thumbnail key={thumbnail.post_id} thumbnail={thumbnail} />
@@ -121,11 +153,10 @@ const ClientPageRender = () => {
             }
             <Pagination>
                 <PaginationContent>
-                    <PaginationItem>
+                    <PaginationItem disabled={currentPage <= 1}>
                         <PaginationPrevious
                             href="#"
                             onClick={() => handlePageChange(currentPage - 1)}
-                            disabled={currentPage <= 1}
                         />
                     </PaginationItem>
                     {/* Previous page */}
@@ -138,27 +169,25 @@ const ClientPageRender = () => {
                     )}
                     {/* Current page */}
                     <PaginationItem>
-                        <PaginationLink href="#" isActive size={undefined}>
+                        <PaginationLink href="#" isActive size="1000px">
                             {currentPage}
                         </PaginationLink>
                     </PaginationItem>
                     {/* Next page */}
-                    <PaginationItem>
+                    <PaginationItem disabled={currentPage == totalPages}>
                         <PaginationLink href="#" onClick={() => handlePageChange(currentPage + 1)} size={undefined}>
                             {currentPage + 1}
                         </PaginationLink>
                     </PaginationItem>
-                    <PaginationItem>
-                        <PaginationEllipsis />
-                    </PaginationItem>
-                    <PaginationItem>
+                    <PaginationItem disabled={currentPage == totalPages}>
                         <PaginationNext
                             href="#"
-                            onClick={() => handlePageChange(currentPage + 1)} size={undefined}                        />
+                            onClick={() => handlePageChange(currentPage + 1)} size={undefined} />
                     </PaginationItem>
                 </PaginationContent>
             </Pagination>
         </div>
+        
     )
 }
 

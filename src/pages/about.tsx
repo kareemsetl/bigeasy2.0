@@ -35,7 +35,15 @@ const About = () => {
           <h3 className="text-2xl font-bold text-center mb-4">CORE VALUES</h3>
           <div className="text-justify mb-8">
             Big Easy Magazine is guided daily by the following core values:
-            <div className="italic mt-2">Kindness Compassion Equality Love Justice Inclusiveness</div>
+            <div className="italic mt-2">
+            <br/>
+              Kindness<br/>
+              Compassion<br/> 
+              Equality<br/> 
+              Love<br/> 
+              Justice<br/> 
+              Inclusiveness<br/>
+              </div>
           </div>
           </div>
           <h3 className="text-2xl font-bold text-center mb-6">OUR TEAM</h3>
@@ -51,7 +59,7 @@ const About = () => {
             <div className="team-member grid grid-cols-2 gap-4 items-center">
               <img src="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/evangelinebarberploofpic.jpg" alt="Evangeline Barber Ploof" className="max-w-[300px] max-h-[300px] rounded border shadow-lg" />
               <div>
-                <p><strong>Evangeline Barber Ploof - Chief Operations Officer</strong></p>
+                <p><strong><a href="/author/Evangeline-Barber-Ploof/" className="text-blue-500 hover:text-blue-700">Evangeline Barber Ploof - Chief Operations Officer</a></strong></p>
                 <p><em>Evangeline Barber Ploof has a B.A. in Elementary Education. For seven years, she taught special education for children in elementary school. In 2019, she began work as Chief Operations Officer for Big Easy Magazine. She is married to Big Easy Magazine Founder and Publisher Scott Ploof. She is a native New Orleanian. When she is not working, she enjoys cooking and caring for her three dogs.</em></p>
               </div>
             </div>

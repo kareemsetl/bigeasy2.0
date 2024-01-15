@@ -1,4 +1,4 @@
-'use client';
+'use client'
 import * as React from "react"
 import * as LabelPrimitive from "@radix-ui/react-label"
 import { Slot } from "@radix-ui/react-slot"
@@ -7,8 +7,7 @@ import {
   ControllerProps,
   FieldPath,
   FieldValues,
-  FormProvider,
-  useFieldState,
+  FormProvider
 } from "react-hook-form"
 
 import { cn } from "@/lib/utils"
@@ -43,7 +42,7 @@ const FormField = <
 const useFormField = () => {
   const fieldContext = React.useContext(FormFieldContext)
   const itemContext = React.useContext(FormItemContext)
-  const { fieldState, formState } = useFieldState()
+
 
 
 
@@ -59,7 +58,6 @@ const useFormField = () => {
     formItemId: `${id}-form-item`,
     formDescriptionId: `${id}-form-item-description`,
     formMessageId: `${id}-form-item-message`,
-    ...fieldState,
   }
 }
 

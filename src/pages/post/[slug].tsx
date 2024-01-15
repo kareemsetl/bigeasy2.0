@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Head from 'next/head';
 import Navbar from "~/components/Navbar";
@@ -27,14 +26,26 @@ const PostView = () => {
         // Remove lines that start with [caption or [/caption]
         formattedContent = formattedContent.replace(/\[caption[^\]]*\]/g, '');
         formattedContent = formattedContent.replace(/\[\/caption\]/g, '');
-        // Replace [embed] with <iframe src="
-        formattedContent = formattedContent.replace(/\[embed\]/g, '<iframe src="');
+        /** 
+                // Replace [embed] with <iframe src="
+                formattedContent = formattedContent.replace(/\[embed\]/g, '<iframe src="');
+                // Replace [/embed] with "></iframe>
+                formattedContent = formattedContent.replace(/\[\/embed\]/g, '" frameBorder="0" width="500px" height="500px" allowFullScreen></iframe>');
+        
+        */
+        const embedRegex = /\[embed\](https?:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z0-9_-]+))\[\/embed\]/g;
+        formattedContent = formattedContent.replace(embedRegex, (match, url, videoId) => {
+            // Replace with an iframe embedding the YouTube video
+            console.log(videoId)
 
-        // Replace [/embed] with "></iframe>
-        formattedContent = formattedContent.replace(/\[\/embed\]/g, '" frameBorder="0" width="500px" height="500px" allowFullScreen></iframe>');
-
-        // Add more conversions here if necessary, e.g., for indentations or other formatting
-
+            return `<iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" width="560" height="315" allowfullscreen></iframe>`;
+        });
+        // Process standalone YouTube URLs
+        const standaloneYouTubeRegex = /^(https?:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z0-9_-]+))$/;
+        if (standaloneYouTubeRegex.test(formattedContent)) {
+            const videoId = formattedContent.match(standaloneYouTubeRegex)[2];
+            formattedContent = `<iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" width="700" height="400" allowfullscreen></iframe>`;
+        }
         return formattedContent;
     }
     return (
@@ -56,7 +67,7 @@ const PostView = () => {
                             {articles?.map((post) => (
                                 <tr key={post.id} className="border-slate-400">
                                     <td className="" dangerouslySetInnerHTML={{
-                                        __html: DOMPurify.sanitize(formatContent(post.postContent))
+                                        __html: formatContent(post.postContent)
                                     }}></td>
                                 </tr>
                             ))}

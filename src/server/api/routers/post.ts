@@ -115,5 +115,32 @@ export const postRouter = createTRPCRouter({
                 skip: skip, // Skip the items for previous pages
             });
         }),
+    getTotalPostCountBySlug: publicProcedure
+        .input(z.object({
+            slug: z.string(),
+        }))
+        .query(async ({ ctx, input }) => {
+            const { slug } = input;
+
+            // Count the number of posts with the given slug
+            const postCount = await ctx.db.thumbnail.count({
+                where: {
+                    slugs: {
+                        contains: slug, // Use the slug for an exact match
+                    },
+                },
+            });
+
+            // Check if any posts are found
+            if (postCount === 0) {
+                throw new TRPCError({
+                    code: 'NOT_FOUND',
+                    message: `No posts found with the slug '${slug}'`,
+                });
+            }
+
+            return { count: postCount };
+        }),
+
 
 });
