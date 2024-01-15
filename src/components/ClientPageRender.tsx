@@ -22,7 +22,7 @@ const ClientPageRender = () => {
     useEffect(() => {
         if (router.isReady) {
             const path = router.asPath;
-            const newSlug = path!.split('/').pop().replace(/#/g, '') ?? "404";
+            const newSlug = path!.split('/').pop().replace(/#/g, '') || "404";
             setSlug(newSlug);
         }
     }, [router.isReady, router.asPath]);
