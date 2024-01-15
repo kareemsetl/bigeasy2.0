@@ -24,8 +24,9 @@ const ClientPageRender = () => {
     }, [router.isReady]);
 
     const slug = router.isReady
-        ? router?.asPath?.split('/').pop().replace(/#/g, '') ?? "404"
+        ? router.asPath!.split('/').pop().replace(/#/g, '') ?? "404"
         : "loading";
+
     const [currentPage, setCurrentPage] = useState(1); // Initialize currentPage state
 
     const { data, isLoading } = api.post.getPostThumbnailBySlugPaginated.useQuery({
