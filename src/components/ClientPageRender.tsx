@@ -16,7 +16,7 @@ import LoadingSpinner from '~/components/ui/LoadingSpinner';
 
 const ClientPageRender = () => {
     const router = useRouter();
-    const slug = router.asPath!.split('/').pop().replace(/#/g, '') ?? "404";
+    const slug = router!.asPath.split('/').pop().replace(/#/g, '') ?? "404";
     const [currentPage, setCurrentPage] = useState(1); // Initialize currentPage state
 
     const { data, isLoading } = api.post.getPostThumbnailBySlugPaginated.useQuery({
