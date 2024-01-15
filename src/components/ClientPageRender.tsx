@@ -20,12 +20,12 @@ const ClientPageRender = () => {
     const [currentPage, setCurrentPage] = useState(1); // Initialize currentPage state
 
     useEffect(() => {
-        if (router.isReady) {
-            const path = router.asPath;
-            const newSlug = path!.split('/').pop().replace(/#/g, '') || "404";
+        if (router.isReady && typeof router.asPath === 'string') {
+            const newSlug = router.asPath.split('/').pop().replace(/#/g, '') || "404";
             setSlug(newSlug);
         }
     }, [router.isReady, router.asPath]);
+
 
     const { data, isLoading } = api.post.getPostThumbnailBySlugPaginated.useQuery({
         slug,
