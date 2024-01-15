@@ -1,7 +1,8 @@
 'use client'
 import React, { useState } from 'react'
 import { api } from "~/utils/api";
-import { useRouter, useEffect } from 'next/router'
+import { useRouter } from 'next/router'
+import useEffect from "next/router"
 import Thumbnail from "~/components/Thumbnail";
 import {
     Pagination,
