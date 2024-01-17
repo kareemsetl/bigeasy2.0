@@ -12,7 +12,6 @@ const LoadingSpinner = () => {
             size="116"
             speed="1.2"
             color="purple"
-            class ="center"
         ></l-bouncy>
         <div></div>
         </div>
