@@ -27,7 +27,7 @@ const ClientPageRender = () => {
         pageSize: 10
     });
     const { data: postCountData } = api.post.getTotalPostCountBySlug.useQuery({ slug });
-    const postCount = postCountData?.count || 0;
+    const postCount = postCountData?.count ?? 0;
     const totalPages = Math.max(Math.ceil(postCount / 10), 0);
 
     // Event handler for changing the page
