@@ -40,9 +40,9 @@ const PostView = () => {
     if (!articles) return <div>No posts!</div>;
     function formatContent(content: string) {
         // Replace line breaks with <br> tags
-        let formattedContent = content.replace(/(\r\n|\r|\n)/g, '<br>');
+        let formattedContent = typeof content === 'string' ? content.replace(/(\r\n|\r|\n)/g, '<br>') : '';
         // Remove lines that start with [caption or [/caption]
-        formattedContent = formattedContent.replace(/\[caption[^\]]*\]/g, '');
+        formattedContent = formattedContent?.replace(/\[caption[^\]]*\]/g, '');
         formattedContent = formattedContent.replace(/\[\/caption\]/g, '');
         /** 
                 // Replace [embed] with <iframe src="
