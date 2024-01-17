@@ -20,7 +20,7 @@ const ClientPageRender = () => {
     const [currentPage, setCurrentPage] = useState(1); // Initialize currentPage state
 
     useEffect(() => {
-        if (router?.isReady && typeof router.asPath === 'string') {
+        if (router?.isReady && router.asPath) {
             const newSlug = router.asPath.split('/').pop().replace(/#/g, '') || "404";
             setSlug(newSlug);
         }
