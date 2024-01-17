@@ -55,7 +55,7 @@ const ClientPageRender = () => {
                 )}
                 {/* Current page */}
                 <PaginationItem>
-                    <PaginationLink href="#" isActive size="1000px">
+                    <PaginationLink href="#" isActive size="default">
                         {currentPage}
                     </PaginationLink>
                 </PaginationItem>
@@ -91,7 +91,7 @@ const ClientPageRender = () => {
                 )}
                 {/* Current page */}
                 <PaginationItem>
-                    <PaginationLink href="#" isActive size="1000px">
+                    <PaginationLink href="#" isActive size="default">
                         {currentPage}
                     </PaginationLink>
                 </PaginationItem>
@@ -131,7 +131,7 @@ const ClientPageRender = () => {
                     )}
                     {/* Current page */}
                     <PaginationItem>
-                        <PaginationLink href="#" isActive size="1000px">
+                        <PaginationLink href="#" isActive size="default">
                             {currentPage}
                         </PaginationLink>
                     </PaginationItem>
@@ -171,7 +171,7 @@ const ClientPageRender = () => {
                     )}
                     {/* Current page */}
                     <PaginationItem>
-                        <PaginationLink href="#" isActive size="1000px">
+                        <PaginationLink href="#" isActive size="default">
                             {currentPage}
                         </PaginationLink>
                     </PaginationItem>
