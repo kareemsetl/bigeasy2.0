@@ -18,14 +18,9 @@ const ClientPageRender = () => {
     const router = useRouter(); // 
     const [slug, setSlug] = useState("loading");
     const [currentPage, setCurrentPage] = useState(1); // Initialize currentPage state
+    
+    const newSlug = router!.asPath.newSlugPreRouter!.split('/').pop()?.replace(/#/g, '');
 
-    React.useEffect(() => {
-        if (router?.isReady && router.asPath) {
-            const newSlugPreRouter = router!.asPath
-            const newSlug = newSlugPreRouter!.split('/').pop().replace(/#/g, '') || "404";
-            setSlug(newSlug);
-        }
-    }, [router!.isReady, router.asPath]);
 
 
     const { data, isLoading } = api.post.getPostThumbnailBySlugPaginated.useQuery({
