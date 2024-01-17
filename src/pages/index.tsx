@@ -4,7 +4,6 @@ import Navbar from "~/components/Navbar";
 import { api } from "~/utils/api";
 import Thumbnail from "~/components/Thumbnail"
 import React from "react";
-import LoadingSpinner from "~/components/ui/LoadingSpinner";
 
 
 export default function Home() {

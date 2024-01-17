@@ -89,7 +89,16 @@ const Navbar = () => {
                 width: '100%'
             }}>
             <div style={{ height: '275px' }} className="ml-10 border-none">
-                <Image className="logo" style={{ maxHeight: '100%' }} src="https://www.bigeasymagazine.com/wp-content/uploads/2018/05/big-easy-main-logo-1.png" alt="Big Easy Magazine Logo" onClick={() => navigateTo('/')} />
+                <Image
+                    className="logo"
+                    src="https://www.bigeasymagazine.com/wp-content/uploads/2018/05/big-easy-main-logo-1.png"
+                    alt="Big Easy Magazine Logo"
+                    width={500} // Replace with the actual width of your image
+                    height={300} // Replace with the actual height of your image
+                    layout="responsive" // or 'fill', 'fixed', 'intrinsic', etc., based on your layout needs
+                    onClick={() => navigateTo('/')}
+                    style={{ maxHeight: '100%' }}
+                />
             </div>
             <div className="flex flex-col flex-grow">
                 <ul className="flex flex-grow justify-between text-base md:text-lg lg:text-lg nav-items">
@@ -106,14 +115,14 @@ const Navbar = () => {
                         <ul ref={editionRef} className={`nav-items rounded shadow-2xl absolute bg-purple-950 ${isEditionOpen ? 'block' : 'hidden'} left-1/2 transform -translate-x-1/2 whitespace-nowrap`}>
                             {editions.map((edition) => (
                                 <Link href={`/category/monthly/${edition.replace(/\s+/g, '-')}`}>
-                                <li key={edition}
-                                    className="edition-item rounded shadow-2xl hover:bg-purple-900 text-sm p-2 whitespace-nowrap"
-                                    onMouseEnter={onHover}
-                                    onMouseLeave={onHoverOut}>
-                                    
+                                    <li key={edition}
+                                        className="edition-item rounded shadow-2xl hover:bg-purple-900 text-sm p-2 whitespace-nowrap"
+                                        onMouseEnter={onHover}
+                                        onMouseLeave={onHoverOut}>
+
                                         {edition}
-                                    
-                                </li>
+
+                                    </li>
                                 </Link>
                             ))}
                         </ul>
@@ -126,14 +135,14 @@ const Navbar = () => {
                         >
                             {categories.map((category) => (
                                 <Link href={`/category/${category.replace(/\s+/g, '-')}`} >
-                                <li key={category}
-                                    className="category-item rounded shadow-2xl hover:bg-purple-900 text-sm p-2 whitespace-nowrap"
-                                    onMouseEnter={onHover}
-                                    onMouseLeave={onHoverOut}>
-                                    
+                                    <li key={category}
+                                        className="category-item rounded shadow-2xl hover:bg-purple-900 text-sm p-2 whitespace-nowrap"
+                                        onMouseEnter={onHover}
+                                        onMouseLeave={onHoverOut}>
+
                                         {category}
-                                    
-                                </li>
+
+                                    </li>
                                 </Link>
                             ))}
                         </ul>

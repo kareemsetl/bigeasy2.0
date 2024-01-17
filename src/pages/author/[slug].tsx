@@ -5,8 +5,6 @@ import { api } from "~/utils/api";
 import { useRouter } from 'next/router';
 import Thumbnail from "~/components/Thumbnail";
 
-
-
 const Author = () => {
     const router = useRouter();
     const slug = router.asPath.split('/').pop() ?? "404";
