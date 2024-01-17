@@ -21,9 +21,23 @@ import { Input } from "~/components/ui/input"
 const Contact = () => {
   const formSchema = z.object({
     username: z.string().min(2, {
-      message: "Username must be at least 2 characters.",
+        message: "Username must be at least 2 characters.",
     }),
-  })
+    name: z.string().min(1, {
+        message: "Name is required.",
+    }),
+    email: z.string().email({
+        message: "Invalid email address.",
+    }),
+    phoneNumber: z.string().min(10, {
+        message: "Phone number must be at least 10 characters.",
+    }).regex(/^\d+$/, {
+        message: "Phone number must be numeric.",
+    }),
+    message: z.string().min(1, {
+        message: "Message is required.",
+    }),
+});
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
