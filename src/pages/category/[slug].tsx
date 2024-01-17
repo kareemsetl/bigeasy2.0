@@ -1,9 +1,18 @@
+'use client'
 import React from 'react';
 import Head from 'next/head';
 import Navbar from "~/components/Navbar";
 import ClientPageRender from "~/components/ClientPageRender"
 import { useRouter } from 'next/router'
 import RouterReadyWrapper from '~/components/RouterReadyWrapper';
+
+import dynamic from 'next/dynamic';
+
+const LoadingSpinner = dynamic(
+  () => import('~/components/ui/LoadingSpinner'),
+  { ssr: false } // Disable server-side rendering
+);
+
 const Categories = () => {
     const router = useRouter();
     const slug = router.asPath.split('/').pop() ?? "404";
