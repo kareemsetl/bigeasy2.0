@@ -31,7 +31,7 @@ const ClientPageRender = () => {
     const totalPages = Math.max(Math.ceil(postCount / 10), 0);
 
     // Event handler for changing the page
-    const handlePageChange = (newPage) => {
+    const handlePageChange = (newPage: React.SetStateAction<number>) => {
         setCurrentPage(newPage);
         // Additional logic to handle page change can be added here
     };
