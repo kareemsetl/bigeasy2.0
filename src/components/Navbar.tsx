@@ -88,14 +88,14 @@ const Navbar = () => {
                 top: 0,
                 width: '100%'
             }}>
-            <div style={{ height: '275px' }} className="ml-10 border-none">
+            <div className=" border-none">
                 <Image
                     className="logo"
                     src="https://www.bigeasymagazine.com/wp-content/uploads/2018/05/big-easy-main-logo-1.png"
                     alt="Big Easy Magazine Logo"
-                    width={500} // Replace with the actual width of your image
+                    width={300} // Replace with the actual width of your image
                     height={300} // Replace with the actual height of your image
-                    layout="responsive" // or 'fill', 'fixed', 'intrinsic', etc., based on your layout needs
+                    layout="fixed" // or 'fill', 'fixed', 'intrinsic', etc., based on your layout needs
                     onClick={() => navigateTo('/')}
                     style={{ maxHeight: '100%' }}
                 />
