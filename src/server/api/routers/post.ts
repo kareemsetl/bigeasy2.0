@@ -69,11 +69,19 @@ export const postRouter = createTRPCRouter({
         .query(async ({ ctx, input }) => {
             const { slug } = input;
 
+            // Attempt to convert slug to a number
+            const numericSlug = parseInt(slug, 10);
+
+            // Check if the conversion is successful (numericSlug is not NaN)
+            if (isNaN(numericSlug)) {
+                throw new Error("Invalid slug: slug must be a numeric value");
+            }
+
             // Fetch the post content
             const posts = await ctx.db.post.findMany({
                 where: {
                     id: {
-                        equals: slug, // Use the filtered slug for an exact match
+                        equals: numericSlug, // Use the numeric slug for an exact match
                     },
                 },
                 select: {
@@ -106,7 +114,7 @@ export const postRouter = createTRPCRouter({
                 where: {
                     slugs: {
                         contains: slug, // Use the dynamic slug with a LIKE '%slug%' pattern
-                    },
+                    },  //need to change to keyset-based pagination later
                 },
                 orderBy: {
                     postDate: 'desc', // Order by postDate
