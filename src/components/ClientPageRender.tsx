@@ -18,7 +18,7 @@ const ClientPageRender = () => {
     const [slug, setSlug] = useState("loading");
 
     useEffect(() => {
-        let newSlug = router.asPath.split('/').pop()?.replace(/#/g, '') ?? "404";
+        const newSlug = router.asPath.split('/').pop()?.replace(/#/g, '') ?? "404";
         setSlug(newSlug);
     }, [router.asPath]);
     const [currentPage, setCurrentPage] = useState(1); // Initialize currentPage state
