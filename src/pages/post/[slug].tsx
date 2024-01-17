@@ -25,8 +25,6 @@ const PostView = () => {
     }}>
       <div className="flex">
         <div className="w-2/3 float left">
-
-          <h1 className="mb-5 ml-3 text-xl"> Featured Articles: </h1>
           <b className="w-1/3 text-center items-center ml-10">
           </b>
         </div>
@@ -40,7 +38,7 @@ const PostView = () => {
   </div>;
 
     if (!articles) return <div>No posts!</div>;
-    function formatContent(content) {
+    function formatContent(content: string) {
         // Replace line breaks with <br> tags
         let formattedContent = content.replace(/(\r\n|\r|\n)/g, '<br>');
         // Remove lines that start with [caption or [/caption]
