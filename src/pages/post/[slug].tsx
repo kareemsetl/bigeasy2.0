@@ -17,7 +17,27 @@ const PostView = () => {
     const { data: articles, isLoading, error } = api.post.getPostBySlug.useQuery({ slug });
 
 
-    if (isLoading) return <div>Loading...</div>;
+    if (isLoading) return <div><Navbar /><main className="flex justify-center h-full mt-20 p-2">
+    <div className="bg-slate-200 w-full h-full border-slate-400 border-x" style={{
+      maxWidth: '1460px',
+      marginTop: '255px',
+      padding: '20px'
+    }}>
+      <div className="flex">
+        <div className="w-2/3 float left">
+
+          <h1 className="mb-5 ml-3 text-xl"> Featured Articles: </h1>
+          <b className="w-1/3 text-center items-center ml-10">
+          </b>
+        </div>
+        {/* Second Column for Additional Content */}
+        <div className="w-1/3 float-left">
+          <h1 className="mb-5 ml-3 text-xl"> Ad Space </h1>
+        </div>
+      </div>
+    </div>
+  </main>
+  </div>;
 
     if (!articles) return <div>No posts!</div>;
     function formatContent(content) {

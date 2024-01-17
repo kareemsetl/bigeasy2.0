@@ -5,7 +5,7 @@ import { api } from "~/utils/api";
 import { useRouter } from 'next/router';
 import { useQuery } from '@tanstack/react-query';
 import Thumbnail from '~/components/Thumbnail';
-import LoadingSpinner from '~/components/ui/loadingSpinner';
+import LoadingSpinner from '~/components/ui/LoadingSpinner';
 
 const Articles = () => {
     const router = useRouter();
@@ -17,7 +17,7 @@ const Articles = () => {
     }
     const { data: thumbnail, isLoading, error } = api.post.getPostThumbnailBySlug.useQuery({ slug });
     const { data: titles } = api.post.getPostTitlesBySlug.useQuery({ slug });
-    if (isLoading) return <div className="">
+    if (isLoading) return <div className="items-center">
         <h1 className="ml-3 mb-3 text-xl"> {slug.replace(/-/g, ' ').replace('August', 'August 2018')} Edition</h1>
         <LoadingSpinner />
     </div>;
