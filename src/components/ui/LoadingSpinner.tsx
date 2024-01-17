@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react';
+import React from 'react';
 import { bouncy } from 'ldrs'
 // Default values shown
 const LoadingSpinner = () => {

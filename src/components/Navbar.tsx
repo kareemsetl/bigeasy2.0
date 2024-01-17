@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { staggerReveal, staggerRevealClose, onHover, onHoverOut } from './Animations';
-import { SignIn } from "@clerk/nextjs";
 import { SignInButton } from "@clerk/nextjs";
 import { SignOutButton } from "@clerk/nextjs";
 import { useUser } from "node_modules/@clerk/nextjs";
@@ -16,7 +15,6 @@ const Navbar = () => {
     const categoriesRef = useRef(null);
     const router = useRouter();
     const user = useUser();
-    const [isScrolled, setIsScrolled] = useState(false);
 
     // Editions array
     const editions = [
@@ -91,7 +89,7 @@ const Navbar = () => {
                 width: '100%'
             }}>
             <div style={{ height: '275px' }} className="ml-10 border-none">
-                <img className="logo" style={{ maxHeight: '100%' }} src="https://www.bigeasymagazine.com/wp-content/uploads/2018/05/big-easy-main-logo-1.png" alt="Big Easy Magazine Logo" onClick={() => navigateTo('/')} />
+                <Image className="logo" style={{ maxHeight: '100%' }} src="https://www.bigeasymagazine.com/wp-content/uploads/2018/05/big-easy-main-logo-1.png" alt="Big Easy Magazine Logo" onClick={() => navigateTo('/')} />
             </div>
             <div className="flex flex-col flex-grow">
                 <ul className="flex flex-grow justify-between text-base md:text-lg lg:text-lg nav-items">

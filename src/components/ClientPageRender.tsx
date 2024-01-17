@@ -1,12 +1,11 @@
 'use client'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { api } from "~/utils/api";
 import { useRouter } from 'next/router'
 import Thumbnail from "~/components/Thumbnail";
 import {
     Pagination,
     PaginationContent,
-    PaginationEllipsis,
     PaginationItem,
     PaginationLink,
     PaginationNext,

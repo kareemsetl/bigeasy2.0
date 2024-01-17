@@ -3,7 +3,6 @@ import Head from 'next/head';
 import Navbar from "~/components/Navbar";
 import { api } from "~/utils/api";
 import { useRouter } from 'next/router';
-import { useQuery } from '@tanstack/react-query';
 import Thumbnail from '~/components/Thumbnail';
 import LoadingSpinner from '~/components/ui/LoadingSpinner';
 
@@ -15,8 +14,8 @@ const Articles = () => {
     if (slug == 'August-2018') {
         slug = 'August'
     }
-    const { data: thumbnail, isLoading, error } = api.post.getPostThumbnailBySlug.useQuery({ slug });
-    const { data: titles } = api.post.getPostTitlesBySlug.useQuery({ slug });
+    const { data: thumbnail, isLoading } = api.post.getPostThumbnailBySlug.useQuery({ slug });
+    // const { data: titles } = api.post.getPostTitlesBySlug.useQuery({ slug });
     if (isLoading) return <div className="items-center">
         <h1 className="ml-3 mb-3 text-xl"> {slug.replace(/-/g, ' ').replace('August', 'August 2018')} Edition</h1>
         <LoadingSpinner />
@@ -36,8 +35,6 @@ const Articles = () => {
 }
 
 const MonthlyEditions = () => {
-    const router = useRouter();
-    let slug = router.asPath.split('/').pop() ?? "404";
 
     return (
         <>
