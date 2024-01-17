@@ -18,24 +18,24 @@ const PostView = () => {
 
 
     if (isLoading) return <div><Navbar /><main className="flex justify-center h-full mt-20 p-2">
-    <div className="bg-slate-200 w-full h-full border-slate-400 border-x" style={{
-      maxWidth: '1460px',
-      marginTop: '255px',
-      padding: '20px'
-    }}>
-      <div className="flex">
-        <div className="w-2/3 float left">
-          <b className="w-1/3 text-center items-center ml-10">
-          </b>
+        <div className="bg-slate-200 w-full h-full border-slate-400 border-x" style={{
+            maxWidth: '1460px',
+            marginTop: '255px',
+            padding: '20px'
+        }}>
+            <div className="flex">
+                <div className="w-2/3 float left">
+                    <b className="w-1/3 text-center items-center ml-10">
+                    </b>
+                </div>
+                {/* Second Column for Additional Content */}
+                <div className="w-1/3 float-left">
+                    <h1 className="mb-5 ml-3 text-xl"> Ad Space </h1>
+                </div>
+            </div>
         </div>
-        {/* Second Column for Additional Content */}
-        <div className="w-1/3 float-left">
-          <h1 className="mb-5 ml-3 text-xl"> Ad Space </h1>
-        </div>
-      </div>
-    </div>
-  </main>
-  </div>;
+    </main>
+    </div>;
 
     if (!articles) return <div>No posts!</div>;
     function formatContent(content: string) {
@@ -61,7 +61,15 @@ const PostView = () => {
         // Process standalone YouTube URLs
         const standaloneYouTubeRegex = /^(https?:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z0-9_-]+))$/;
         if (standaloneYouTubeRegex.test(formattedContent)) {
-            const videoId = formattedContent.match(standaloneYouTubeRegex)[2];
+            let videoId;
+
+            const match = formattedContent.match(standaloneYouTubeRegex);
+            if (match && match.length > 2) {
+                videoId = match[2];
+            } else {
+                // Handle the case where no match is found or the match array doesn't have an index 2
+                videoId = ''; // or any other default/fallback value
+            }
             formattedContent = `<iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" width="700" height="400" allowfullscreen></iframe>`;
         }
         return formattedContent;
