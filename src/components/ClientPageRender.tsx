@@ -19,7 +19,7 @@ const ClientPageRender = () => {
     const [slug, setSlug] = useState("loading");
     const [currentPage, setCurrentPage] = useState(1); // Initialize currentPage state
     const newSlug = router!.asPath.split('/').pop()?.replace(/#/g, '');
-    setSlug(newSlug);
+    setSlug(newSlug!);
 
     const { data, isLoading } = api.post.getPostThumbnailBySlugPaginated.useQuery({
         slug,
