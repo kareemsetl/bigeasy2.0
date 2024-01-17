@@ -11,8 +11,12 @@ import {
     PaginationNext,
     PaginationPrevious,
 } from "~/components/ui/pagination"
-import LoadingSpinner from '~/components/ui/LoadingSpinner';
+import dynamic from 'next/dynamic';
 
+const LoadingSpinner = dynamic(
+  () => import('~/components/ui/LoadingSpinner'),
+  { ssr: false } // Disable server-side rendering
+);
 const ClientPageRender = () => {
     const router = useRouter(); // 
     const [slug, setSlug] = useState("loading");

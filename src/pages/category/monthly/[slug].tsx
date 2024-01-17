@@ -4,8 +4,13 @@ import Navbar from "~/components/Navbar";
 import { api } from "~/utils/api";
 import { useRouter } from 'next/router';
 import Thumbnail from '~/components/Thumbnail';
-import LoadingSpinner from '~/components/ui/LoadingSpinner';
 
+import dynamic from 'next/dynamic';
+
+const LoadingSpinner = dynamic(
+  () => import('~/components/ui/LoadingSpinner'),
+  { ssr: false } // Disable server-side rendering
+);
 const Articles = () => {
     const router = useRouter();
     let slug = router.asPath.split('/').pop() ?? "404";
