@@ -64,7 +64,7 @@ const Contact = () => {
                 publication can offer you, please fill out the form below
                 or submit an email.</h2>
 
-              <Form onSubmit={form.handleSubmit(onSubmit)} {...form}>
+              <Form {...form}>
                 {/* Name Field */}
                 <FormField
                   control={form.control}
