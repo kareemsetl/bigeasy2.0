@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Navbar from "~/components/Navbar";
-import Link from "next/router"
+import Link from "next/link"
 import Image from "next/image";
 
 const About = () => {
