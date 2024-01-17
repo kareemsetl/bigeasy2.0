@@ -1,17 +1,8 @@
-'use client'
 import React from 'react';
 import Head from 'next/head';
 import Navbar from "~/components/Navbar";
 import ClientPageRender from "~/components/ClientPageRender"
 import { useRouter } from 'next/router'
-import RouterReadyWrapper from '~/components/RouterReadyWrapper';
-
-import dynamic from 'next/dynamic';
-
-const LoadingSpinner = dynamic(
-  () => import('~/components/ui/LoadingSpinner'),
-  { ssr: false } // Disable server-side rendering
-);
 
 const Categories = () => {
     const router = useRouter();
@@ -34,9 +25,9 @@ const Categories = () => {
                     <div className="flex">
                         <div className="w-2/3 float left">
                         <h1 className="mb-5 ml-3 text-xl"> Category: {slug.replace(/-/g, ' ').replace(/#/g, '')} </h1>
-                        <RouterReadyWrapper>
+
                             <ClientPageRender />
-                            </RouterReadyWrapper>
+
                         </div>
                         {/* Second Column for Additional Content */}
                         <div className="w-1/3 float-left">

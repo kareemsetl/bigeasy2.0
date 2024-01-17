@@ -8,11 +8,6 @@ const LoadingSpinner = () => {
     return (
         <div className="flex justify-right">
             <div></div>
-        <l-bouncy
-            size="116"
-            speed="1.2"
-            color="purple"
-        ></l-bouncy>
         <div></div>
         </div>
     )

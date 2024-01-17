@@ -5,12 +5,7 @@ import { api } from "~/utils/api";
 import { useRouter } from 'next/router';
 import Thumbnail from '~/components/Thumbnail';
 
-import dynamic from 'next/dynamic';
 
-const LoadingSpinner = dynamic(
-  () => import('~/components/ui/LoadingSpinner'),
-  { ssr: false } // Disable server-side rendering
-);
 const Articles = () => {
     const router = useRouter();
     let slug = router.asPath.split('/').pop() ?? "404";
@@ -23,7 +18,7 @@ const Articles = () => {
     // const { data: titles } = api.post.getPostTitlesBySlug.useQuery({ slug });
     if (isLoading) return <div className="items-center">
         <h1 className="ml-3 mb-3 text-xl"> {slug.replace(/-/g, ' ').replace('August', 'August 2018')} Edition</h1>
-        <LoadingSpinner />
+        LOADING!!
     </div>;
 
     if (!thumbnail) return <div className="text-2xl">No posts!</div>;
