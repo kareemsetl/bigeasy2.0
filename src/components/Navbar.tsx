@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { staggerReveal, staggerRevealClose, onHover, onHoverOut } from './Animations';
-import { SignIn } from "@clerk/nextjs";
 import { SignInButton } from "@clerk/nextjs";
 import { SignOutButton } from "@clerk/nextjs";
 import { useUser } from "node_modules/@clerk/nextjs";
@@ -16,7 +15,6 @@ const Navbar = () => {
     const categoriesRef = useRef(null);
     const router = useRouter();
     const user = useUser();
-    const [isScrolled, setIsScrolled] = useState(false);
 
     // Editions array
     const editions = [
@@ -28,7 +26,7 @@ const Navbar = () => {
     //Categories array
     const categories = [
         "Politics", "Economy", "Health Care", "Social Issues",
-        "Culture-Lifestyle", "Art", "Film", "Food", "Music",
+        "Culture Lifestyle", "Art", "Film", "Food", "Music",
         "The Progressives Weekend", "The Progressives Lifestyle In New Orleans",
         "Environment", "Air And Water Quality", "Coastal Restoration", "Op Ed Lagniappe", "Sports"
     ];
@@ -81,7 +79,7 @@ const Navbar = () => {
         void router.push(path);
     };
     return (
-        <nav className="bg-purple-950 text-slate-200 flex items-center justify-between p-1 navbar"
+        <nav className="bg-purple-950 text-slate-200 flex items-center justify-between p-1 navbar shadow-xl"
             style={{
                 backgroundImage: 'url(https://bigeasymagazine.b-cdn.net/wp-content/uploads/2018/05/big-easy-magazine-in-new-orleans-50-1.jpg)',
                 backgroundSize: 'cover',
@@ -90,8 +88,17 @@ const Navbar = () => {
                 top: 0,
                 width: '100%'
             }}>
-            <div style={{ height: '275px' }} className="ml-10 border-none">
-                <img className="logo" style={{ maxHeight: '100%' }} src="https://www.bigeasymagazine.com/wp-content/uploads/2018/05/big-easy-main-logo-1.png" alt="Big Easy Magazine Logo" onClick={() => navigateTo('/')} />
+            <div className=" border-none">
+                <Image
+                    className="logo"
+                    src="https://www.bigeasymagazine.com/wp-content/uploads/2018/05/big-easy-main-logo-1.png"
+                    alt="Big Easy Magazine Logo"
+                    width={300} // Replace with the actual width of your image
+                    height={300} // Replace with the actual height of your image
+                    layout="fixed" // or 'fill', 'fixed', 'intrinsic', etc., based on your layout needs
+                    onClick={() => navigateTo('/')}
+                    style={{ maxHeight: '100%' }}
+                />
             </div>
             <div className="flex flex-col flex-grow">
                 <ul className="flex flex-grow justify-between text-base md:text-lg lg:text-lg nav-items">
@@ -101,40 +108,41 @@ const Navbar = () => {
                             Home
                         </Link>
                     </li>
-                    <li className="navbar-item relative"
+                    <li className="navbar-item relative text-shadow-xl"
                         onMouseEnter={handleEditionHover}
                         onMouseLeave={handleEditionLeave}>
                         Editions
-                        <ul ref={editionRef} className={`nav-items absolute bg-purple-950 ${isEditionOpen ? 'block' : 'hidden'} left-1/2 transform -translate-x-1/2 whitespace-nowrap`}>
+                        <ul ref={editionRef} className={`nav-items rounded shadow-2xl absolute bg-purple-950 ${isEditionOpen ? 'block' : 'hidden'} left-1/2 transform -translate-x-1/2 whitespace-nowrap`}>
                             {editions.map((edition) => (
                                 <Link href={`/category/monthly/${edition.replace(/\s+/g, '-')}`}>
-                                <li key={edition}
-                                    className="edition-item hover:bg-purple-900 text-sm p-2 whitespace-nowrap"
-                                    onMouseEnter={onHover}
-                                    onMouseLeave={onHoverOut}>
-                                    
+                                    <li key={edition}
+                                        className="edition-item rounded shadow-2xl hover:bg-purple-900 text-sm p-2 whitespace-nowrap"
+                                        onMouseEnter={onHover}
+                                        onMouseLeave={onHoverOut}>
+
                                         {edition}
-                                    
-                                </li>
+
+                                    </li>
                                 </Link>
                             ))}
                         </ul>
                     </li>
-                    <li className="navbar-item relative"
+                    <li className="navbar-item rounded relative shadow-2xl"
                         onMouseEnter={handleCategoriesHover}
                         onMouseLeave={handleCategoriesLeave}>
                         Categories
-                        <ul ref={categoriesRef} className={`nav-items absolute bg-purple-950 ${isCategoriesOpen ? 'block' : 'hidden'} left-1/2 transform -translate-x-1/2 whitespace-nowrap`}>
+                        <ul ref={categoriesRef} className={`nav-items rounded shadow-2xl absolute bg-purple-950 ${isCategoriesOpen ? 'block' : 'hidden'} left-1/2 transform -translate-x-1/2 whitespace-nowrap`}
+                        >
                             {categories.map((category) => (
-                                <Link href={`/category/${category.replace(/\s+/g, '-')}`}>
-                                <li key={category}
-                                    className="category-item hover:bg-purple-900 text-sm p-2 whitespace-nowrap"
-                                    onMouseEnter={onHover}
-                                    onMouseLeave={onHoverOut}>
-                                    
+                                <Link href={`/category/${category.replace(/\s+/g, '-')}`} >
+                                    <li key={category}
+                                        className="category-item rounded shadow-2xl hover:bg-purple-900 text-sm p-2 whitespace-nowrap"
+                                        onMouseEnter={onHover}
+                                        onMouseLeave={onHoverOut}>
+
                                         {category}
-                                    
-                                </li>
+
+                                    </li>
                                 </Link>
                             ))}
                         </ul>

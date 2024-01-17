@@ -5,12 +5,12 @@ import Image from "next/image";
 
 interface ThumbnailProps {
     thumbnail: {
-        name: string | null; 
-        post_id: bigint; 
-        postTitle: string; 
-        postDate: Date | null; 
-        postExcerpt: string; 
-        slugs: string | null; 
+        name: string | null;
+        post_id: bigint;
+        postTitle: string;
+        postDate: Date | null;
+        postExcerpt: string;
+        slugs: string | null;
         thumbnail_pic: string | null;
     },
     _className?: string;
@@ -29,10 +29,12 @@ const Thumbnail: React.FC<ThumbnailProps> = ({ thumbnail, _className }) => {
     return (
         <div className="thumbnail-container">
             <div className="thumbnail-info">
-                <h2><u>{thumbnail.postTitle}</u></h2>
+                <Link href={`/post/${thumbnail.post_id}`}>
+                    <h2><u>{thumbnail.postTitle}</u></h2>
+                </Link>
                 <p>{thumbnail.postDate && <p>{thumbnail.postDate.toLocaleString()}</p>}</p>
                 {terms.filter(term => category.includes(term)).map((term, index) => (
-                    <Link href={`/category/${term.replace(/[\s\/]+/g, '-')}`} key={index}>
+                    <Link href={`/category/${term.replace(/[\s\/]+/g, '-').replace(/'/g, '')}`} key={index}>
                         <Badge className="bg-purple-900 text-slate-100 mr-1" key={index} ><u>{term}</u></Badge>
                     </Link>
                 ))}

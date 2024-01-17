@@ -55,7 +55,7 @@ export default authMiddleware({
     "/category/Featured/",
     "/api/trpc/post.getPostThumbnailBySlug"
   ],
-  ignoredRoutes: ["/((?!api|trpc))(_next.*|.+\.[\w]+$)", "/api/trpc/post.getFeaturedPostContents","/api/trpc/post.getPostThumbnailBySlug"]
+  ignoredRoutes: ["/((?!api|trpc))(_next.*|.+\.[\w]+$)", "/api/trpc/post.getFeaturedPostThumbnail","/api/trpc/post.getPostThumbnailBySlug","/api/trpc/post.getTotalPostCountBySlug"]
 });
 export const config = {
   matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],

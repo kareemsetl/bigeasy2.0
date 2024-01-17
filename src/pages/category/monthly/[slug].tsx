@@ -3,20 +3,38 @@ import Head from 'next/head';
 import Navbar from "~/components/Navbar";
 import { api } from "~/utils/api";
 import { useRouter } from 'next/router';
-import { useQuery } from '@tanstack/react-query';
 import Thumbnail from '~/components/Thumbnail';
 
 
-const MonthlyEditions = () => {
+const Articles = () => {
     const router = useRouter();
-    const slug = router.asPath.split('/').pop() ?? "404";
+    let slug = router.asPath.split('/').pop() ?? "404";
 
-    const { data: thumbnail, isLoading, error } = api.post.getPostThumbnailBySlug.useQuery({ slug });
-    const { data: titles } = api.post.getPostTitlesBySlug.useQuery({ slug });
+    //exception for the august edition
+    if (slug == 'August-2018') {
+        slug = 'August'
+    }
+    const { data: thumbnail, isLoading } = api.post.getPostThumbnailBySlug.useQuery({ slug });
+    // const { data: titles } = api.post.getPostTitlesBySlug.useQuery({ slug });
+    if (isLoading) return <div className="items-center">
+        <h1 className="ml-3 mb-3 text-xl"> {slug.replace(/-/g, ' ').replace('August', 'August 2018')} Edition</h1>
+        LOADING!!
+    </div>;
 
-    if (isLoading) return <div>Loading...</div>;
+    if (!thumbnail) return <div className="text-2xl">No posts!</div>;
+    return (
+        <div>
+            <h1 className="ml-3 mb-3 text-xl"> {slug.replace(/-/g, ' ').replace('August', 'August 2018')} Edition</h1>
+            {
+                thumbnail?.map((item) => (
+                    <Thumbnail key={item.post_id} thumbnail={item} />
+                ))
+            }
+        </div>
+    );
+}
 
-    if (!titles) return <div>No posts!</div>;
+const MonthlyEditions = () => {
 
     return (
         <>
@@ -26,24 +44,23 @@ const MonthlyEditions = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Navbar />
-            <main className="flex justify-center h-full mt-20">
+            <main className="flex justify-center h-full mt-20 p-2">
                 <div className="bg-slate-200 w-full h-full border-slate-400 border-x" style={{
                     maxWidth: '1460px',
-                    marginTop: '275px'
+                    marginTop: '255px',
+                    padding: '20px'
                 }}>
-                    <h1 className="mb-3 ml-3 mt-3 text-xl"> {slug.replace(/-/g, ' ')} Edition</h1>
-                    <table className="w-full border">
-                        <tbody className="border-x">
-                            {titles?.map((post, index) => (
-                                <tr key={post.id} className="border-slate-400">
-                                    <td className="">{index + 1}. {post.postTitle}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                    {thumbnail?.map((item, index) => (
-                        <Thumbnail key={item.post_id} thumbnail={item} />
-                    ))}
+                    <div className="flex">
+                        <div className="w-2/3 float left">
+                            <Articles />
+                        </div>
+                        {/* Second Column for Additional Content */}
+                        <div className="w-1/3 float-left">
+                            <h1 className="mb-5 ml-3 text-xl"> Ad Space </h1>
+
+
+                        </div>
+                    </div>
                 </div>
             </main>
         </>

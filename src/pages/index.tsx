@@ -1,12 +1,9 @@
-import { SignIn } from "@clerk/nextjs";
-import { SignInButton } from "@clerk/nextjs";
-import { SignOutButton } from "@clerk/nextjs";
 import Head from "next/head";
-import Link from "next/link";
 import { useUser } from "node_modules/@clerk/nextjs";
 import Navbar from "~/components/Navbar";
 import { api } from "~/utils/api";
 import Thumbnail from "~/components/Thumbnail"
+import React from "react";
 
 
 export default function Home() {
@@ -28,7 +25,25 @@ export default function Home() {
 
   }
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div><Navbar /><main className="flex justify-center h-full mt-20 p-2">
+    <div className="bg-slate-200 w-full h-full border-slate-400 border-x" style={{
+      maxWidth: '1460px',
+      marginTop: '255px',
+      padding: '20px'
+    }}>
+      <div className="flex">
+        <div className="w-2/3 float left">
+          <b className="w-1/3 text-center items-center ml-10">
+          </b>
+        </div>
+        {/* Second Column for Additional Content */}
+        <div className="w-1/3 float-left">
+          <h1 className="mb-5 ml-3 text-xl"> Ad Space </h1>
+        </div>
+      </div>
+    </div>
+  </main>
+  </div>;
 
   if (!data) return <div>No posts!</div>;
 
@@ -40,20 +55,29 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main className="flex justify-center h-full mt-20">
+      <main className="flex justify-center h-full mt-20 p-2">
         <div className="bg-slate-200 w-full h-full border-slate-400 border-x" style={{
           maxWidth: '1460px',
-          marginTop: '275px' 
+          marginTop: '255px',
+          padding: '20px'
         }}>
-          <b className="w-1/3 ml-10">
-                
-                    <h1 className="mb-5 ml-3 text-xl"> Featured Articles: </h1>
-                    {
-                        data.map((thumbnail, index) => (
-                            <Thumbnail key={thumbnail.post_id} thumbnail={thumbnail} />
-                        ))
-                    }
-                </b>
+          <div className="flex">
+            <div className="w-2/3 float left">
+
+              <h1 className="mb-5 ml-3 text-xl"> Featured Articles: </h1>
+              {
+                data.map((thumbnail) => (
+                  <Thumbnail key={thumbnail.post_id} thumbnail={thumbnail} />
+                ))
+              }
+              <b className="w-1/3 ml-10">
+              </b>
+            </div>
+            {/* Second Column for Additional Content */}
+            <div className="w-1/3 float-left">
+              <h1 className="mb-5 ml-3 text-xl"> Ad Space </h1>
+            </div>
+          </div>
         </div>
       </main>
     </>
