@@ -13,18 +13,19 @@ import {
     PaginationPrevious,
 } from "~/components/ui/pagination"
 import LoadingSpinner from '~/components/ui/LoadingSpinner';
+const router = useRouter();
 
 const ClientPageRender = () => {
-    const router = useRouter();
+    
     const [slug, setSlug] = useState("loading");
     const [currentPage, setCurrentPage] = useState(1); // Initialize currentPage state
 
     useEffect(() => {
-        if (router.isReady && typeof router.asPath === 'string') {
+        if (router?.isReady && typeof router.asPath === 'string') {
             const newSlug = router.asPath.split('/').pop().replace(/#/g, '') || "404";
             setSlug(newSlug);
         }
-    }, [router.isReady, router.asPath]);
+    }, [router?.isReady, router.asPath]);
 
 
     const { data, isLoading } = api.post.getPostThumbnailBySlugPaginated.useQuery({
