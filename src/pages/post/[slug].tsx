@@ -5,6 +5,7 @@ import { api } from "~/utils/api";
 import { useRouter } from 'next/router';
 import DOMPurify from 'dompurify';
 import YouTube from "react-youtube";
+import { Separator } from '~/components/ui/separator';
 
 import { useQuery } from '@tanstack/react-query';
 import Thumbnail from "~/components/Thumbnail";
@@ -15,8 +16,14 @@ const PostView = () => {
     const router = useRouter();
     const slug = router.asPath.split('/').pop() ?? "404";
     const { data: articles, isLoading, error } = api.post.getPostBySlug.useQuery({ slug });
+    const { data: postTitle } = api.post.getPostTitleBySlug.useQuery({ slug });
+    const { data: postMetaData } = api.post.getPostMetaBySlug.useQuery({ slug });
+    
+    console.log(postMetaData);
 
-
+    const authorByline = postMetaData?.find(meta => meta.meta_value.includes('Contributing Writer'))?.meta_value;
+    const authorUrl = postMetaData?.find(meta => meta.meta_value.startsWith('http'))?.meta_value;
+    // Extract author URL and byline from the meta data
     if (isLoading) return <div><Navbar /><main className="flex justify-center h-full mt-20 p-2">
         <div className="bg-slate-200 w-full h-full border-slate-400 border-x" style={{
             maxWidth: '1460px',
@@ -89,7 +96,16 @@ const PostView = () => {
                 }}>
                     <div className="flex">
                         <div className="w-2/3 float left">
-
+                            <div>
+                                <h2 className="text-2xl text-center">{postTitle.postTitle}</h2>
+                                <Separator className="bg-border"/>
+                                {authorByline && (
+                                    <p>
+                                        <div className="text-lg text-center">{authorUrl ? <a  href={authorUrl}>{authorByline}</a> : authorByline}</div>
+                                    </p>
+                                )}
+                                
+                            </div>
                             {articles?.map((post) => (
                                 <tr key={post.id} className="border-slate-400">
                                     <td className="" dangerouslySetInnerHTML={{

@@ -88,7 +88,7 @@ const Navbar = () => {
                 top: 0,
                 width: '100%'
             }}>
-            <div className=" border-none">
+            <div className="border-none">
                 <Image
                     className="logo"
                     src="https://www.bigeasymagazine.com/wp-content/uploads/2018/05/big-easy-main-logo-1.png"
