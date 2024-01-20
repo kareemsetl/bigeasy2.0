@@ -78,7 +78,7 @@ export const postRouter = createTRPCRouter({
             }
 
             // Fetch the post content
-            const posts = await ctx.db.post.findMany({
+            const post = await ctx.db.post.findMany({
                 where: {
                     id: {
                         equals: numericSlug, // Use the numeric slug for an exact match
@@ -90,15 +90,15 @@ export const postRouter = createTRPCRouter({
                 },
             });
 
-            // Check if posts are found
-            if (!posts || posts.length === 0) {
+            // Check if post are found
+            if (!post || post.length === 0) {
                 throw new TRPCError({
                     code: 'NOT_FOUND',
-                    message: `No posts found with the title '${slug}'`,
+                    message: `No post found with the title '${slug}'`,
                 });
             }
 
-            return posts;
+            return post;
         }),
     getPostThumbnailBySlugPaginated: publicProcedure
         .input(z.object({
@@ -149,6 +149,74 @@ export const postRouter = createTRPCRouter({
 
             return { count: postCount };
         }),
+    getPostTitleBySlug: publicProcedure
+        .input(z.object({
+            slug: z.string(),
+        }))
+        .query(async ({ ctx, input }) => {
+            const { slug } = input;
 
+            // Convert slug to a number
+            const numericSlug = parseInt(slug, 10);
+            if (isNaN(numericSlug)) {
+                throw new Error("Invalid slug: slug must be a numeric value");
+            }
+
+            // Fetch the post title
+            const post = await ctx.db.post.findUnique({
+                where: {
+                    id: numericSlug,
+                },
+                select: {
+                    postTitle: true,
+                },
+            });
+
+            if (!post) {
+                throw new TRPCError({
+                    code: 'NOT_FOUND',
+                    message: `No post found with the ID '${slug}'`,
+                });
+            }
+
+            return post;
+        }),
+    getPostMetaBySlug: publicProcedure
+        .input(z.object({
+            slug: z.string(),
+        }))
+        .query(async ({ ctx, input }) => {
+            const { slug } = input;
+
+            // Convert slug to a number
+            const numericSlug = parseInt(slug, 10);
+            if (isNaN(numericSlug)) {
+                throw new Error("Invalid slug: slug must be a numeric value");
+            }
+
+            // Fetch the meta values
+            const metaValues = await ctx.db.post_meta.findMany({
+                where: {
+                    post_id: {
+                        equals: numericSlug,
+                    },
+                    meta_key: {
+                        in: ['author_url', 'byline'],
+                    },
+                },
+                select: {
+                    meta_value: true,
+                },
+            });
+
+            if (!metaValues || metaValues.length === 0) {
+                throw new TRPCError({
+                    code: 'NOT_FOUND',
+                    message: `No meta found for post with ID '${slug}'`,
+                });
+            }
+
+            return metaValues;
+        }),
 
 });
