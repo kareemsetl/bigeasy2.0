@@ -18,11 +18,9 @@ const PostView = () => {
     const { data: articles, isLoading, error } = api.post.getPostBySlug.useQuery({ slug });
     const { data: postTitle } = api.post.getPostTitleBySlug.useQuery({ slug });
     const { data: postMetaData } = api.post.getPostMetaBySlug.useQuery({ slug });
-    
-    console.log(postMetaData);
 
-    const authorByline = postMetaData?.find(meta => meta.meta_value.includes('Contributing Writer'))?.meta_value;
-    const authorUrl = postMetaData?.find(meta => meta.meta_value.startsWith('http'))?.meta_value;
+    const authorByline = postMetaData?.find(meta => meta?.meta_value.includes('Contributing Writer'))?.meta_value;
+    const authorUrl = postMetaData?.find(meta => meta?.meta_value.startsWith('http'))?.meta_value;
     // Extract author URL and byline from the meta data
     if (isLoading) return <div><Navbar /><main className="flex justify-center h-full mt-20 p-2">
         <div className="bg-slate-200 w-full h-full border-slate-400 border-x" style={{
@@ -90,15 +88,15 @@ const PostView = () => {
             </Head>
             <Navbar />
             <main className="flex justify-center h-full mt-20">
-                <div className="bg-slate-200 w-full h-full border-slate-400 border-x p-10" style={{
+                <div className="bg-slate-200 w-full h-full border-slate-400 border-x p-10 sm: text-center" style={{
                     maxWidth: '1460px',
                     marginTop: '275px'
                 }}>
-                    <div className="flex">
-                        <div className="w-2/3 float left">
+                    <div className="flex flex-col sm:flex-row w-full">
+                        <div className="md:w-2/3 float left sm:w-full">
                             <div>
                                 <h2 className="text-2xl text-center">{postTitle.postTitle}</h2>
-                                <Separator className="bg-border"/>
+                                <Separator className="bg-border" />
                                 {authorByline && (
                                     <p>
                                         <div className="text-lg text-center">{authorUrl ? <a  href={authorUrl}>{authorByline}</a> : authorByline}</div>

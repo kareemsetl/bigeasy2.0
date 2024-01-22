@@ -182,7 +182,7 @@ const Navbar = () => {
                     <li></li>
                     <li></li>
                 </ul>
-                <div className="text-center tracking-wider mt-10 text-2xl text-block">
+                <div className="block text-center tracking-wider mt-10 text-2xl text-block">
                     <p>UNAPOLOGETICALLY PROGRESSIVE.</p>
                     <p><strong>UNIQUELY NEW ORLEANS.</strong></p>
                 </div>

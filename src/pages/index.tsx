@@ -55,14 +55,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main className="flex justify-center h-full mt-20 p-2">
+      <main className="flex flex-col sm:flex-row justify-center mt-20 p-2">
         <div className="bg-slate-200 w-full h-full border-slate-400 border-x" style={{
           maxWidth: '1460px',
           marginTop: '255px',
           padding: '20px'
         }}>
-          <div className="flex">
-            <div className="w-2/3 float left">
+          <div className="flex flex-col sm:flex-row w-full">
+            <div className="float left text-center-left lg:w-2/3">
 
               <h1 className="mb-5 ml-3 text-xl"> Featured Articles: </h1>
               {
