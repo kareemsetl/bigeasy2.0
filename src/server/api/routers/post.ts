@@ -226,7 +226,7 @@ export const postRouter = createTRPCRouter({
             const { slug } = input;
             return ctx.db.thumbnail.findMany({
                 where: {
-                    post_id: slug
+                    post_id: +slug
                 },
                 select: {
                     name: true, // Select the tags column, called name in the thumbnail table
