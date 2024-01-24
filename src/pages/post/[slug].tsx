@@ -36,7 +36,10 @@ const PostView = () => {
     const authorByline = postMetaData?.find(meta =>
         meta?.meta_value && typeof meta.meta_value === 'string' && meta.meta_value.includes('')
     )?.meta_value;
-    let authorUrl = postMetaData?.find(meta => meta?.meta_value.startsWith('http'))?.meta_value;
+    let authorUrl = postMetaData?.find(meta =>
+        meta?.meta_value && typeof meta.meta_value === 'string' && meta.meta_value.startsWith('http')
+    )?.meta_value;
+
 
     // Extract author URL and byline from the meta data
     // Check if authorUrl starts with the bigeasymag string and replace it with a rel tag.
