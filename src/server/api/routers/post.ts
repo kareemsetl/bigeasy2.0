@@ -218,5 +218,20 @@ export const postRouter = createTRPCRouter({
 
             return metaValues;
         }),
+    getPostTagsBySlug: publicProcedure
+        .input(z.object({
+            slug: z.string(),
+        }))
+        .query(async ({ ctx, input }) => {
+            const { slug } = input;
+            return ctx.db.thumbnail.findMany({
+                where: {
+                    post_id: slug
+                },
+                select: {
+                    name: true, // Select the tags column, called name in the thumbnail table
+                },
+            });
+        })
 
 });

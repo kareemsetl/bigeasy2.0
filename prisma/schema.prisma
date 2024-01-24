@@ -114,16 +114,6 @@ model ad {
   imag_alt       String  @db.VarChar(100)
 }
 
-model comment_meta {
-  meta_id    BigInt  @id @default(autoincrement())
-  comment_id BigInt  @default(0)
-  meta_key   String? @db.VarChar(255)
-  meta_value String? @db.LongText
-
-  @@index([comment_id], name: "comment_id")
-  @@index([meta_key], name: "meta_key")
-}
-
 model redirect {
   id       Int    @id @default(autoincrement()) @db.MediumInt
   url_from String @db.VarChar(256)

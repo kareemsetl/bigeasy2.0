@@ -92,3 +92,16 @@ body {
     pointer-events: none; /* Prevents clicking */
     cursor: default;
   }
+  .fade-in {
+    opacity: 0;
+    transition: opacity 3s ease-in-out; /* Adjust the duration as needed */
+  }
+  
+  .fade-in.visible {
+    opacity: 1;
+  }
+  .centered-images img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
