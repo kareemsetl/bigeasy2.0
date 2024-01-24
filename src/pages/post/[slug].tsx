@@ -30,9 +30,8 @@ const PostView = () => {
     const { data: postMetaData } = api.post.getPostMetaBySlug.useQuery({ slug });
     const { data: postTags } = api.post.getPostTagsBySlug.useQuery({ slug });
 
-    const flattenedTags = postTags?.flatMap(tagObj => tagObj.name.split(', ')) || [];
-    console.log(flattenedTags)
-
+    const flattenedTags = postTags?.flatMap(tagObj => tagObj?.name.split(', ')) || [];
+    
     const authorByline = postMetaData?.find(meta => meta?.meta_value.includes(''))?.meta_value;
     let authorUrl = postMetaData?.find(meta => meta?.meta_value.startsWith('http'))?.meta_value;
 
