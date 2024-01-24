@@ -33,7 +33,9 @@ const PostView = () => {
     const flattenedTags = postTags?.flatMap(tagObj =>
         tagObj?.name ? tagObj.name.split(', ') : []
     ) || [];
-    const authorByline = postMetaData?.find(meta => meta?.meta_value.includes(''))?.meta_value;
+    const authorByline = postMetaData?.find(meta =>
+        meta?.meta_value && typeof meta.meta_value === 'string' && meta.meta_value.includes('')
+    )?.meta_value;
     let authorUrl = postMetaData?.find(meta => meta?.meta_value.startsWith('http'))?.meta_value;
 
     // Extract author URL and byline from the meta data
