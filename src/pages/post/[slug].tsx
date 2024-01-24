@@ -32,7 +32,7 @@ const PostView = () => {
 
     const flattenedTags = postTags?.flatMap(tagObj =>
         tagObj?.name ? tagObj.name.split(', ') : []
-    ) || [];
+    )?? [];
 
     const authorByline = postMetaData?.find(meta =>
         meta?.meta_value && typeof meta.meta_value === 'string' && meta.meta_value.includes('')
