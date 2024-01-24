@@ -50,12 +50,13 @@ const MonthlyEditions = () => {
                     marginTop: '255px',
                     padding: '20px'
                 }}>
+                    
                     <div className="flex">
-                        <div className="w-2/3 float left">
+                        <div className="md:w-2/3 float left">
                             <Articles />
                         </div>
                         {/* Second Column for Additional Content */}
-                        <div className="w-1/3 float-left">
+                        <div className="flex flex-col sm:flex-row float-left">
                             <h1 className="mb-5 ml-3 text-xl"> Ad Space </h1>
 
 

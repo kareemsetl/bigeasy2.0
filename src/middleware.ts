@@ -1,62 +1,46 @@
 import { authMiddleware } from "@clerk/nextjs";
 
-// This example protects all routes including api/trpc routes
-// Please edit this to allow other routes to be public as needed.
-// See https://clerk.com/docs/references/nextjs/auth-middleware for more information about configuring your Middleware
+// Routes grouped by similar patterns
+const categoryRoutes = (years: number[], months: string[], otherCategories: string[]) => [
+  ...years.map(year => `/category/monthly/${year}`),
+  ...months.map(month => `/category/monthly/${month}`),
+  ...otherCategories.map(category => `/category/${category}`),
+];
+
+const publicRoutes = [
+  "/api/trpc/post.getFeaturedPostContents",
+  "/", 
+  "/shop", 
+  "/support", 
+  "/advertise", 
+  "/about", 
+  "/contact", 
+  "/things-to-do",
+  "/post/", // Include all routes starting with "/post/" (doenst work)
+  ...categoryRoutes(
+    [2018, 2019], // years
+    ["December-2019", "October-2019", "September-2019", "August-2019", "July-2019", "June-2019", "May-2019", "April-2019", "March-2019", "February-2019", "January-2019"], // months
+    ["Politics", "Economy", "Health-Care", "Social-Issues", "Culture-Lifestyle", "Art", "Film", "Food", "Music", "The-Progressive's-Weekend", "The-Progressive's-Lifestyle-in-New-Orleans", "Environment", "Air-And-Water-Quality", "Coastal-Restoration", "Op-Ed-Lagniappe", "Sports", "Guest-Posts", "Sponsored-Content", "Satire", "Big-Easy-Editorial", "Featured"] // other categories
+  ),
+  "/api/trpc/post.getPostThumbnailBySlug",
+  "/api/trpc/post.getPostThumbnailBySlugPaginated",
+  "/api/trpc/post.getTotalPostCountBySlug"
+];
+
+const ignoredRoutes = [
+  "/((?!api|trpc))(_next.*|.+\.[\w]+$)",
+  "/api/trpc/post.getFeaturedPostThumbnail",
+  "/api/trpc/post.getPostThumbnailBySlug",
+  "/api/trpc/post.getTotalPostCountBySlug",
+  "/api/trpc/post.getPostThumbnailBySlugPaginated",
+  "/api/trpc/post.getTotalPostCountBySlug"
+];
+
 export default authMiddleware({
-  // Everything below will be accessible to all users, logged in or not
-  publicRoutes: [
-    "/api/trpc/post.getFeaturedPostContents", "/",
-    "/shop",
-    "/support-us",
-    "/advertise",
-    "/about-us",
-    "/contact",
-    "/things-to-do",
-    "/category/Politics",
-    "/category/Economy",
-    "/category/Health-Care",
-    "/category/Social-Issues",
-    "/category/Culture-Lifestyle",
-    "/category/Art",
-    "/category/Film",
-    "/category/Food",
-    "/category/Music",
-    "/category/The-Progressive's-Weekend",
-    "/category/The-Progressive's-Lifestyle-in-New-Orleans",
-    "/category/Environment",
-    "/category/Air-And-Water-Quality",
-    "/category/Coastal-Restoration",
-    "/category/Op-Ed-Lagniappe",
-    "/category/Sports",
-    "/category/monthly/December-2019",
-    "/category/monthly/October-2019",
-    "/category/monthly/September-2019",
-    "/category/monthly/August-2019",
-    "/category/monthly/July-2019",
-    "/category/monthly/June-2019",
-    "/category/monthly/May-2019",
-    "/category/monthly/April-2019",
-    "/category/monthly/March-2019",
-    "/category/monthly/February-2019",
-    "/category/monthly/January-2019",
-    "/category/monthly/December-2018",
-    "/category/monthly/November-2018",
-    "/category/monthly/October-2018",
-    "/category/monthly/September-2018",
-    "/category/monthly/",
-    "/category/monthly/August-2018",
-    "/category/monthly/July-2018",
-    "/category/monthly/June-2018",
-    "/category/Guest-Posts/",
-    "/category/Sponsored-Content/",
-    "/category/Satire/",
-    "/category/Big-Easy-Editorial/",
-    "/category/Featured/",
-    "/api/trpc/post.getPostThumbnailBySlug"
-  ],
-  ignoredRoutes: ["/((?!api|trpc))(_next.*|.+\.[\w]+$)", "/api/trpc/post.getFeaturedPostThumbnail","/api/trpc/post.getPostThumbnailBySlug","/api/trpc/post.getTotalPostCountBySlug"]
+  publicRoutes,
+  ignoredRoutes,
 });
+
 export const config = {
   matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
 };

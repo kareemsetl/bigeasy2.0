@@ -5,7 +5,9 @@ import { SignInButton } from "@clerk/nextjs";
 import { SignOutButton } from "@clerk/nextjs";
 import { useUser } from "node_modules/@clerk/nextjs";
 import Link from "next/link";
-import Image from "next/image"
+import Image from "next/image";
+
+
 const Navbar = () => {
     const [isEditionOpen, setIsEditionOpen] = useState(false);
     const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
@@ -105,13 +107,13 @@ const Navbar = () => {
                     <li></li>
                     <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut}>
                         <Link href="/">
-                            Home
+                            <u>Home</u>
                         </Link>
                     </li>
                     <li className="navbar-item relative text-shadow-xl"
                         onMouseEnter={handleEditionHover}
                         onMouseLeave={handleEditionLeave}>
-                        Editions
+                        <u>Editions</u>
                         <ul ref={editionRef} className={`nav-items rounded shadow-2xl absolute bg-purple-950 ${isEditionOpen ? 'block' : 'hidden'} left-1/2 transform -translate-x-1/2 whitespace-nowrap`}>
                             {editions.map((edition) => (
                                 <Link href={`/category/monthly/${edition.replace(/\s+/g, '-')}`}>
@@ -130,7 +132,7 @@ const Navbar = () => {
                     <li className="navbar-item rounded relative shadow-2xl"
                         onMouseEnter={handleCategoriesHover}
                         onMouseLeave={handleCategoriesLeave}>
-                        Categories
+                        <u>Categories</u>
                         <ul ref={categoriesRef} className={`nav-items rounded shadow-2xl absolute bg-purple-950 ${isCategoriesOpen ? 'block' : 'hidden'} left-1/2 transform -translate-x-1/2 whitespace-nowrap`}
                         >
                             {categories.map((category) => (
@@ -149,27 +151,27 @@ const Navbar = () => {
                     </li>
                     <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut}>
                         <Link href="/shop">
-                            Shop
+                            <u>Shop</u>
                         </Link>
                     </li>
                     <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut}>
                         <Link href="/support">
-                            Support Us
+                            <u>Support Us</u>
                         </Link>
                     </li>
                     <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut}>
                         <Link href="/advertise">
-                            Advertise
+                            <u>Advertise</u>
                         </Link>
                     </li>
                     <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut}>
                         <Link href="/about">
-                            About Us
+                            <u>About Us</u>
                         </Link>
                     </li>
                     <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut}>
                         <Link href="/contact">
-                            Contact
+                            <u>Contact</u>
                         </Link>
                     </li>
                     {!user.isSignedIn && <div className="flex justify-center">
@@ -182,7 +184,7 @@ const Navbar = () => {
                     <li></li>
                     <li></li>
                 </ul>
-                <div className="text-center tracking-wider mt-10 text-2xl text-block">
+                <div className="block text-center tracking-wider mt-10 text-2xl text-block">
                     <p>UNAPOLOGETICALLY PROGRESSIVE.</p>
                     <p><strong>UNIQUELY NEW ORLEANS.</strong></p>
                 </div>

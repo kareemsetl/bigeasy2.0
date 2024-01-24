@@ -12,7 +12,7 @@ const About = () => {
       </Head>
       <Navbar />
       <main className="flex justify-center h-full mt-20">
-        <div className="bg-slate-200 w-full h-full border-slate-400 border-x p-5" style={{
+        <div className="flex flex-col bg-slate-200 w-full h-full border-slate-400 p-5" style={{
           maxWidth: '1460px',
           marginTop: '255px'
         }}>
@@ -48,21 +48,21 @@ const About = () => {
           <h3 className="text-2xl font-bold text-center mb-6">OUR TEAM</h3>
           <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-6">
 
-            <div className="team-member grid grid-cols-2 gap-4 items-center">
+            <div className="team-member grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
               <img src="https://www.bigeasymagazine.com/wp-content/uploads/2018/06/SCOTT-THE-CHIEF-EXECUTIVE-OF-BIGEASY-MAGAZINE-1-1024x683.jpg" alt="Scott Ploof" className="max-w-[300px] max-h-[300px] rounded border shadow-lg" />
               <div>
                 <p><strong><a href="/author/Scott-Ploof" className="text-blue-500 hover:text-blue-700">Scott Ploof - Publisher</a></strong></p>
                 <p><em>Scott Ploof is a former political candidate, writer, and advocate. He holds an MBA from Southeastern Louisiana University. In 2018, he launched Big Easy Magazine in an effort to give people a platform to use their voices to create meaningful change in their respective communities throughout the Greater New Orleans area.</em></p>
               </div>
             </div>
-            <div className="team-member grid grid-cols-2 gap-4 items-center">
+            <div className="team-member grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
               <img src="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/evangelinebarberploofpic.jpg" alt="Evangeline Barber Ploof" className="max-w-[300px] max-h-[300px] rounded border shadow-lg" />
               <div>
                 <p><strong><a href="/author/Evangeline-Barber/" className="text-blue-500 hover:text-blue-700">Evangeline Barber Ploof - Chief Operations Officer</a></strong></p>
                 <p><em>Evangeline Barber Ploof has a B.A. in Elementary Education. For seven years, she taught special education for children in elementary school. In 2019, she began work as Chief Operations Officer for Big Easy Magazine. She is married to Big Easy Magazine Founder and Publisher Scott Ploof. She is a native New Orleanian. When she is not working, she enjoys cooking and caring for her three dogs.</em></p>
               </div>
             </div>
-            <div className="team-member grid grid-cols-2 gap-4 items-center">
+            <div className="team-member grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
               <img src="https://www.bigeasymagazine.com/wp-content/uploads/2018/07/Nolan-8-2009.jpg" alt="Nolan Storey" className="max-w-[300px] max-h-[300px] rounded border shadow-lg" />
               <div>
                 <p><strong><a href="/author/Nolan-Storey/" className="text-blue-500 hover:text-blue-700">Nolan Storey - Founding Editorial Board Member / Staff Writer</a></strong></p>
@@ -71,7 +71,7 @@ const About = () => {
             </div>
 
 
-            <div className="team-member grid grid-cols-2 gap-4 items-center">
+            <div className="team-member grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
               <img src="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/IMG_3563-1024x1024.jpg" alt="Michael Raso" className="max-w-[300px] max-h-[300px] rounded border shadow-lg" />
               <div>
                 <p><strong><a href="/author/Michael-Raso/" className="text-blue-500 hover:text-blue-700">Michael Raso - Contributing Writer</a></strong></p>
@@ -79,7 +79,7 @@ const About = () => {
               </div>
             </div>
 
-            <div className="team-member grid grid-cols-2 gap-4 items-center">
+            <div className="team-member grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
               <img src="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/image1-1-1-1024x1024.png" alt="Candice Battiste" className="max-w-[300px] max-h-[300px] rounded border shadow-lg" />
               <div>
                 <p><strong><a href="/author/Candice-Battiste/" className="text-blue-500 hover:text-blue-700">Candice Battiste - Contributing Writer</a></strong></p>
@@ -87,7 +87,7 @@ const About = () => {
               </div>
             </div>
 
-            <div className="team-member grid grid-cols-2 gap-4 items-center">
+            <div className="team-member grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
               <img src="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/Raegan-Carter-1024x1024.jpg" alt="Raegan A Carter" className="max-w-[300px] max-h-[300px] rounded border shadow-lg" />
               <div>
                 <p><strong>Raegan A Carter - Contributing Writer</strong></p>
@@ -96,7 +96,7 @@ const About = () => {
             </div>
 
 
-            <div className="team-member grid grid-cols-2 gap-4 items-center">
+            <div className="team-member grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
               <img src="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/IMG_20201024_142923_722-1024x1024.jpg" alt="Asad El Malik" className="max-w-[300px] max-h-[300px] rounded border shadow-lg" />
               <div>
                 <p><strong><a href="/author/Asad-El-Malik/" className="text-blue-500 hover:text-blue-700">Asad El Malik- Contributing Writer</a></strong></p>
@@ -105,7 +105,7 @@ const About = () => {
             </div>
 
 
-            <div className="team-member grid grid-cols-2 gap-4 items-center">
+            <div className="team-member grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
               <img src="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/casting-3.jpg" alt="Helen Lewis" className="max-w-[300px] max-h-[300px] rounded border shadow-lg" />
               <div>
                 <p><strong><a href="/author/Helen-Lewis/" className="text-blue-500 hover:text-blue-700">Helen Lewis- Contributing Writer</a></strong></p>
@@ -114,7 +114,7 @@ const About = () => {
             </div>
 
 
-            <div className="team-member grid grid-cols-2 gap-4 items-center">
+            <div className="team-member grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
               <img src="https://www.bigeasymagazine.com/wp-content/uploads/2020/12/Giselle-1024x1024.png" alt="Giselle Dussel" className="max-w-[300px] max-h-[300px] rounded border shadow-lg" />
               <div>
                 <p><strong><a href="/author/Giselle-Dussel/" className="text-blue-500 hover:text-blue-700">Giselle Dussel- Contributing writer</a></strong></p>
@@ -123,7 +123,7 @@ const About = () => {
             </div>
 
 
-            <div className="team-member grid grid-cols-2 gap-4 items-center">
+            <div className="team-member grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
               <img src="https://www.bigeasymagazine.com/wp-content/uploads/2021/10/Richard_Windmann.jpeg" alt="Richard G. Windmann" className="max-w-[300px] max-h-[300px] rounded border shadow-lg" />
               <div>
                 <p><strong><a href="/author/Richard-Windmann" className="text-blue-500 hover:text-blue-700">Richard G. Windmann - Contributing writer</a></strong></p>
