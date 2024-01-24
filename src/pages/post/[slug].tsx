@@ -33,9 +33,11 @@ const PostView = () => {
     const flattenedTags = postTags?.flatMap(tagObj =>
         tagObj?.name ? tagObj.name.split(', ') : []
     ) || [];
+
     const authorByline = postMetaData?.find(meta =>
         meta?.meta_value && typeof meta.meta_value === 'string' && meta.meta_value.includes('')
     )?.meta_value;
+
     let authorUrl = postMetaData?.find(meta =>
         meta?.meta_value && typeof meta.meta_value === 'string' && meta.meta_value.startsWith('http')
     )?.meta_value;
@@ -137,7 +139,7 @@ const PostView = () => {
                                         <Badge className="bg-purple-900 text-slate-100 mr-1"><u>{term}</u></Badge>
                                     </Link>
                                 ))}
-                                <h1 className="mt-5 text-4xl text-center">{postTitle.postTitle}</h1>
+                                <h1 className="mt-5 text-4xl text-center">{postTitle?.postTitle}</h1>
                                 {authorByline && (
                                     <p className="mt-5">
                                         <div className="text-lg items-center">{authorUrl ? <a href={authorUrl}>{authorByline}</a> : authorByline}</div>
