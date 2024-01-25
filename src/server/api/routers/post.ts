@@ -1,7 +1,34 @@
 import { z } from "zod";
 
-import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
+import { createTRPCRouter, privateProcedure, publicProcedure } from "~/server/api/trpc";
 import { TRPCError } from '@trpc/server';
+
+interface Post {
+    id: bigint;
+    postAuthor: bigint;
+    postDate: Date;
+    postDateGmt: Date;
+    postContent: string;
+    postTitle: string;
+    postExcerpt: string;
+    postStatus: string;
+    commentStatus: string;
+    pingStatus: string;
+    postPassword: string;
+    postName: string;
+    toPing: string;
+    pinged: string;
+    postModified: Date;
+    postModifiedGmt: Date;
+    postContentFiltered: string;
+    postParent: bigint;
+    guid: string;
+    menuOrder: number;
+    postType: string;
+    postMimeType: string;
+    commentCount: bigint;
+}
+
 
 export const postRouter = createTRPCRouter({
     getFeaturedPostThumbnail: publicProcedure.query(({ ctx }) => {
@@ -232,6 +259,43 @@ export const postRouter = createTRPCRouter({
                     name: true, // Select the tags column, called name in the thumbnail table
                 },
             });
-        })
+        }),
+    //the below TRPC procedure is how you would 
+    //start a procedure if you wanted it to show data based on user.
+    //we will be doing that here eventually so authors can post 
+/** 
+    create: privateProcedure.input(z.object({
+        id: BigInt,
+        postAuthor: BigInt,
+        postDate: Date,
+        postDateGmt: Date,
+        postContent: z.string,
+        postTitle: z.string,
+        postExcerpt: z.string,
+        postStatus: z.string,
+        commentStatus: z.string,
+        pingStatus: z.string,
+        postPassword: z.string,
+        postName: z.string,
+        toPing: z.string,
+        pinged: z.string,
+        postModified: Date,
+        postModifiedGmt: Date,
+        postContentFiltered: z.string,
+        postParent: BigInt,
+        guid: z.string,
+        menuOrder: z.number,
+        postType: z.string,
+        postMimeType: z.string,
+        commentCount: BigInt,
+    })).mutation(async ({ ctx }) => {
+        const authorId = ctx.userId;
 
+        const post = ctx.db.post.create({
+
+
+        })
+    }
+    )
+*/
 });

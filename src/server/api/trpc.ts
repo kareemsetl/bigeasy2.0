@@ -93,3 +93,71 @@ export const createTRPCRouter = t.router;
  * are logged in.
  */
 export const publicProcedure = t.procedure;
+
+
+/**
+ * 
+import { initTRPC } from "@trpc/server";
+import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
+import superjson from "superjson";
+import { ZodError } from "zod";
+import { getAuth } from "@clerk/nextjs";
+import { TRPCError } from '@trpc/server';
+
+import { db } from "~/server/db";
+
+export const createTRPCContext = (opts: CreateNextContextOptions) => {
+
+  const { request } = opts;
+  const sesh = getAuth(request);
+  const user = sesh.user;
+
+  return {
+    db,
+    currentUser:user,
+  };
+};
+
+/**
+ * 2. INITIALIZATION
+ *
+ * This is where the tRPC API is initialized, connecting the context and transformer. We also parse
+ * ZodErrors so that you get typesafety on the frontend if your procedure fails due to validation
+ * errors on the backend.
+
+
+const t = initTRPC.context<typeof createTRPCContext>().create({
+  transformer: superjson,
+  errorFormatter({ shape, error }) {
+    return {
+      ...shape,
+      data: {
+        ...shape.data,
+        zodError:
+          error.cause instanceof ZodError ? error.cause.flatten() : null,
+      },
+    };
+  },
+});
+
+export const createTRPCRouter = t.router;
+
+
+
+export const publicProcedure = t.procedure;
+
+const enforceUserIsAuthed = t.middleware(async ({ ctx, next }) => {
+ if (!ctx.currentUser) {
+  throw new TRPCError({
+    code: "UNAUTHORIZED"
+  });
+}
+  return next({
+    ctx: {
+      currentUser: ctx.session,
+    }
+  });
+});
+
+export const privateProcedure = t.procedure.use(enforceUserIsAuthed); 
+ */
