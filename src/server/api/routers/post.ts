@@ -1,9 +1,8 @@
 import { z } from "zod";
-
-import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
+import { router, publicProcedure, protectedProcedure } from "~/server/api/trpc";
 import { TRPCError } from '@trpc/server';
 
-export const postRouter = createTRPCRouter({
+export const postRouter = router({
     getFeaturedPostThumbnail: publicProcedure.query(({ ctx }) => {
         return ctx.db.thumbnail.findMany({
             where: {
@@ -232,6 +231,11 @@ export const postRouter = createTRPCRouter({
                     name: true, // Select the tags column, called name in the thumbnail table
                 },
             });
-        })
+        }),
+            hello: protectedProcedure.query(async ({ ctx }) => {
+              return {
+                secret: `${ctx.auth?.userId} is using a protected procedure`
+              }
+            })
 
 });
