@@ -30,6 +30,10 @@ const PostView = () => {
     const { data: postMetaData } = api.post.getPostMetaBySlug.useQuery({ slug });
     const { data: postTags } = api.post.getPostTagsBySlug.useQuery({ slug });
 
+    const { data } = api.post.hello.useQuery();
+    
+    console.log(data);
+      
     const flattenedTags = postTags?.flatMap(tagObj =>
         tagObj?.name ? tagObj.name.split(', ') : []
     ).map(term => capitalizeFirstLetter(term.trim())) ?? [];
@@ -41,7 +45,6 @@ const PostView = () => {
     let authorUrl = postMetaData?.find(meta =>
         meta?.meta_value && typeof meta.meta_value === 'string' && meta.meta_value.startsWith('http')
     )?.meta_value;
-
 
     // Extract author URL and byline from the meta data
     // Check if authorUrl starts with the bigeasymag string and replace it with a rel tag.
