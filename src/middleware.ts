@@ -29,11 +29,13 @@ const publicRoutes = [
 
 const ignoredRoutes = [
   "/((?!api|trpc))(_next.*|.+\.[\w]+$)",
+  /*
   "/api/trpc/post.getFeaturedPostThumbnail",
   "/api/trpc/post.getPostThumbnailBySlug",
-  "/api/trpc/post.getTotalPostCountBySlug",
+  "/api/trpc/post.getTotalPostCountBySlug",  this is commented out bc of the middleware error.
   "/api/trpc/post.getPostThumbnailBySlugPaginated",
   "/api/trpc/post.getTotalPostCountBySlug"
+  */
 ];
 
 export default authMiddleware({
@@ -42,5 +44,5 @@ export default authMiddleware({
 });
 
 export const config = {
-  matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
+  matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
 };
