@@ -71,13 +71,8 @@ export const postRouter = router({
             // Attempt to convert slug to a number
             const numericSlug = parseInt(slug, 10);
 
-            // Check if the conversion is successful (numericSlug is not NaN)
-            if (isNaN(numericSlug)) {
-                throw new Error("Invalid slug: slug must be a numeric value");
-            }
-
             // Fetch the post content
-            const post = await ctx.db.post.findMany({
+            let post = await ctx.db.post.findMany({
                 where: {
                     id: {
                         equals: numericSlug, // Use the numeric slug for an exact match
@@ -93,8 +88,13 @@ export const postRouter = router({
             if (!post || post.length === 0) {
                 throw new TRPCError({
                     code: 'NOT_FOUND',
-                    message: `No post found with the title '${slug}'`,
+                    message: `No post found with the id '${slug}'`,
                 });
+            }
+
+                        // Check if the conversion is successful (numericSlug is not NaN)
+            if (isNaN(numericSlug)) {
+                post = "Invalid id: id must be a numeric value";
             }
 
             return post;
@@ -232,10 +232,11 @@ export const postRouter = router({
                 },
             });
         }),
-            hello: protectedProcedure.query(async ({ ctx }) => {
-              return {
+    hello: protectedProcedure
+        .query(async ({ ctx }) => {
+            return {
                 secret: `${ctx.auth?.userId} is using a protected procedure`
-              }
-            })
+            }
+        })
 
 });

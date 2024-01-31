@@ -17,7 +17,7 @@ const Articles = () => {
     const { data: thumbnail, isLoading } = api.post.getPostThumbnailBySlug.useQuery({ slug });
     // const { data: titles } = api.post.getPostTitlesBySlug.useQuery({ slug });
     if (isLoading) return <div className="items-center">
-        <h1 className="ml-3 mb-3 text-xl"> {slug.replace(/-/g, ' ').replace('August', 'August 2018')} Edition</h1>
+        <h1 className="ml-3 mb-3 text-xl"> {slug.replace(/-/g, ' ').replace('August ', 'August 2018')} Edition</h1>
         LOADING!!
     </div>;
 
@@ -51,8 +51,8 @@ const MonthlyEditions = () => {
                     padding: '20px'
                 }}>
                     
-                    <div className="flex">
-                        <div className="md:w-2/3 float left">
+                    <div className="flex flex-col sm:flex-row w-full">
+                        <div className="md:w-2/3 float left items-center">
                             <Articles />
                         </div>
                         {/* Second Column for Additional Content */}

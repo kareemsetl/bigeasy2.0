@@ -69,8 +69,6 @@ const Contact = () => {
               <h1 className="flex justify-center text-3xl"><strong> Contact Big Easy Magazine!</strong></h1>
               <br />
               <br />            
-              <br />
-              <br />
 
               <h2 className="text-center text-lg">If you want to advertise with banner ads then contact
                 us for advertising in New Orleans! To have someone contact

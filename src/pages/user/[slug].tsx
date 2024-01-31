@@ -5,7 +5,7 @@ import { api } from "~/utils/api";
 import { useRouter } from 'next/router';
 import Thumbnail from "~/components/Thumbnail";
 
-const Author = () => {
+const User = () => {
     const router = useRouter();
     const slug = router.asPath.split('/').pop() ?? "404";
     const { data, isLoading } = api.post.getPostThumbnailBySlug.useQuery({ slug });
@@ -47,8 +47,8 @@ const Author = () => {
                     marginTop: '255px',
                     padding: '20px'
                 }}>
-                    <div className="flex flex-col sm:flex-row w-full">
-                        <div className="md:w-2/3 float left items-center">
+                    <div className="flex">
+                        <div className="w-2/3 float left">
                             <h1 className="mb-5 ml-3 text-xl"> {slug.replace(/-/g, ' ')}'s Articles </h1>
                             {
                                 data.map((thumbnail) => (
@@ -69,4 +69,4 @@ const Author = () => {
     );
 };
 
-export default Author;
+export default User;

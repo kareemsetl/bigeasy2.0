@@ -152,7 +152,7 @@ const PostView = () => {
                             </div>
                             <div className="text-left items-center">
                                 {articles?.map((post) => (
-                                    <tr key={post.id} className="border-slate-400 items-center">
+                                    <tr key={post.id} className="border-slate-400 items-center text-lg">
                                         <td className="centered-images" dangerouslySetInnerHTML={{
                                             __html: formatContent(post.postContent)
                                         }}></td>

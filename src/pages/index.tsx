@@ -37,7 +37,7 @@ export default function Home() {
           </b>
         </div>
         {/* Second Column for Additional Content */}
-        <div className="w-1/3 float-left">
+        <div className="w-1/3">
           <h1 className="mb-5 ml-3 text-xl"> Ad Space </h1>
         </div>
       </div>

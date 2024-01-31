@@ -80,8 +80,9 @@ const Navbar = () => {
     const navigateTo = (path: string) => {
         void router.push(path);
     };
+
     return (
-        <nav className="bg-purple-950 text-slate-200 flex items-center justify-between p-1 navbar shadow-xl"
+        <nav className="bg-purple-950 text-slate-200 flex items-center justify-between p-1 navbar shadow-2xl"
             style={{
                 backgroundImage: 'url(https://bigeasymagazine.b-cdn.net/wp-content/uploads/2018/05/big-easy-magazine-in-new-orleans-50-1.jpg)',
                 backgroundSize: 'cover',
@@ -102,6 +103,7 @@ const Navbar = () => {
                     style={{ maxHeight: '100%' }}
                 />
             </div>
+
             <div className="flex flex-col flex-grow">
                 <ul className="flex flex-grow justify-between text-base md:text-lg lg:text-lg nav-items">
                     <li></li>
