@@ -72,7 +72,7 @@ export const postRouter = router({
             const numericSlug = parseInt(slug, 10);
 
             // Fetch the post content
-            let post = await ctx.db.post.findMany({
+            const post = await ctx.db.post.findMany({
                 where: {
                     id: {
                         equals: numericSlug, // Use the numeric slug for an exact match
@@ -94,7 +94,7 @@ export const postRouter = router({
 
                         // Check if the conversion is successful (numericSlug is not NaN)
             if (isNaN(numericSlug)) {
-                post = "Invalid id: id must be a numeric value";
+                throw new Error("Invalid slug: slug must be a numeric value");
             }
 
             return post;
