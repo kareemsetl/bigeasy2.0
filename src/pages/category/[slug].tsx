@@ -22,8 +22,8 @@ const Categories = () => {
                     marginTop: '255px',
                     padding: '20px'
                 }}>
-                    <div className="flex">
-                        <div className="w-2/3 float left">
+                    <div className="flex flex-col sm:flex-row w-full">
+                        <div className="md:w-2/3 float left items-center">
                         <h1 className="mb-5 ml-3 text-xl"> Category: {slug.replace(/-/g, ' ').replace(/#/g, '')} </h1>
                             <ClientPageRender />
                         </div>

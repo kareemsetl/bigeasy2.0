@@ -27,21 +27,29 @@ const Thumbnail: React.FC<ThumbnailProps> = ({ thumbnail, _className }) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
     return (
-        <div className="thumbnail-container">
-            <div className="thumbnail-info">
+        <div className="thumbnail-container flex flex-col md:flex-row">
+            <img
+                src={thumbnail!.thumbnail_pic as string}
+                alt={thumbnail!.postTitle}
+                className="thumbnail-pic md:order-2 md:ml-4 w-full h-full md:w-auto md:h-auto "
+            />
+
+            <div className="thumbnail-info md:order-1">
                 <Link href={`/post/${thumbnail.post_id}`}>
-                    <h2><u>{thumbnail.postTitle}</u></h2>
+                    <h2 className=""><u>{thumbnail.postTitle}</u></h2>
                 </Link>
                 <p>{thumbnail.postDate && <p>{thumbnail.postDate.toLocaleString()}</p>}</p>
-                {terms.filter(term => category.includes(term)).map((term, index) => (
-                    <Link href={`/category/${term.replace(/[\s\/]+/g, '-').replace(/'/g, '')}`} key={index}>
-                        <Badge className="bg-purple-900 text-slate-100 mr-1" key={index} ><u>{term}</u></Badge>
-                    </Link>
-                ))}
+                <div className="flex flex-wrap">
+                    {terms.filter(term => category.includes(term)).map((term, index) => (
+                        <Link href={`/category/${term.replace(/[\s\/]+/g, '-').replace(/'/g, '')}`} key={index}>
+                            <Badge className="bg-purple-900 text-slate-100 mr-1 mb-1" ><u>{term}</u></Badge>
+                        </Link>
+                    ))}
+                </div>
                 <p>{thumbnail.postExcerpt}</p>
             </div>
-            <img src={thumbnail!.thumbnail_pic as string} alt={thumbnail!.postTitle} className="thumbnail-pic" />
         </div>
+
     );
 };
 
