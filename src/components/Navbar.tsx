@@ -231,7 +231,7 @@ const Navbar = () => {
                         <DropdownMenuContent className="w-56 bg-slate-950 outline-slate-950">
                             <DropdownMenuGroup>
                                 <Link href="/" passHref>
-                                    <DropdownMenuItem as="a">
+                                    <DropdownMenuItem>
                                         Home
                                     </DropdownMenuItem>
                                 </Link>
@@ -268,27 +268,27 @@ const Navbar = () => {
                                     </DropdownMenuPortal>
                                 </DropdownMenuSub>
                                 <Link href="/shop" passHref>
-                                    <DropdownMenuItem as="a">
+                                    <DropdownMenuItem>
                                         Shop
                                     </DropdownMenuItem>
                                 </Link>
                                 <Link href="/support" passHref>
-                                    <DropdownMenuItem as="a">
+                                    <DropdownMenuItem>
                                         Support Us
                                     </DropdownMenuItem>
                                 </Link>
                                 <Link href="/advertise" passHref>
-                                    <DropdownMenuItem as="a">
+                                    <DropdownMenuItem>
                                         Advertise
                                     </DropdownMenuItem>
                                 </Link>
                                 <Link href="/about" passHref>
-                                    <DropdownMenuItem as="a">
+                                    <DropdownMenuItem>
                                         About Us
                                     </DropdownMenuItem>
                                 </Link>
                                 <Link href="/contact" passHref>
-                                    <DropdownMenuItem as="a">
+                                    <DropdownMenuItem>
                                         Contact
                                     </DropdownMenuItem>
                                 </Link>
