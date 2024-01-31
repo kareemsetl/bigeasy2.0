@@ -256,7 +256,7 @@ const Navbar = () => {
                                     <DropdownMenuPortal>
                                         <DropdownMenuSubContent>
                                             {categories.map((categories) => (
-                                                <Link href={`/category/monthly/${categories.replace(/\s+/g, '-')}`}>
+                                                <Link href={`/category/${categories.replace(/\s+/g, '-')}`}>
                                                     <DropdownMenuItem key={categories}
                                                         className="edition-item rounded shadow-2xl bg-purple-950 hover:bg-purple-900 text-sm p-2 whitespace-nowrap">
                                                         {categories}
