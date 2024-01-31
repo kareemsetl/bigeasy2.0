@@ -15,7 +15,9 @@ const publicRoutes = [
   "/api/trpc/post.getPostThumbnailBySlugPaginated",
   "/api/trpc/post.getFeaturedPostThumbnail",
   "/api/trpc/post.getTotalPostCountBySlug",
-  "/api/(.*)"
+  "/api/(.*)",
+  "/author/(.*)",
+  "/user/(.*)"
 ];
 
 const ignoredRoutes = [

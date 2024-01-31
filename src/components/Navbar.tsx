@@ -91,7 +91,7 @@ const Navbar = () => {
                 top: 0,
                 width: '100%'
             }}>
-            <div className="border-none">
+            <div className="border-none hidden sm:block">
                 <Image
                     className="logo"
                     src="https://www.bigeasymagazine.com/wp-content/uploads/2018/05/big-easy-main-logo-1.png"
@@ -104,7 +104,9 @@ const Navbar = () => {
                 />
             </div>
 
-            <div className="flex flex-col flex-grow">
+
+            {/** DESKTOP NAVBAR */}
+            <div className="hidden text-center text-md md:text-sm sm:flex sm:flex-col sm:flex-grow">
                 <ul className="flex flex-grow justify-between text-base md:text-lg lg:text-lg nav-items">
                     <li></li>
                     <li className="navbar-item" onMouseEnter={onHover} onMouseLeave={onHoverOut}>
@@ -186,11 +188,34 @@ const Navbar = () => {
                     <li></li>
                     <li></li>
                 </ul>
-                <div className="block text-center tracking-wider mt-10 text-2xl text-block">
+                <div className="block text-center font-extrabold tracking-wider mt-10 text-lg sm:text-2xl text-block">
                     <p>UNAPOLOGETICALLY PROGRESSIVE.</p>
                     <p><strong>UNIQUELY NEW ORLEANS.</strong></p>
                 </div>
             </div>
+
+            {/** MOBILE NAVBAR */}
+            <div className="sm:hidden">
+                <Image
+                    className="logo"
+                    src="https://www.bigeasymagazine.com/wp-content/uploads/2018/05/big-easy-main-logo-1.png"
+                    alt="Big Easy Magazine Logo"
+                    width={100} // Replace with the actual width of your image
+                    height={100} // Replace with the actual height of your image
+                    layout="fixed" // or 'fill', 'fixed', 'intrinsic', etc., based on your layout needs
+                    onClick={() => navigateTo('/')}
+                    style={{ maxHeight: '100%' }}
+                />
+                {!user.isSignedIn && <div className="flex justify-center">
+                    <SignInButton /></div>}
+                {user.isSignedIn &&
+                    <div className="flex justify-center">
+                        <SignOutButton />
+                    </div>
+                }
+            </div>
+
+
         </nav>
     );
 };
