@@ -103,3 +103,20 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+
+.mobile-text-block{
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+}
+.mobile-text-block.fade-out {
+    opacity: 0;
+}
+.mobile-items{
+    margin-top: 0px;
+    transition: margin-top 0.5s ease-in-out;
+}
+.mobile-items.scrolled {
+    transition: margin-top 0.5s ease-in-out;
+    margin-top: 70px;
+
+}
