@@ -247,7 +247,7 @@ const Navbar = () => {
                                         Home
                                     </DropdownMenuItem>
                                 </Link>
-                                <DropdownMenuSub className="bg-purple-950">
+                                <DropdownMenuSub>
                                     <DropdownMenuSubTrigger className="bg-purple-950 text-slate-200">Editions</DropdownMenuSubTrigger>
                                     <DropdownMenuPortal>
                                         <DropdownMenuSubContent className="bg-purple-950">
