@@ -164,8 +164,7 @@ const Navbar = () => {
                         onMouseEnter={handleCategoriesHover}
                         onMouseLeave={handleCategoriesLeave}>
                         <u>Categories</u>
-                        <ul ref={categoriesRef} className={`w-auto h-auto nav-items rounded shadow-2xl absolute bg-purple-950 ${isCategoriesOpen ? 'block' : 'hidden'} left-1/2 transform -translate-x-1/2`}
-                        >
+                        <ul ref={categoriesRef} className={`w-auto h-auto nav-items rounded shadow-2xl absolute bg-purple-950 ${isCategoriesOpen ? 'block' : 'hidden'} left-1/2 transform -translate-x-1/2`}>
                             {categories.map((category) => (
                                 <Link href={`/category/${category.replace(/\s+/g, '-')}`} >
                                     <li key={category}
@@ -237,7 +236,7 @@ const Navbar = () => {
                         />
                     </div>
                     {/* Toggle Icon/Button */}
-                    <DropdownMenu className="bg-purple-950">
+                    <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button className="bg-purple-950">Menu</Button>
                         </DropdownMenuTrigger>
