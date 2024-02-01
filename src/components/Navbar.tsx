@@ -21,7 +21,14 @@ import {
     DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu"
 import { Button } from './ui/button';
-
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+  } from "~/components/ui/select"
+  
 
 const Navbar = () => {
     const [isEditionOpen, setIsEditionOpen] = useState(false);
@@ -50,18 +57,24 @@ const Navbar = () => {
         const handleScroll = () => {
             const navbar = document.querySelector('.navbar');
             const textBlock = document.querySelector('.text-block');
+            const mobileTextBlock = document.querySelector('.mobile-text-block');
+            const mobileItems = document.querySelector('.mobile-items');
             const navItems = document.querySelector('.nav-items');
             const logo = document.querySelector('.logo');
 
             if (window.scrollY > 100) {
                 if (navbar) navbar.classList.add('scrolled');
                 if (textBlock) textBlock.classList.add('fade-out');
+                if (mobileTextBlock) mobileTextBlock.classList.add('fade-out');
+                if (mobileItems) mobileItems.classList.add('scrolled');
                 if (navItems) navItems.classList.add('centered');
                 if (logo) logo.classList.add('scrolled');
             } else {
                 if (navbar) navbar.classList.remove('scrolled');
                 if (textBlock) textBlock.classList.remove('fade-out');
+                if (mobileTextBlock) mobileTextBlock.classList.remove('fade-out');
                 if (navItems) navItems.classList.remove('centered');
+                if (mobileItems) mobileItems.classList.remove('scrolled');
                 if (logo) logo.classList.remove('scrolled');
             }
         };
@@ -210,7 +223,7 @@ const Navbar = () => {
 
             {/** MOBILE NAVBAR */}
             <div className="sm:hidden flex flex-col items-center justify-center">
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-center mobile-items">
                     <div>
                         <Image
                             className="logo"
@@ -251,9 +264,9 @@ const Navbar = () => {
                                         </DropdownMenuSubContent>
                                     </DropdownMenuPortal>
                                 </DropdownMenuSub>
-                                <DropdownMenuSub>
-                                    <DropdownMenuSubTrigger className="bg-purple-950 text-slate-200">Categories</DropdownMenuSubTrigger>
-                                    <DropdownMenuPortal>
+                                <DropdownMenuSub side="bottom">
+                                    <DropdownMenuSubTrigger side="bottom" className="side-bottom bg-purple-950 text-slate-200">Categories</DropdownMenuSubTrigger>
+                                    <DropdownMenuPortal  side="bottom" className="side-bottom">
                                         <DropdownMenuSubContent>
                                             {categories.map((categories) => (
                                                 <Link href={`/category/${categories.replace(/\s+/g, '-')}`}>
@@ -294,17 +307,6 @@ const Navbar = () => {
                                 </Link>
 
                             </DropdownMenuGroup>
-                            <DropdownMenuSeparator />
-                            {!user.isSignedIn && (
-                                <DropdownMenuItem>
-                                    <SignInButton />
-                                </DropdownMenuItem>
-                            )}
-                            {user.isSignedIn && (
-                                <DropdownMenuItem>
-                                    <SignOutButton />
-                                </DropdownMenuItem>
-                            )}
                         </DropdownMenuContent>
                     </DropdownMenu>
                     <div className="flex flex-col items-center ml-4">
@@ -326,7 +328,7 @@ const Navbar = () => {
                         )}
                     </div>
                 </div>
-                <div className="text-block text-center font-extrabold tracking-wider mt-10 text-lg mt-4">
+                <div className="mobile-text-block text-center font-extrabold tracking-wider mt-10 text-lg mt-4">
                     <p>UNAPOLOGETICALLY PROGRESSIVE.</p>
                     <p>UNIQUELY NEW ORLEANS.</p>
                 </div>
