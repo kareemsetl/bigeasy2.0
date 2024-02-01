@@ -164,7 +164,7 @@ const Navbar = () => {
                         onMouseEnter={handleCategoriesHover}
                         onMouseLeave={handleCategoriesLeave}>
                         <u>Categories</u>
-                        <ul ref={categoriesRef} className={`nav-items rounded shadow-2xl absolute bg-purple-950 ${isCategoriesOpen ? 'block' : 'hidden'} left-1/2 transform -translate-x-1/2 whitespace-nowrap`}
+                        <ul ref={categoriesRef} className={`w-auto h-auto nav-items rounded shadow-2xl absolute bg-purple-950 ${isCategoriesOpen ? 'block' : 'hidden'} left-1/2 transform -translate-x-1/2`}
                         >
                             {categories.map((category) => (
                                 <Link href={`/category/${category.replace(/\s+/g, '-')}`} >
@@ -237,25 +237,25 @@ const Navbar = () => {
                         />
                     </div>
                     {/* Toggle Icon/Button */}
-                    <DropdownMenu>
+                    <DropdownMenu className="bg-purple-950">
                         <DropdownMenuTrigger asChild>
                             <Button className="bg-purple-950">Menu</Button>
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent className="w-56 bg-slate-950 outline-slate-950">
+                        <DropdownMenuContent className="w-56 overflow-auto bg-slate-950 border-slate-950">
                             <DropdownMenuGroup>
                                 <Link href="/" passHref>
                                     <DropdownMenuItem>
                                         Home
                                     </DropdownMenuItem>
                                 </Link>
-                                <DropdownMenuSub>
+                                <DropdownMenuSub className="bg-purple-950">
                                     <DropdownMenuSubTrigger className="bg-purple-950 text-slate-200">Editions</DropdownMenuSubTrigger>
                                     <DropdownMenuPortal>
-                                        <DropdownMenuSubContent>
+                                        <DropdownMenuSubContent className="bg-purple-950">
                                             {editions.map((edition) => (
                                                 <Link href={`/category/monthly/${edition.replace(/\s+/g, '-')}`}>
                                                     <DropdownMenuItem key={edition}
-                                                        className="edition-item rounded shadow-2xl bg-purple-950 hover:bg-purple-900 text-sm p-2 whitespace-nowrap">
+                                                        className="w-[100px] h-auto edition-item rounded shadow-2xl bg-purple-950 hover:bg-purple-900 text-xs p-1 whitespace-nowrap">
                                                         {edition}
                                                     </DropdownMenuItem>
                                                 </Link>
@@ -264,14 +264,14 @@ const Navbar = () => {
                                         </DropdownMenuSubContent>
                                     </DropdownMenuPortal>
                                 </DropdownMenuSub>
-                                <DropdownMenuSub >
+                                <DropdownMenuSub>
                                     <DropdownMenuSubTrigger  className="side-bottom bg-purple-950 text-slate-200">Categories</DropdownMenuSubTrigger>
                                     <DropdownMenuPortal>
-                                        <DropdownMenuSubContent>
+                                        <DropdownMenuSubContent className="bg-purple-950">
                                             {categories.map((categories) => (
                                                 <Link href={`/category/${categories.replace(/\s+/g, '-')}`}>
                                                     <DropdownMenuItem key={categories}
-                                                        className="edition-item rounded shadow-2xl bg-purple-950 hover:bg-purple-900 text-sm p-2 whitespace-nowrap">
+                                                        className="w-[100px] h-auto side-bottom overflow-auto edition-item rounded shadow-2xl bg-purple-950 hover:bg-purple-900 text-xs p-1">
                                                         {categories}
                                                     </DropdownMenuItem>
                                                 </Link>
