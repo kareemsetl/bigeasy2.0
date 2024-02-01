@@ -266,7 +266,7 @@ const Navbar = () => {
                                 </DropdownMenuSub>
                                 <DropdownMenuSub >
                                     <DropdownMenuSubTrigger  className="side-bottom bg-purple-950 text-slate-200">Categories</DropdownMenuSubTrigger>
-                                    <DropdownMenuPortal   className="side-bottom">
+                                    <DropdownMenuPortal>
                                         <DropdownMenuSubContent>
                                             {categories.map((categories) => (
                                                 <Link href={`/category/${categories.replace(/\s+/g, '-')}`}>
